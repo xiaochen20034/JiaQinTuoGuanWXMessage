@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace JiaQin.Services
 {
     public class AppBase
-    { 
+    {
+        public void Init() { }
     }
 }
