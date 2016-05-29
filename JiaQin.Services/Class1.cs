@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace JiaQin.Services
 {
     public class Class1
-    {
+    { 
     }
 }
