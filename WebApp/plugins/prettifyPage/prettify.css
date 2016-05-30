@@ -1,0 +1,41 @@
+
+.dropmenu{
+	position:relative;	
+}
+.dropmenu li,.dropmenu ul{
+	margin:0;
+	padding:0;
+	list-style:none;	
+}
+.dropmenu li{	
+	border-bottom:1px solid red;
+	width:100px;
+	position:relative;
+}
+.dropmenu .menuItem{
+
+}
+.dropmenu .dropSubmenu{
+	position:absolute;
+	z-index:55;
+	top:0px;
+	left:0px;
+}
+.dropmenu .menuItem .dropSubmenuIdentity{
+	width:10px;
+	height:5px;
+	display:inline-block;
+	background-color:#00C;
+	position:absolute;
+	right:10px;
+	
+}
+.dropmenu li{ background-color:#FF9; height:25px; margin:5px; padding:5px; border:1px solid #03F;}
+.dropmenu .dropSubmenu{ background-color:#F93;}
+
+
+
+/** 横向*/
+.dropmenuLine>li{
+	display:inline-block;
+}

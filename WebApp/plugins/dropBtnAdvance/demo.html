@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" language="javascript" src="../lib/MooTools-Core-1.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="dropBtnAdvance.js"></script>
+<link rel="stylesheet" type="text/css" href="dropBtnAdvance.css"/>
+
+
+
+<script type="text/javascript" language="javascript">
+window.addEvent("domready",function(){
+	var dropBtn=new DropButtonAdvance();
+	var dropBtn2=new DropButtonAdvance({
+		"dropRoot":".dropButton2",
+		"trigger":"hover"
+	});
+
+});
+</script>
+<style>
+ul{ margin:0; padding:0;}
+</style>
+</head>
+
+<body>
+
+<dl>
+	<dt></dt>
+    <dd></dd>
+    <dd></dd>
+</dl>
+
+<div class="dropButton" style="border:1px solid green;">
+	<div>
+    	<span style="border:1px solid red;">发送</span>
+        <span style="border:1px solid blue;" class="dropButton-toggle">-下拉</span>
+    </div>
+    <ul class="Menu" style="border:1px solid yellow;width:200px;">
+    	<li><a href="http://www.baidu.com" target="_blank">百度</a></li>
+        <li><button onclick="alert(2);">1+1=?</button></li>
+        <li><label onclick="$('test').setStyle('display','none');">切换</label></li>
+    </ul>
+</div>
+
+<div style="width:100px; height:200px; background-color:#933;" id="test"></div>
+
+
+<div class="dropButton2" style="border:1px solid green;">
+	<div>
+    	<span style="border:1px solid red;">发送</span>
+        <span style="border:1px solid blue;" class="dropButton-toggle">-下拉</span>
+    </div>
+    <ul class="Menu" style="border:1px solid yellow;width:200px;">
+    	<li><a href="http://www.baidu.com" target="_blank">百度</a></li>
+        <li><button onclick="alert(2);">1+1=?</button></li>
+        <li><label onclick="$('test').setStyle('display','none');">切换</label></li>
+    </ul>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript" language="javascript" src="../lib/MooTools-Core-1.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="prettify.js"></script>
+<link rel="stylesheet" type="text/css" href="prettify.css"/>
+
+</head>
+
+<body style="margin:0; padding:0;">
+	<div style="width:1000px; height:200px; background-color:#090; position:relative;" class="documentHeight">
+    
+    	<div style="width:100%; height:400px; position:absolute; left:0; top:0; background-color:#909; border:1px solid #FFF;" id='d34'>
+        
+        <div style="border:1px solid #999; padding:10px;margin:10px; width:450px;">
+    <div id="qttc" attr="qttc">这里是id=qttc的div</div>
+</div>
+ 
+<div style="border:1px solid #999; padding:10px;margin:10px; width:450px;">
+    <div id="QTTC2"  attr="QTTC2">这里是id=QTTC2的div</div>
+</div>
+
+<script>
+	document.getElementById("qttc").innerHTML="qttc　　 " +($("qttc").get('Attr')?$("qttc").get('Attr')+"--":$("qttc").getAttribute('Attr')+"++" );
+	document.getElementById("QTTC2").innerHTML="QTTC　　"+$("QTTC2").getAttribute('Attr');
+</script>
+
+
+        </div>
+    	<div style="width:100%; height:20px; background-color:red;border:1px solid #FFF;"
+         class="expressionHeight expressionWidth" expressionHeight="100-100-ele('d34').y">
+         
+                  
+         
+         
+         
+        </div>
+    </div>
+
+</body>
+</html>
