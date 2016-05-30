@@ -1,0 +1,58 @@
+﻿         <script type="text/javascript">
+             window.addEvent('zdomready', function () {
+                 var dropBtn = new DropButton({ trigger: 'hover' });
+             });
+             function SwitchRolePermission(json, form, btn) {
+                 alert(json.tip); debugger;
+                 if (json.field) {
+                     form.getParent("li").removeClass("False");
+                     
+                 } else {
+                     form.getParent("li").addClass("False");
+                 }
+             }
+         </script>
+<eye:set name="rolePermissionList" value="${data.SysPermissionList}"/>
+<div class="depTitle titleBgColor">${data.Name}</div>
+<ul class="menu">
+            <!-- 第一级-->
+            <eye:foreach collection="${list}" var="permission">
+                    <eye:set name="disabled" value="${this.RoleHasPermission(data,permission)}"/>
+                   <li class="active ${disabled}" >                       
+                    <label onclick="SubmitForm2(this, SwitchRolePermission,this)" action="SwitchRolePermission" param="roleId=${data.Id}&permissionId=${permission.Id}">${permission.Name}</label>
+                <eye:set name="list2" value="${permission.ChildrenPermissionList}"/>
+                <!-- 第二级-->
+                <eye:if test="${length(list2) gt 0}">
+                    <ul>
+                        <eye:foreach collection="${list2}" var="permission2">
+                             <eye:set name="disabled" value="${this.RoleHasPermission(data,permission2)}"/>
+                   <li class="active ${disabled}" >       
+                            
+                            <label  onclick="SubmitForm2(this, SwitchRolePermission,this)" action="SwitchRolePermission" param="roleId=${data.Id}&permissionId=${permission2.Id}">${permission2.Name}</label>
+                
+                                    
+                                <eye:set name="list3" value="${permission2.ChildrenPermissionList}"/>
+                                <!-- 第三级-->
+                                <eye:if test="${length(list3) gt 0}">
+                                    <ul>
+                                        <eye:foreach collection="${list3}" var="permission3">     
+                                             <eye:set name="disabled" value="${this.RoleHasPermission(data,permission3)}"/>
+                   <li class="active ${disabled}" >                                       
+                                           
+                                            <label  onclick="SubmitForm2(this, SwitchRolePermission,this)" action="SwitchRolePermission" param="roleId=${data.Id}&permissionId=${permission3.Id}">${permission3.Name}</label>
+                                        </li>
+                                        </eye:foreach>
+                                    </ul>
+                                </eye:if>                
+
+
+
+                        </li>
+                        </eye:foreach>
+                    </ul>
+                </eye:if>                
+                </li>
+
+            </eye:foreach>
+         
+        </ul>

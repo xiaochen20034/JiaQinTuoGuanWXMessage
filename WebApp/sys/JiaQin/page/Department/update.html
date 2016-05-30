@@ -1,0 +1,19 @@
+﻿<div style="width:500px;" windowTitle="编辑部门">
+    <form action="UpdateDepartmentEvent.aspx" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id" value="${dep.Id}"/>
+                <div class="hold">
+                    <label>编码：<input type="text" name="Code" readonly value="${dep.Code}"/></label>
+                </div>
+                <div class="hold">
+                    <label>名称：<input type="text" name="Name" value="${dep.Name}"/></label>
+                </div>
+                <div class="hold">
+                    <label>备注：<input type="text" name="Remark" value="${dep.Remark}"/></label>
+                </div>
+
+                <div class="hold">
+                    <input type="button" class="btn" onclick="SubmitForm2('css:form', null,this)"  value="提交"/>
+                </div>
+                
+            </form>
+</div>

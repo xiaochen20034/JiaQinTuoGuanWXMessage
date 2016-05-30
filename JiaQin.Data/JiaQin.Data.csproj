@@ -37,10 +37,35 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zhyj.DBUtils">
+      <HintPath>..\WebApp\dll\Zhyj.DBUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.ICached">
+      <HintPath>..\WebApp\dll\Zhyj.ICached.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ParentData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolData.cs" />
+    <Compile Include="SignProjectData.cs" />
+    <Compile Include="SignRecordData.cs" />
+    <Compile Include="Site\SiteColumnData.cs" />
+    <Compile Include="Site\SiteNewsData.cs" />
+    <Compile Include="StudentData.cs" />
+    <Compile Include="sys\DepartmentData.cs" />
+    <Compile Include="sys\IDataExecutorImp.cs" />
+    <Compile Include="sys\SysInfoData.cs" />
+    <Compile Include="sys\SysPermissionData.cs" />
+    <Compile Include="sys\SysRoleData.cs" />
+    <Compile Include="sys\SysUserData.cs" />
+    <Compile Include="sys\VipUserData.cs" />
+    <Compile Include="sys\WeixinMessageD.cs" />
+    <Compile Include="sys\WxMenuData.cs" />
+    <Compile Include="sys\WxTemplateData.cs" />
+    <Compile Include="TagData.cs" />
+    <Compile Include="TeacherData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JiaQin.Entity.Lazy\JiaQin.Entity.Lazy.csproj">

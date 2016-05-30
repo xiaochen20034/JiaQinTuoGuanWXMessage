@@ -1,0 +1,156 @@
+﻿<figure>
+    <figcaption><i class="fa-table"></i>职务角色管理</figcaption>
+    <style>
+            .depLi {
+                overflow:hidden
+            }
+             .depLi .dropButton-Menu{
+                top:5px;
+                right:0px;
+            }
+                .depLi {
+                    width:150px;
+                border:1px solid #ccc ;
+                min-height:400px;
+                    float:left;
+                }
+            .depTitle {
+                line-height:25px;
+                height:25px;
+                color:#fff;
+                text-align:center;
+                display:block;
+            }
+            .depLi .nextDep table td,.depLi .nextDep table th{
+                padding:5px;
+            }
+            .depData {
+                padding:5px;
+                border-bottom:1px solid #808080;
+                display:block;
+            }
+            .depData:hover {
+                background-color:#b6ff00;
+            }
+
+
+            
+.rolePermission .menu ul{
+	display:none;
+}
+.rolePermission .menu li.active>ul{
+	display:inherit;
+}
+.rolePermission .menu>li {
+    float:left;
+    border-left:1px solid #ccc;
+}
+
+.rolePermission .menu>li{
+	border-bottom:1px solid #d1d1d1;
+	line-height:50px;
+	width: 100%;
+}
+.rolePermission .menu>li label{
+	font-size:14px;
+	font-weight:bold;
+    padding-left:15px;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+	display:block;
+	cursor:pointer;
+}
+
+.rolePermission .menu>li.active label{
+	line-height:50px;
+	height:50px;
+	display:block;
+	border-bottom:1px solid #d1d1d1;
+}
+.rolePermission .menu>li.active li:last-child label{
+	border-bottom-style:none;
+}
+.rolePermission .menu label em{
+	width:50px;
+	height:50px;
+	display:inline-block;
+	vertical-align:middle;
+	text-align:center;
+	border-right:1px solid #d1d1d1;
+	margin-right:15px;
+}
+.rolePermission .menu>li.active em{
+	color:#FFF;
+	background-color:#368ee0;
+}
+.rolePermission .menu label i{
+	width:10px;
+	height:50px;
+	display:inline-block;
+	vertical-align:middle;
+	text-align:center;
+	position: absolute;
+    right:20px;
+	color:#444;
+}
+.rolePermission .menu>li label i:before{
+	content: "\f107";
+
+}
+.rolePermission .menu>li.active i{	
+}
+.rolePermission .menu>li.active>label i:before{
+	content: "\f106";
+}
+.rolePermission .menu>li>ul{
+	margin-left:20px;
+    
+	border-left:1px solid #d1d1d1;
+}
+.rolePermission .menu>li>ul{
+	border-bottom:none;
+}
+.rolePermission .menu>li>ul>li label i{
+}
+
+.rolePermission .menu>li>ul>li.active label i:before{
+	content: "\f106";
+	color:#368ee0
+}
+.rolePermission .menu>li>ul li:last-child{
+	border-bottom-style:none;
+}
+.rolePermission .menu>li>ul li>label{
+	padding-left:15px;padding-right:15px;
+	font-weight:normal;
+	border-style:none;
+}
+.rolePermission .menu>li>ul li.active>label{
+
+}
+.rolePermission .menu>li>ul li>ul{
+	padding-left:15px;
+    
+	font-weight:normal;
+	border-style:none;
+	border-top:1px solid #d1d1d1;
+	font-size:12px;
+	color:#555;
+}
+.rolePermission {
+    
+}
+
+li.False>label{
+    color:#D4C9C9
+}
+
+        </style>
+    <section>
+        
+        
+
+        <eye:import file="list.html"/>
+        <div class="rolePermissionTable rolePermission depLi"></div>
+     </section>
+</figure>

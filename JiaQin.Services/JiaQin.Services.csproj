@@ -32,15 +32,48 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zhyj.AderTemplates">
+      <HintPath>..\WebApp\dll\Zhyj.AderTemplates.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.AppHandler">
+      <HintPath>..\WebApp\dll\Zhyj.AppHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.Common">
+      <HintPath>..\WebApp\dll\Zhyj.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.DBUtils">
+      <HintPath>..\WebApp\dll\Zhyj.DBUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.ICached">
+      <HintPath>..\WebApp\dll\Zhyj.ICached.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.Tencent.WeiXin">
+      <HintPath>..\WebApp\dll\Zhyj.Tencent.WeiXin.dll</HintPath>
+    </Reference>
+    <Reference Include="Zhyj.ZLogger4Web">
+      <HintPath>..\WebApp\dll\Zhyj.ZLogger4Web.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppBase.cs" />
+    <Compile Include="Site\SiteColumnServ.cs" />
+    <Compile Include="Site\SiteServ.cs" />
+    <Compile Include="sys\AppBase.cs" />
+    <Compile Include="sys\DepartmentServ.cs" />
+    <Compile Include="sys\PermissionServ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sys\RoleServ.cs" />
+    <Compile Include="sys\TemplateFunc.cs" />
+    <Compile Include="sys\UserServ.cs" />
+    <Compile Include="sys\VipUserServ.cs" />
+    <Compile Include="sys\WebPage.cs" />
+    <Compile Include="sys\WeixinMessageReciveHandler.cs" />
+    <Compile Include="sys\WxSettingServ.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JiaQin.Data\JiaQin.Data.csproj">

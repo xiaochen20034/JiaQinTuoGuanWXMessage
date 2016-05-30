@@ -1,0 +1,52 @@
+﻿<figure  class="wxsettingImg">
+    <figcaption><i class="fa-table"></i>公众号信息设置</figcaption>    
+
+   
+    <style>
+        .wxsettingImg aside {
+            display:block;
+            width:100%;
+        }
+        .wxsettingImg>section{
+            padding:10px;
+        }
+        .wxsettingImg p {
+            margin-top:10px;
+        }
+        .wxsettingImg p::first-line{
+            font-weight:bold;
+        }
+
+    </style>
+
+    <script>
+        window.addEvent('zdomready', function () {
+            var tab = new SimpleTab({ selector: '.wxsettingImg .SimpleTab .tabItem' });
+            tab.play();
+        });
+    </script>
+    <aside>
+       <ul class="SimpleTab">
+           <li target="css:figure section.help" class="tabItem  activeTab">设置教程</li>
+           <li target="css:figure section.wxbasicinfo"  class="tabItem ">微信公众号信息</li>
+           <li target="css:figure section.wxpayinfo"  class="tabItem ">商户平台信息</li>
+           
+       </ul>
+   </aside>
+    <section class="help">
+             <eye:import file="help.html"/>
+    </section>
+    <section class="wxbasicinfo">
+             <eye:import file="wxbasicinfo.html"/>
+    </section>
+    <section class="wxpayinfo">
+             <eye:import file="wxpayinfo.html"/>
+    </section>
+
+    
+    
+    
+
+    
+
+</figure>

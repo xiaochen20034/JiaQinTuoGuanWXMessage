@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script language="javascript" type="text/javascript" src="mootools-core-1.4.5-full-compat.js"></script>
+<script language="javascript" type="text/javascript"  src="mootools-more-1.4.0.1.js"></script>
+<script language="javascript" type="text/javascript" src="../lib/extends.js"></script>
+<script language="javascript" type="text/javascript" src="SimpleTab.js"></script>
+<link type="text/css" rel="stylesheet" href="simpleTab.css"/>
+<script type="text/javascript" language="javascript">
+var tab;
+var htab,vtab;
+window.addEvent("domready",function(){
+	tab=new SimpleTab({"selector":"#tabContainer .tabItem"});	
+	tab.play();
+	
+	htab=new SimpleTab({
+		"selector":".Htab .SimpleTabSliderIndex .tabItem",
+		"selectorContainer":$$(".Htab .slideContainer")[0],
+		"itemWidth":306,
+		"moveStyle":"horizontalLinear"
+	});	
+	htab.play();
+	
+	vtab=new SimpleTab({
+		"selector":".Vtab .SimpleTabSliderIndex .tabItem",
+		"selectorContainer":$$(".Vtab .slideContainer")[0],
+		"itemHeight":64,
+		"moveStyle":"verticalLiner"
+	});	
+	vtab.play();
+	
+	
+});
+</script>
+</head>
+
+<body>
+<button onclick="tab.next()">Next</button>
+<div style="width:100%;">
+    <div id="tabContainer" class="SimpleTab">
+        <span class="tabItem" name="one" target="tabOne">选项卡一</span>
+        <span class="tabItem" name="two" target="tabTwo">选项卡二</span>
+        <span class="tabItem" name="three" target="tabThree">选项卡三</span>
+        <span class="tabItem" name="four" target="tabFour">选项卡四</span>
+    
+            
+    </div>
+    <div id="tabOne" class="SimpletabTarget">选项卡一</div>
+    <div id="tabTwo" class="SimpletabTarget">选项卡二</div>
+    <div id="tabThree" class="SimpletabTarget">选项卡三</div>
+    <div id="tabFour" class="SimpletabTarget">选项卡四</div>
+</div>
+
+
+<hr/>
+<div style="width:100%;">
+
+</div>
+
+<style>
+*{ margin:0; padding:0;}
+
+.slideItem{ float:left;}
+.active{ display:block;}
+.slideContainerShow{width:300px;height:60px; overflow:hidden; border:1px solid green; position:relative;}
+.SimpleTabSliderIndex{ position:absolute; right:0; bottom:0; border:1px solid gold; z-index:2;}
+.slideContainer .SimpletabTarget{width:300px; height:60px; border:1px solid #CCC; margin-left:2px; float:left; clear:none}
+.SimpleTabSliderIndex .activeTab{ color:#C6C; font-weight:bold}
+</style>
+<div class="Htab">
+<div class="slideContainerShow">
+    <div class="slideContainer" style="">
+         
+        <div id="tabOne1" style="background-color:#663" class="SimpletabTarget">选项卡一</div>
+        <div id="tabTwo1"  style="background-color:#C06" class="SimpletabTarget">选项卡二</div>
+        <div id="tabThree1"  style="background-color:#CFF"  class="SimpletabTarget">选项卡三</div>
+        <div id="tabFour1"  style="background-color:#F90"  class="SimpletabTarget">选项卡四</div>             
+    </div>
+    <div id="tabContainer2" class="SimpleTabSliderIndex">
+        <span class="tabItem" style="background-color:#663" name="one1" target="tabOne1">一</span>
+        <span class="tabItem" style="background-color:#C06" name="two1" target="tabTwo1">二</span>
+        <span class="tabItem" style="background-color:#CFF" name="three1" target="tabThree1">三</span>
+        <span class="tabItem" style="background-color:#F90" name="four1" target="tabFour1">四</span>    
+    </div>  
+</div>
+<div onclick="htab.pre()">向前</div><br/>
+<div onclick="htab.next()">向后</div>
+</div>
+<strong>
+</strong>
+
+<div contenteditable="true" style="width:200px; height:50px; border:1px solid red;">
+<button contenteditable="false" style="border:none;margin-right: 1px;background: none;vertical-align: baseline;overflow: visible;padding: 0;">姓名：</button>
+</div>
+
+
+
+<div class="Vtab">
+
+<style>
+*{ margin:0; padding:0;}
+
+.Vtab .slideItem{ }
+.Vtab .active{ display:block;}
+.Vtab .slideContainerShow{width:350px;height:63px; overflow:hidden;  border:1px solid #C63; position:relative;}
+.Vtab .SimpleTabSliderIndex{ position:absolute; top:0; border:1px solid gold; z-index:2;}
+.Vtab .SimpleTabSliderIndex .tabItem{ display:block;}
+.Vtab .slideContainer .SimpletabTarget{width:300px; height:60px; border:0px solid #CCC; }
+.Vtab .SimpleTabSliderIndex .activeTab{ color:#6F0; font-weight:bold}
+</style>
+<div class="slideContainerShow">
+    <div class="slideContainer" style="">
+        <div id="tabOne1" style="background-color:#663" class="SimpletabTarget">选项卡一</div>
+        <div id="tabTwo1"  style="background-color:#C06" class="SimpletabTarget">选项卡二</div>
+        <div id="tabThree1"  style="background-color:#CFF"  class="SimpletabTarget">选项卡三</div>
+        <div id="tabFour1"  style="background-color:#F90"  class="SimpletabTarget">选项卡四</div>             
+    </div>
+    <div id="tabContainer2" class="SimpleTabSliderIndex">
+        <span class="tabItem" style="background-color:#663" name="one1" target="tabOne1">一</span>
+        <span class="tabItem" style="background-color:#C06" name="two1" target="tabTwo1">二</span>
+        <span class="tabItem" style="background-color:#CFF" name="three1" target="tabThree1">三</span>
+        <span class="tabItem" style="background-color:#F90" name="four1" target="tabFour1">四</span>    
+    </div>  
+</div>
+<div onclick="vtab.pre()">向前</div><br/>
+<div onclick="vtab.next()">向后</div>
+</div>
+</body>
+</html>

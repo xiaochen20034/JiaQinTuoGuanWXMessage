@@ -1,0 +1,83 @@
+﻿
+<figure  class="wxsettingImg">
+    <figcaption><i class="fa-table"></i>公众号设置教程</figcaption>    
+    
+    <style>
+        .wxsettingImg aside {
+            display:block;
+            width:100%;
+        }
+        .wxsettingImg>section{
+            padding:10px;
+        }
+        .wxsettingImg p {
+            margin-top:10px;
+        }
+        .wxsettingImg p::first-line{
+            font-weight:bold;
+        }
+
+    </style>
+    <p> 
+        第一步、申请开通微信公众平台服务号
+    </p>
+    <p> 
+        第二步、认证并开通微信支付
+    </p>
+
+    <p> 
+        第三步、手动复制微信公众号信息到爱活动平台
+        <br/>
+        开发者中心>配置项>开发者ID>
+        <hr/>
+        复制  AppID(应用ID)wxefbf59bf1f5bc467 与 AppSecret(应用密钥) 到爱活动平台
+    </p>
+    <p> 
+        第四步、启用开发者模式。
+        <br/>
+        开发者中心>配置项>服务器配置>启用（停用改为启用）
+        <hr/>
+        到时候，截图说明
+    </p>
+    <p> 
+        第五步、登录设置。
+        <br/>
+        开发者中心>配置项>服务器配置>修改配置>填写相关信息
+        <hr/>
+        URL : http://ihuodong.sxxxt.cn/WeiXinServerValidate.aspx
+        Token：ihuodong_zhyj_20150324_token
+        EncodingAESKey：n8eiBPXTmDuelY2tqnf6gjEuFeZmdEHwwCA7h12fRrh
+        消息加解密方式：明文模式
+        <br/>
+        <hr/>
+        开发者中心>配置项>服务器配置>接口权限表>(网页帐号)网页账号>填写域名（ihuodong.sxxxt.cn）
+        <hr/>
+
+    </p>
+    <p>
+        第六步、微信支付设置
+        <br/>
+        微信支付>开发配置>公众号支付>
+        <hr/>
+        支付授权目录   http://ihuodong.sxxxt.cn/pay/
+        <br/>
+        测试授权目录   http://ihuodong.sxxxt.cn/test/pay/
+        <br/>
+        微信支付>开发配置>扫码支付>
+        <hr/>
+        支付回调URL   http://ihuodong.sxxxt.cn/test/pay/WeiXinScanQrCodeMode1Callback.aspx 
+        <br/>
+        微信支付>开发配置>刷卡支付>
+        <hr/>
+        未开发
+    </p>
+    <p>
+        第七步、登录商户平台设置
+        <br/>
+        API安全>  API密匙>设置密匙>设置一个32为数字与字母的组合字符串
+        <br/>
+        其他证书
+    </p>
+    
+    
+</figure>

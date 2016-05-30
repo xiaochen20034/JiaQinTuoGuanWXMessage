@@ -1,0 +1,20 @@
+body{ 
+font-size:12px; font-family:"微软雅黑","宋体",Arial, Helvetica, sans-serif;color:#363636;}
+html, body, div, span, h1, h2, h3, h4, h5, h6, em, img, strong, sub, sup, tt,dd, dl, dt, form, label, table, caption, tbody, tfoot, thead, tr, th, td,ul,li,p,a{ margin: 0; padding: 0;  }
+input,select,textarea{ vertical-align:middle;}
+img{ border:0;}
+ul,li{ list-style-type:none;}
+a:link,a:visited{
+text-decoration:none;color:#010101;}
+a:hover{text-decoration:underline;color:#ED0909;}
+.clear {clear: both;}
+.clearfix:after {clear: both;content: ' ';display: block;font-size: 0;line-height: 0;visibility: hidden;width: 0;height: 0;}
+.clearfix{zoom:1}  /*解决ie问题 利用zoom 保持原始大小*/
+.mask {
+    background-color:black;
+    opacity:.5;
+    filter:alpha(opacity=50); 
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; 
+    filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);  
+    
+}

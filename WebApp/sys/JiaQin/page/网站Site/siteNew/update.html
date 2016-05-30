@@ -1,0 +1,60 @@
+﻿
+<figure>
+    <figcaption><i class="fa-table"></i>修改-${columnInfo.Name}
+    <div style="float:right;">
+    <label class="btn btn-primary" id="backcolumndatalist" onclick="SubmitForm2(this,null,this)" action="ColumnDataPage" target="css:.mainWrap .main"  param="columnId=${columnInfo.Id}">返回</label>
+        </div>
+    </figcaption>
+    <style>
+        .WeixinEditor {
+            border:1px solid black;
+        }
+        .addImg :hover{
+            border:1px solid black;
+        }
+        .weixinEditorCameraInput {
+             background-image:url(/res/menu.png);
+             background-position:-9px -7px;
+        }
+    </style>
+    <script>
+        var weixinEditor;
+        window.addEvent('zdomready', function () {
+            KindEditor2("htmlArea");
+            //weixinEditor = new WeixinEditor({
+            //    copyright: "<link type='text/css' href='/theme/ShuTong/css/weixinEditor.css' rel='stylesheet'/>&nbsp;",
+            //    textarea: "htmlArea"
+            //});
+            //weixinEditor.writeValue(htmlArea.value);
+        });
+        function Validate(form) {
+            //weixinEditor.getValue();
+            return true;
+        }
+        function Callback(json, form, btn) {
+            if (json.res == 'ok') {
+                alert('编辑完成');
+                $("backcolumndatalist").click();
+            } else {
+                alert(json.tip);
+            }
+        }
+    </script>
+    <form action="UpdateColumnDataEvent.aspx" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Id" value="${newsInfo.Id}"/>
+        <div class="hold">
+            <div><input placeholder="请输入标题" type="text" name="Title" value="${newsInfo.Title}" style="width:95%"/></div>
+            <span class="msg"></span>
+        </div>
+
+         <div class="hold">           
+            <span class="msg"></span>
+             <textarea name="Content" placeholder="新闻内容"  id="htmlArea" class="htmlArea kindEditor" style="width:100%; height:300px">${newsInfo.Content}</textarea>
+        </div> 
+        <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate, Callback, this)"  value="提交"/>
+        </div>
+                
+    </form>
+
+</figure>

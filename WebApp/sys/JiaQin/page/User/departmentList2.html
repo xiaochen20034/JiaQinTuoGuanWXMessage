@@ -1,0 +1,27 @@
+﻿         
+                
+
+<eye:if test="${length(data) gt 0}">
+    <ul>
+         <li  class="depTitle"> ${dep.Name}               
+            </li>
+    <eye:foreach collection="${data}" var="dep">
+                <li  class="depData"><label   param="id=${dep.Id}"  onclick="LoadChildrenDepartment(this)" >${dep.Name}</label>                    
+       </eye:foreach>
+</ul>
+<eye:else/>
+        <script type="text/javascript">
+            window.addEvent('zdomready', function () {
+             
+                $("DepartmentChildrenUserLi").getParent(".depLi .nextDep:last-child").setStyle("width", "500px");
+             });
+         </script>
+    
+        <div>
+             <div  style="text-align:center; height:25px;">${dep.Name}成员</div>
+        </div>
+    <div class="depUserTable">
+    <eye:import file="userlist.html"/>
+        </div>
+</eye:if>
+    

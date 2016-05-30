@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMVC>
+  <Action path="ReciveWeixinTemplateMessageFinishJob" ref="wxsetting" method="ReciveWeixinTemplateMessageFinishJob" comment="接受到微信模版消息的回执信息" verification="ignore">
+  </Action>
+  <Action path="AccessToken" ref="wx" method="AccessTokenEvent" comment="应用获取微信token" verification="ignore">
+  </Action>
+
+  <Action path="ReciveUserSubscribeMessage" ref="user" method="ReciveUserSubscribeMessage" comment="用户关注的通知" verification="ignore">
+  </Action>
+  <Action path="WXJsApiParam" ref="wxpay" method="JsApiParam" comment="应用获取微信JSAPI的信息" verification="ignore">
+  </Action>
+  
+
+</SimpleMVC>
+

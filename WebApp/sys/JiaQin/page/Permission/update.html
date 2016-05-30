@@ -1,0 +1,31 @@
+﻿<div style="width:500px;" windowTitle="编辑权限">
+    <form action="UpdatePermissionEvent.aspx" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id" value="${dep.Id}"/>
+                <input type="hidden" name="ParentId" value="${dep.ParentId}"/>
+                <div class="hold">
+                    <label>编码：<input type="text" name="Code" readonly value="${dep.Code}"/></label>
+                </div>
+                <div class="hold">
+                    <label>名称：<input type="text" name="Name" value="${dep.Name}"/></label>
+                </div>
+                <div class="hold">
+                    <label>Action：<input type="text" name="action" value="${dep.Action}"/></label>
+                </div>        
+                <div class="hold">
+                    按钮：
+                    <label><input type="radio" ${iif(dep.LevelNum is 1,'checked','')} name="levelNum" value="1"/>是</label>
+                    <label><input type="radio" ${iif(dep.LevelNum is 1,'','checked')} name="levelNum" value="0"/>否</label>
+                </div>        
+                <div class="hold">
+                    <label>排序：<input type="text" name="Sort" value="${dep.Sort}"/></label>
+                </div>
+                <div class="hold">
+                    <label>备注：<input type="text" name="Remark" value="${dep.Remark}"/></label>
+                </div>
+
+                <div class="hold">
+                    <input type="button" class="btn" onclick="SubmitForm2('css:form', null,this)"  value="提交"/>
+                </div>
+                
+            </form>
+</div>

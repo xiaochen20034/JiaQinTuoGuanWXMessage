@@ -1,0 +1,82 @@
+﻿
+<script>
+   
+    function menuValidate(form,btn) {
+        var vForm = new VMFormValidator(form, {
+            'errorDisplay': 'element',
+            validateElementMultiple: true
+        });
+        vForm.required("Code", "请填写章节唯一编码");
+        vForm.required("Name", "请填写章节名称");
+
+        vForm.required("Code", "请填写章节唯一编码");
+        vForm.required("Name", "请填写章节名称");
+
+        vForm.required("Code", "请填写章节唯一编码");
+        vForm.required("Name", "请填写章节名称");
+        var flag = vForm.executeAllValidators();
+        return flag;
+    }
+</script>
+<form action="AddSiteColumnEvent" enctype="multipart/form-data" method="post" windowTitle="添加网站栏目">
+     
+        <div class="hold">
+            <label>父级栏目：</label>
+            ${columnInfo.Name}
+                <input type="hidden" name="ParentColumn" value="${columnInfo.Id}" class="ele"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>编　　码：<input type="text" name="Code" value="" class="ele"/></label><span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>名　　称：<input type="text" name="Name" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+
+      <div class="hold">
+            <label>列表模版（PC）：<input type="text" name="ListTemplate" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+      <div class="hold">
+            <label>内容模版（PC）：<input type="text" name="ContentTemplate" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+      <div class="hold">
+            <label>列表模版（移动）：<input type="text" name="MobileListTemplate" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+      <div class="hold">
+            <label>内容模版（移动）：<input type="text" name="MobileContentTemplate" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+
+
+        
+    <div class="hold">
+            <label>外链（Http）：<input type="text" name="webLink" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+     <div class="hold">
+            <label>显示顺序：<input type="text" name="Sort" value="0"  class="ele"/></label><span class="msg"></span>
+        </div>
+    
+       <div class="hold">
+            <label>单条数据：</label>
+           <label> <input type="radio" name="SingleNews" value="1"  class="ele"/>是</label>
+           <label> <input type="radio" name="SingleNews"  checked="checked"  value="0"  class="ele"/>否</label>
+           <span class="msg">例如公司简介</span>
+        </div>
+     <div class="hold">
+            <label>前端栏目：</label>
+         <label> <input type="radio" name="ShowSite" value="1"  checked="checked"   class="ele"/>是</label>
+         <label> <input type="radio" name="ShowSite" value="0"  class="ele"/>否</label>
+         <span class="msg">前台动态显示时，用到</span>
+        </div>
+     <div class="hold">
+            <label>后端栏目：</label>
+         <label> <input type="radio" name="ShowSys" value="1" checked="checked"  class="ele"/>是</label>
+         <label> <input type="radio" name="ShowSys" value="0"  class="ele"/>否</label>
+         <span class="msg">管理栏目数据，选是</span>
+        </div>
+    
+   
+      <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', menuValidate, null, this)"  value="提交"/>
+        </div>
+
+</form>

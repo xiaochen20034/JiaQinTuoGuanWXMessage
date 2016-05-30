@@ -1,0 +1,12 @@
+﻿<figure>
+    <figcaption><i class="fa-table"></i>${columnInfo.Name}</figcaption>
+    <form action="StudentListPage.aspx" target="css:figure section">
+        <label class="btn btn-primary" onclick="SubmitForm2(this,null,this)" action="AddColumnDataPage" target="css:.mainWrap .main"  param="columnId=${columnInfo.Id}">添加</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;       
+        <input type="text" name="name" value="" placeholder="标题"/>
+        <label class="btn btn-primary" onclick="SubmitForm2('css:form',null,this)">搜索</label>
+    </form>
+    <section>
+        <eye:import file="list.html"/>
+     </section>
+</figure>

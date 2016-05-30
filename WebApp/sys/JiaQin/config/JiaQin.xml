@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>
+  <Assembly  name="JiaQin.Services">
+    <Bean name="JiaQin.Service.WebPage" id="syspage"></Bean>    
+    <Bean name="JiaQin.Service.UserServ" id="usr"></Bean>
+    <Bean name="JiaQin.Service.DepartmentServ" id="dept"></Bean>
+    <Bean name="JiaQin.Service.RoleServ" id="role"></Bean>
+    <Bean name="JiaQin.Service.PermissionServ" id="pemission"></Bean>
+
+    <Bean name="JiaQin.Service.VipUserServ" id="sys_vipUsr"></Bean>
+    <Bean name="JiaQin.Service.WxSettingServ" id="wxsetting"></Bean>    
+  </Assembly>
+  
+
+
+  
+  
+  <include file="basic.xml"/>
+  <include file="VipUser.xml"/>
+  <include file="WeiXinSetting.xml"/>
+  <include file="WeiXinMenu.xml"/>
+  <include file="WeiXin.xml"/>
+  <include file="会员VipUser/VipUser.xml"/>
+
+  
+</SimpleMvc>

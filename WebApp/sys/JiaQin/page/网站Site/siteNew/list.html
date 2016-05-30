@@ -1,0 +1,40 @@
+﻿
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:50px;">序号</th>                
+                <th>标题</th>
+
+                <th style="width:200px">发布时间</th>
+                <th style="width:65px;">发布用户</th>
+                <th style="width:150px">操作</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <eye:foreach collection="${newsList}" var="news" index="index">
+                <tr>
+                <td>${index}</td>
+                <td>${news.Title}</td>
+                <td>${cdatestring(news.publishDate,'yyyy年MM月dd日 HH:mm')}</td>
+                <td>${news.UserInfo.Name}</td>
+                <td>                    
+                    <input type="button" class="btn btn-mini"  value="编辑" onclick="SubmitForm2(this,null,this)" action="UpdateColumnDataPage" target="css:.mainWrap .main"  param="dataId=${news.Id}"  />
+                      <input type="button" class="btn btn-mini"  value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteColumnDataEvent" param="id=${news.Id}" reFreshBtn="css:section .pageBarRefresh" />
+                </td>
+            </tr>
+            </eye:foreach>
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="11">
+                     <eye:pageBar perfix="" update="css:section" url="ColumnDataPage.aspx" form="css:figure form" param="columnId=${columnInfo.Id}&list=list" templatepath="../../webpageBar.html"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+</div>

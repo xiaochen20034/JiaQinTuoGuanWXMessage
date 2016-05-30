@@ -1,0 +1,94 @@
+﻿<figure>
+    <figcaption><i class="fa-table"></i>部门职务</figcaption>    
+
+    <script type="text/javascript">
+            function LoadChildrenDepartment(dep) {
+                var depParent = dep.getParent("ul");
+                depParent.getAllNext().each(function (it) {
+                    it.dispose();
+                });
+
+                var depLbl = $("DepartmentChildrenLi");
+                depLbl.set("param",dep.get('param'));
+                
+                new Element("ul").inject(depParent, 'after');
+                SubmitForm2(depLbl, null, depLbl);
+            }
+            window.addEvent('zdomready', function () {
+                var dropBtn = new DropButton({trigger:'hover'});
+            });
+        </script>
+    <section>  
+        <style>
+            .depLi {
+                overflow:hidden
+            }
+             .depLi .dropButton-Menu{
+                top:5px;
+                right:0px;
+            }
+            .depLi ul {
+                width:150px;
+                border:1px solid #ccc ;
+                min-height:400px;
+                    float:left;
+                }
+            .depTitle {
+                line-height:25px;
+                height:25px;
+                color:#fff;
+                text-align:center;
+                display:block;
+            }
+            .depLi .nextDep table td,.depLi .nextDep table th{
+                padding:5px;
+            }
+            .depData {
+                padding:5px;
+                border-bottom:1px solid #808080;
+                display:block;
+            }
+            .depData:hover {
+                background-color:#b6ff00;
+            }
+        </style>
+        
+        <div class="depLi">
+            <label action="DepartmentChildrenLi" id="DepartmentChildrenLi" target="css:.depLi ul:last-child"></label>
+        <ul>
+            <eye:if test="${length(list) is 1}">
+                <eye:set name="dep" value="${list[0]}"/>
+                <li class="depTitle titleBgColor"> <label  param="id=${dep.Id}">${dep.Name}</label>
+                    <label class="reFreshDep"  onclick="SubmitForm2(this,null,this)" action="DepartmentChildrenLi" param="id=${dep.Id}" target="css:ul">刷新</label>
+                </li>
+                <li  class="depData" onclick="ShowWindow2(this)" action="AddDepartment" reFreshBtn="css:ul .reFreshDep" param="id=${dep.Id}">增加
+                
+                </li>
+                 <eye:foreach collection="${dep.ChildrenDepartmentList}" var="dep">
+                    <li class="depData dropButton"><label   param="id=${dep.Id}" class="dropButton-Text dropButton-toggle"  onclick="LoadChildrenDepartment(this)" >${dep.Name}</label>
+                     <span class="dropButton-Menu">
+                         <input type="button" class=" btn-mini" value="编辑" action="UpdateDepartmentPage" param="id=${dep.Id}"  reFreshBtn="css:ul .reFreshDep" onclick="ShowWindow2(this)"/>
+                        <input type="button" class=" btn-mini" value="删除" action="DeleteDepartmentEvent"  param="id=${dep.Id}"  reFreshBtn="css:ul .reFreshDep" onclick="SubmitForm2(this,null,this)"/>
+
+                     </span>
+                     
+                        </li>
+                 </eye:foreach>
+            <eye:elseif test="${length(list) gt 1}"/>
+                <eye:foreach collection="${list}" var="dep">
+                    <li  onclick="LoadChildrenDepartment(this)" param="id=${dep.Id}"><label>${dep.Name}</label>
+                        </li>
+                 </eye:foreach>
+             <eye:else/>
+                <li class="depTitle titleBgColor"> <label  param="id=0">部门</label>
+                    <label class="reFreshDep"  onclick="SubmitForm2(this,null,this)" action="DepartmentChildrenLi" param="id=0" target="css:ul">刷新</label>
+                </li>
+                <li  class="depData" onclick="ShowWindow2(this)" action="AddDepartment" reFreshBtn="css:ul .reFreshDep" param="id=0">增加
+                
+                </li>
+            </eye:if>            
+        </ul>
+        </div>
+        
+     </section>
+</figure>

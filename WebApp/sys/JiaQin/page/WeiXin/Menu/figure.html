@@ -1,0 +1,12 @@
+﻿<figure>
+    <figcaption><i class="fa-table"></i>微信菜单</figcaption>    
+    <section>
+        <eye:if test="${hasPermission('createWxMenu')}">
+            <input type="button" name="d" value="生成" onclick="SubmitForm2(this,null,this)" action="wxMenuCreateMenuEvent.aspx"/>
+        </eye:if>
+        
+    </section>
+    <section class="table">
+        <eye:import file="list.html"/>
+     </section>
+</figure>

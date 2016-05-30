@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMVC>
+  <Action path="wxMenuFigure" ref="wxsetting" method="MenuList" comment="微信菜单信息">
+    <Success>WeiXin/Menu/figure.html</Success>
+  </Action>
+
+  <Action path="wxMenuList" ref="wxsetting" method="MenuList" comment="微信菜单信息">
+    <Success>WeiXin/Menu/list.html</Success>
+  </Action>
+  
+  
+  <Action path="wxMenuAddPage" ref="wxsetting" method="MenuAddPage" comment="微信菜单信息添加">
+    <Success>WeiXin/Menu/add.html</Success>
+  </Action>
+  <Action path="wxMenuAddEvent" ref="wxsetting" method="MenuAddEvent" comment="微信菜单信息添加事件">
+    <Success>json</Success>
+  </Action>
+  <Action path="wxMenuUpdatePage" ref="wxsetting" method="MenuUpdatePage" comment="微信菜单信息编辑">
+    <Success>WeiXin/Menu/update.html</Success>
+  </Action>
+  <Action path="wxMenuUpdateEvent" ref="wxsetting" method="MenuUpdateEvent" comment="微信菜单信息编辑事件">
+    <Success>json</Success>
+  </Action>
+  <Action path="wxMenuDeleteEvent" ref="wxsetting" method="MenuDeleteEvent" comment="微信菜单信息删除事件">
+    <Success>json</Success>
+  </Action>
+
+  <Action path="wxMenuCreateMenuEvent" ref="wxsetting" method="CreateMenuEvent" comment="微信菜单创建事件">
+    <Success>json</Success>
+  </Action>
+  
+</SimpleMVC>
+

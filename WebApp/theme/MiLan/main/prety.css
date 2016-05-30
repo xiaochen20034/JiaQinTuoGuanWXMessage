@@ -1,0 +1,61 @@
+﻿
+.hold{
+	margin-bottom:20PX;
+	}
+.hold label{
+	font-size: 12px;
+    display: inline-block;
+	}	
+.hold input[type="text"],.hold select{
+	width:200px;
+	padding:2px 5px;
+	font-size:12px;
+	height:30px;
+	font-family:"微软雅黑", "新宋体", "宋体";
+}
+.hold .timeInput{
+	width:150px;
+	height:30px;
+	}
+.hold textarea.ele{
+	width:95%;
+	margin:10px auto;
+	height:100px;
+	font-size:12px;
+	padding:5px;
+	line-height:18px;
+	font-family:"微软雅黑", "新宋体", "宋体";
+	}
+.hold input[type="button"]{
+	width:100px;
+	height:40px;
+	text-align:center;
+	line-height:35px;
+	background:#64B8A1;
+	color:#fff;
+	border:none;
+	font-family:"微软雅黑", "新宋体", "宋体";
+	font-size:12px;
+	}
+.commPhotoSelector{
+	width:95%;
+	height:150px;
+	border:#d1d1d1 1px solid;
+	margin-top:20px;
+	}
+.commPhotoSelector .selector{
+    cursor:alias;
+    position:absolute;
+	top:-45px;
+	left:80px;
+	width:100px;
+	height:35px;
+	text-align:center;
+	line-height:35px;
+	background:#64B8A1;
+	color:#fff;
+	border:none;
+	font-family:"微软雅黑", "新宋体", "宋体";
+	font-size:12px;
+	display:block;
+	}

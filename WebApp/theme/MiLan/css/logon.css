@@ -1,0 +1,78 @@
+﻿@charset "utf-8";
+
+/* CSS Document */
+.wrap{ width:1000px; margin:0 auto; background-color:#FFF}
+.header,.footer{ text-align:center;}
+.header{ 
+	font-size:36px; 
+	color:#0050a9; 
+	font-weight:bold; 
+	height:100px; 
+	line-height:100px;
+}
+.footer{ 
+	font-size:14px; 
+	height:80px; 
+	line-height:80px;
+}
+.main{ 
+	background-color:#0050a9;
+}
+.main .wrap{
+	position:relative;
+	background-image:url(../img/logonMainBg.jpg); 
+	height:600px;
+}
+.logonForm{
+	width:320px;
+	min-height:220px;
+	background-color:#FCF;
+	position:absolute;
+	right:0px;
+	top:40%;
+	margin-top:-110px;
+    padding-bottom:26px;
+}
+.holderR{
+	position:relative;	
+}
+.logonForm .holderR{
+	width:280px;
+	margin:0 auto;
+	margin-top:14px;
+}
+.logonForm .ico{
+	position:absolute;
+	width:20px;
+	height:20px;
+	display:block;
+	left:10px;
+	top:50%;
+	margin-top:-10px;
+	background-image:url(../img/allIco.png);
+}
+.logonForm .ico.userIco{
+	background-position:0 -2px;
+}
+.logonForm .ico.passwordIco{
+	background-position:0 -24px;
+}
+.logonForm input{
+	width:100%;
+	height:40px;
+	line-height:40px;
+	font-size:14px;
+	text-indent:32px;
+}
+.logonForm .holderR a{
+	float:right;
+	color:#ff8c57;
+}
+.logonForm  .button{
+	border-radius:5px;
+	background-color:#4195f2;
+	outline-style:none;
+	border:none;
+	color:#FFF;
+	font-weight:bold;	
+}

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMVC>
+  <Action path="wxSettingFigure" ref="wxsetting" method="Figure" comment="微信基本信息设置">
+    <Success>WeiXin/Seting/figure.html</Success>
+  </Action>
+  <Action path="wxSettingHelp" ref="wxsetting" method="Figure" comment="微信设置教程">
+    <Success>WeiXin/Seting/help.html</Success>
+  </Action>
+  <Action path="wxBasicInfo" ref="wxsetting" method="Figure" comment="微信设置基本信息">
+    <Success>WeiXin/Seting/wxbasicinfo.html</Success>
+  </Action>
+  <Action path="wxPayInfo" ref="wxsetting" method="Figure" comment="微信设置商户信息">
+    <Success>WeiXin/Seting/wxpayinfo.html</Success>
+  </Action>
+
+  <Action path="WxSetBasicInfoEvent" ref="wxsetting" method="SetBasicInfo" comment="微信设置基本信息事件">
+    <Success>json</Success>
+  </Action>
+  <Action path="WxSetPayInfoEvent" ref="wxsetting" method="SetPayInfo" comment="微信设置商户支付信息事件">
+    <Success>json</Success>
+  </Action>
+  
+
+</SimpleMVC>
+

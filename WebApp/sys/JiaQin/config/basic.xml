@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>
+
+  <Action path="System_NotFound" ref="web" method="NoPage" comment="加载数据" verification="ignore">
+  </Action>
+  <Action path="^/sys/*$" ref="syspage" method="NoPage" comment="加载数据" verification="ignore">
+  </Action>
+  <Action path="^/wxurl/*$" ref="web" method="WxNoPage" comment="页面需要获取用户的微信信息，进入中间页面" verification="ignore">
+  </Action>
+  <Action path="^/wxuserurl/*$" ref="web" method="WxNoPageWithOpenId" comment="页面需要获取用户的微信信息，此方法是wxurl的下一个中间方法，此方法会根据openId提供用户的信息" verification="ignore">
+  </Action>
+  
+  <Action path="main" ref="usr" method="MainPage" comment="主界面"  >
+    <Success>main.html</Success>
+  </Action>
+
+  <Action path="UserLogonEvent" ref="usr" method="Logon" comment="用户登录" verification="ignore">
+    <Success>json</Success>
+  </Action>
+  <Action path="UserLogOutEvent" ref="usr" method="Logout" comment="用户注销" verification="ignore">
+    <Success>json</Success>
+  </Action>
+  <Action path="UpdatePasswordPage" ref="syspage" method="NoPage2"  comment="部门数据" >
+    <Success>User/updatePassword.html</Success>
+  </Action>
+
+  <Action path="UpdatePassword" ref="usr" method="UpdatePassword" comment="用户修改密码" >
+    <Success>json</Success>
+  </Action>
+
+
+
+  <Action path="DepartmentFigure" ref="dept" method="DepartmentFigure"  comment="部门数据" >
+    <Success>Department/figure.html</Success>
+  </Action>
+  <Action path="DepartmentList" ref="dept" method="DepartmentFigure"  comment="部门数据" >
+    <Success>Department/list.html</Success>
+  </Action>
+  <Action path="AddDepartment" ref="syspage" method="NoPage2"  comment="部门数据" >
+    <Success>Department/add.html</Success>
+  </Action>
+
+  <Action path="AddDepartmentEvent" ref="dept" method="AddEvent"  comment="部门数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateDepartmentEvent" ref="dept" method="UpdateEvent"  comment="部门数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateDepartmentPage" ref="dept" method="UpdatePage"  comment="部门数据编辑" >
+    <Success>Department/update.html</Success>
+  </Action>
+
+  <Action path="DeleteDepartmentEvent" ref="dept" method="DeleteEvent"  comment="部门数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="DepartmentFigure_user" ref="dept" method="DepartmentFigure"  comment="部门数据" >
+    <Success>User/figure.html</Success>
+  </Action>
+
+
+  <Action path="DepartmentChildrenLi" ref="dept" method="DepartmentChildrenLi"  comment="部门的子集部门li 级联" >
+    <Success>Department/departmentList2.html</Success>
+  </Action>
+  <Action path="DepartmentChildrenUserLi" ref="usr" method="DepartmentUserList"  comment="部门的子集部门li 级联" >
+    <Success>User/departmentList2.html</Success>
+  </Action>
+  <Action path="DepartmentUserList" ref="usr" method="DepartmentUserList"  comment="部门职员" >
+    <Success>User/userlist.html</Success>
+  </Action>
+  
+  <Action path="AddUserPage" ref="syspage" method="NoPage2"  comment="用户数据添加" >
+    <Success>User/add.html</Success>
+  </Action>
+  <Action path="AddUserEvent" ref="usr" method="AddEvent"  comment="用户数据添加" >
+    <Success>json</Success>
+  </Action>
+  <Action path="UpdateUserPage" ref="usr" method="UpdatePage"  comment="用户数据添加" >
+    <Success>User/update.html</Success>
+  </Action>
+  <Action path="UpdateUserEvent" ref="usr" method="UpdateEvent"  comment="用户数据添加" >
+    <Success>json</Success>
+  </Action>
+  <Action path="DeleteUserEvent" ref="usr" method="DeleteEvent"  comment="用户数据删除" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="RoleFigure" ref="role" method="FigurePage"  comment="部门数据" >
+    <Success>Role/figure.html</Success>
+  </Action>
+  <Action path="RoleFigureList" ref="role" method="FigurePage"  comment="部门数据" >
+    <Success>Role/list.html</Success>
+  </Action>
+  <Action path="AddRole" ref="syspage" method="NoPage2"  comment="部门数据" >
+    <Success>Role/add.html</Success>
+  </Action>
+
+  <Action path="AddRoleEvent" ref="role" method="AddEvent"  comment="用户数据删除" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="RoleUpdatePage" ref="role" method="UpdatePage"  comment="部门数据" >
+    <Success>Role/update.html</Success>
+  </Action>
+
+  <Action path="RoleUpdateEvent" ref="role" method="UpdateEvent"  comment="用户数据删除" >
+    <Success>json</Success>
+  </Action>
+  <Action path="RoleDeleteEvent" ref="role" method="DeleteEvent"  comment="用户数据删除" >
+    <Success>json</Success>
+  </Action>
+  <Action path="RolePermissionListPage" ref="role" method="RolePermissionList"  comment="用户数据删除" >
+    <Success>Role/rolePermissionList.html</Success>
+  </Action>
+
+  <Action path="SwitchRolePermission" ref="pemission" method="SwitchRolePermission"  comment="用户数据删除" >
+    <Success>json</Success>
+  </Action>
+
+  
+  <!-- -=z dsdsdsfd -->
+
+
+
+  <Action path="PermissionFigure" ref="pemission" method="PermissionFigure"  comment="权限数据" >
+    <Success>Permission/figure.html</Success>
+  </Action>
+
+  <Action path="AddPermission" ref="syspage" method="NoPage2"  comment="权限添加页面" >
+    <Success>Permission/add.html</Success>
+  </Action>
+
+  <Action path="AddPermissionEvent" ref="pemission" method="AddEvent"  comment="部门数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdatePermissionEvent" ref="pemission" method="UpdateEvent"  comment="部门数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdatePermissionPage" ref="pemission" method="UpdatePage"  comment="部门数据编辑" >
+    <Success>Permission/update.html</Success>
+  </Action>
+
+  <Action path="DeletePermissionEvent" ref="pemission" method="DeleteEvent"  comment="部门数据编辑" >
+    <Success>json</Success>
+  </Action>
+  <Action path="PermissionChildrenLi" ref="pemission" method="PermissionChildrenLi"  comment="部门的子集部门li 级联" >
+    <Success>Permission/permissionList2.html</Success>
+  </Action>
+  
+</SimpleMvc>

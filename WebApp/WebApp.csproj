@@ -28,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,12 +58,135 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dll\System.Data.SQLite.dll" />
+    <Content Include="dll\System.Data.SQLite.pdb" />
+    <Content Include="dll\Zhyj.AderTemplates.dll" />
+    <Content Include="dll\Zhyj.AderTemplates.pdb" />
+    <Content Include="dll\Zhyj.AppHandler.dll" />
+    <Content Include="dll\Zhyj.AppHandler.pdb" />
+    <Content Include="dll\Zhyj.Common.dll" />
+    <Content Include="dll\Zhyj.Common.pdb" />
+    <Content Include="dll\Zhyj.DBUtils.dll" />
+    <Content Include="dll\Zhyj.DBUtils.pdb" />
+    <Content Include="dll\Zhyj.ICached.dll" />
+    <Content Include="dll\Zhyj.ICached.pdb" />
+    <Content Include="dll\Zhyj.LitJson.dll" />
+    <Content Include="dll\Zhyj.LitJson.pdb" />
+    <Content Include="dll\Zhyj.Tencent.WeiXin.dll" />
+    <Content Include="dll\Zhyj.Tencent.WeiXin.pdb" />
+    <Content Include="dll\Zhyj.ZLogger4Web.dll" />
+    <Content Include="dll\Zhyj.ZLogger4Web.pdb" />
+    <Content Include="plugins\Img_lazyload.js" />
+    <Content Include="plugins\lib\common.js" />
+    <Content Include="plugins\lib\extends.js" />
+    <Content Include="plugins\lib\html5.min.js" />
+    <Content Include="plugins\lib\MooTools-Core-1.5.1.js" />
+    <Content Include="plugins\lib\MooTools-More-1.5.1.js" />
+    <Content Include="plugins\tabDemo\mootools-core-1.4.5-full-compat.js" />
+    <Content Include="plugins\tabDemo\mootools-more-1.4.0.1.js" />
+    <Content Include="plugins\tabDemo\simpleTab.css" />
+    <Content Include="plugins\tabDemo\SimpleTab.js" />
+    <Content Include="plugins\tabDemo\tab.html" />
+    <Content Include="plugins\VMFormValidator.js" />
+    <Content Include="plugins\zwindow\close.png" />
+    <Content Include="plugins\zwindow\ZWindow.js" />
+    <Content Include="plugins\zwindow\z_window.css" />
+    <Content Include="sys\JiaQin\config\basic.xml" />
+    <Content Include="sys\JiaQin\config\JiaQin.xml" />
+    <Content Include="sys\JiaQin\config\VipUser.xml" />
+    <Content Include="sys\JiaQin\config\WeiXin.xml" />
+    <Content Include="sys\JiaQin\config\WeiXinMenu.xml" />
+    <Content Include="sys\JiaQin\config\WeiXinSetting.xml" />
+    <Content Include="sys\JiaQin\config\会员VipUser\VipUser.xml" />
+    <Content Include="sys\JiaQin\page\404.html" />
+    <Content Include="sys\JiaQin\page\Department\add.html" />
+    <Content Include="sys\JiaQin\page\Department\departmentList2.html" />
+    <Content Include="sys\JiaQin\page\Department\figure.html" />
+    <Content Include="sys\JiaQin\page\Department\update.html" />
+    <Content Include="sys\JiaQin\page\Department\userlist.html" />
+    <Content Include="sys\JiaQin\page\logon.html" />
+    <Content Include="sys\JiaQin\page\main.html" />
+    <Content Include="sys\JiaQin\page\Permission\add.html" />
+    <Content Include="sys\JiaQin\page\Permission\figure - 副本.html" />
+    <Content Include="sys\JiaQin\page\Permission\figure.html" />
+    <Content Include="sys\JiaQin\page\Permission\permissionList2.html" />
+    <Content Include="sys\JiaQin\page\Permission\update.html" />
+    <Content Include="sys\JiaQin\page\Role\add.html" />
+    <Content Include="sys\JiaQin\page\Role\figure.html" />
+    <Content Include="sys\JiaQin\page\Role\list.html" />
+    <Content Include="sys\JiaQin\page\Role\rolePermissionList.html" />
+    <Content Include="sys\JiaQin\page\Role\update.html" />
+    <Content Include="sys\JiaQin\page\User\add.html" />
+    <Content Include="sys\JiaQin\page\User\departmentList2.html" />
+    <Content Include="sys\JiaQin\page\User\figure.html" />
+    <Content Include="sys\JiaQin\page\User\update.html" />
+    <Content Include="sys\JiaQin\page\User\updatePassword.html" />
+    <Content Include="sys\JiaQin\page\User\userlist.html" />
+    <Content Include="sys\JiaQin\page\webpageBar.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Menu\add.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Menu\figure.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Menu\list.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Menu\update.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Seting\figure - 副本.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Seting\figure.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Seting\help.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Seting\wxbasicinfo.html" />
+    <Content Include="sys\JiaQin\page\WeiXin\Seting\wxpayinfo.html" />
+    <Content Include="sys\JiaQin\page\会员\figure.html" />
+    <Content Include="sys\JiaQin\page\会员\list.html" />
+    <Content Include="sys\JiaQin\page\网站Site\SiteColumn\add.html" />
+    <Content Include="sys\JiaQin\page\网站Site\SiteColumn\figure.html" />
+    <Content Include="sys\JiaQin\page\网站Site\SiteColumn\list.html" />
+    <Content Include="sys\JiaQin\page\网站Site\SiteColumn\update.html" />
+    <Content Include="sys\JiaQin\page\网站Site\SiteMain.html" />
+    <Content Include="sys\JiaQin\page\网站Site\siteNew\add.html" />
+    <Content Include="sys\JiaQin\page\网站Site\siteNew\figure.html" />
+    <Content Include="sys\JiaQin\page\网站Site\siteNew\figure2.html" />
+    <Content Include="sys\JiaQin\page\网站Site\siteNew\list.html" />
+    <Content Include="sys\JiaQin\page\网站Site\siteNew\update.html" />
+    <Content Include="theme\MiLan\css\base.css" />
+    <Content Include="theme\MiLan\css\logon.css" />
+    <Content Include="theme\MiLan\css\main.css" />
+    <Content Include="theme\MiLan\css\spinner.css" />
+    <Content Include="theme\MiLan\img\allIco.png" />
+    <Content Include="theme\MiLan\img\demo.jpg" />
+    <Content Include="theme\MiLan\img\loading.gif" />
+    <Content Include="theme\MiLan\img\logonMainBg.jpg" />
+    <Content Include="theme\MiLan\img\mainBg.jpg" />
+    <Content Include="theme\MiLan\main\common.css" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\css\font-awesome %282%29.css" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\css\font-awesome-ie7.min.css" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\css\font-awesome.css" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\css\font-awesome.min.css" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\css\weimobfont.css" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\fontawesome-webfont.svg" />
+    <Content Include="theme\MiLan\main\img\index_icon.png" />
+    <Content Include="theme\MiLan\main\img\loading.gif" />
+    <Content Include="theme\MiLan\main\main.css" />
+    <Content Include="theme\MiLan\main\prety.css" />
+    <Content Include="theme\MiLan\main\question.css" />
+    <Content Include="theme\MiLan\scripts\autocomplete.js" />
+    <Content Include="theme\MiLan\scripts\CommFileSelector.js" />
+    <Content Include="theme\MiLan\scripts\CommPhotoSelector.js" />
+    <Content Include="theme\MiLan\scripts\CommVideoSelector.js" />
+    <Content Include="theme\MiLan\scripts\GooCompleter\goocompleter.css" />
+    <Content Include="theme\MiLan\scripts\GooCompleter\GooCompleter.js" />
+    <Content Include="theme\MiLan\scripts\ScrollSnapping.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\fontawesome-webfont.eot" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\fontawesome-webfont.woff" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\FontAwesome.otf" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\weimobfont.eot" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\weimobfont.ttf" />
+    <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\weimobfont.woff" />
+    <Content Include="data\dns.db.ashx" />
+    <Content Include="sys\JiaQin\page\Department\Department.rar" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -87,6 +211,11 @@
       <Project>{6bd13b9f-15f4-4bbf-ac7f-a235b7d7542f}</Project>
       <Name>JiaQin.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="site\JiaQin\page\" />
+    <Folder Include="sys\JiaQin\data\" />
+    <Folder Include="sys\JiaQin\page\VipUser\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

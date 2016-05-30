@@ -1,0 +1,54 @@
+﻿
+<script>
+   
+    function menuValidate(form,btn) {
+        var vForm = new VMFormValidator(form, {
+            'errorDisplay': 'element',
+            validateElementMultiple: true
+        });
+        vForm.required("Code", "请填写章节唯一编码");
+        vForm.required("Name", "请填写章节名称");
+        var flag = vForm.executeAllValidators();
+        return flag;
+    }
+</script>
+<form action="wxMenuAddEvent" enctype="multipart/form-data" method="post" windowTitle="添加微信菜单">
+
+        <div class="hold">
+            <label>父级菜单：</label>
+            ${menuInfo.Name}
+                <input type="hidden" name="ParentId" value="${menuInfo.Id}" class="ele"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>编　　码：<input type="text" name="Code" value="" class="ele"/></label><span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>名　　称：<input type="text" name="Name" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+
+    <div class="hold">
+            <label>类　　型：
+         <select name="Type">
+
+             <option value="view">链接地址</option>
+             <option value="click">关键字回复</option>
+         </select>
+         </label><span class="msg"></span>
+        </div>
+        
+    <div class="hold">
+            <label>Url：<input type="text" name="Url" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+    <div class="hold">
+            <label>Key：<input type="text" name="Key" value=""  class="ele"/></label><span class="msg"></span>
+        </div>
+    <div class="hold">
+            <label>Sort：<input type="text" name="Sort" value="0"  class="ele"/></label><span class="msg"></span>
+        </div>
+
+      <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', menuValidate, null, this)"  value="提交"/>
+        </div>
+
+</form>

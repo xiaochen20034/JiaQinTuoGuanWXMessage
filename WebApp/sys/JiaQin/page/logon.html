@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1;IE=edge">
+<title>登录</title>
+
+<link href="/theme/MiLan/css/logon.css" rel="stylesheet" type="text/css"/>
+<link href="/theme/MiLan/css/spinner.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" language="javascript" src="/plugins/lib/MooTools-Core-1.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/lib/MooTools-More-1.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/lib/extends.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/lib/common.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/VMFormValidator.js"></script>
+
+
+    <style>
+        .appMessage {
+            color:#ff0000;
+        }
+    </style>
+    <script type="text/javascript">
+        function logon(obj) {
+            var formEle = obj.getParent('form');
+            var form = new VMFormValidator(formEle, {
+                'errorDisplay': 'aboveForm',
+                'labelDisplay': '.appMessage'
+            });
+            form.required('UserName', '请输入用户名');
+            form.required('Password', '请输入密码');
+            if (!form.executeAllValidators()) {
+                return;
+            }
+            SubmitForm2(formEle, function (json) {
+                if (json.res == 'ok') {
+                        window.location.href = "main.aspx";
+                } else {
+                    $$(".appMessage")[0].set("html", json.tip);
+                }
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+<div class="header wrap">
+米兰阳光
+</div>
+<div class="main">
+	<div class="wrap">
+		<form class="logonForm" method="post" enctype="multipart/form-data" action="UserLogonEvent.aspx">
+            <div class="holderR appMessage"></div>
+            
+        	<div class="holderR">
+            	<label class="ico userIco"></label>
+                <input type="text" class="" name="UserName" placeholder="用户名" value="zhyj"/>
+            </div>
+            <div class="holderR">
+            	<label class="ico passwordIco"></label>
+                <input type="password" class="" name="Password" placeholder="密码" value="123456"/>
+            </div>
+           
+            <div class="holderR">
+            	<input type="button" class="button" value="登　　录" onclick="logon(this)"/>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="footer wrap">
+	-
+</div>
+</body>
+</html>

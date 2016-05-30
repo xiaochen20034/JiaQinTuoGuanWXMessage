@@ -1,0 +1,45 @@
+﻿<script type="text/javascript">
+    window.addEvent('zdomready', function () {
+        var dropBtn = new DropButton({ trigger: 'hover' });
+    });
+</script>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>联系方式</th>
+                <th>注册时间</th>
+                <th>微信名称</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <eye:foreach collection="${vipUserList}" var="vipuser" index="index">
+                <tr>
+                <td>${index}</td>
+                <td>${vipuser.UserName}</td>
+                <td>${vipuser.Name}</td>
+                <td>${vipuser.Gender}</td>
+                <td>${vipuser.Phone}</td>
+                <td>${cdatestring(vipuser.CreateDate,'yyyy-MM-dd HH:mm')}</td>
+                <td>${vipuser.Nickname}</td>
+                <td></td>
+            </tr>
+            </eye:foreach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">
+                     <eye:pageBar perfix="" update="css:section" url="list.aspx" form="" param="" templatepath="../webpageBar.html"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+</div>

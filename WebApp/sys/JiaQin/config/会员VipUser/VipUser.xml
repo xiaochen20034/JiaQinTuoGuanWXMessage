@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>
+
+
+  <Action path="VipUserLogonEvent" ref="vipUser" method="Logon" comment="用户登录" verification="ignore">
+    <Success>json</Success>
+  </Action>
+
+  <Action path="VipUserLogOutEvent" ref="vipUser" method="Logout" comment="用户注销" verification="ignore">
+    <Success>json</Success>
+  </Action>
+
+  <Action path="VipUserRegisterEvent" ref="vipUser" method="Register" comment="用户注册事件" verification="ignore">
+    <Success>json</Success>
+  </Action>
+
+  <Action path="ValidateCodeEvent" ref="vipUser" method="ValidateCodeEvent" comment="验证输入的图形验证码是否正确" verification="ignore">
+    <Success>json</Success>
+  </Action>
+  <Action path="ValidatePhoneCodeEvent" ref="vipUser" method="ValidatePhoneCodeEvent" comment="验证输入的手机验证码是否正确" verification="ignore">
+    <Success>json</Success>
+  </Action>
+  <Action path="VipUserResetPwdEvent" ref="vipUser" method="ResetPassword" comment="验证输入的手机验证码是否正确" verification="ignore">
+    <Success>json</Success>
+  </Action>
+
+  <Action path="SetVipUserInfo" ref="vipUser" method="SetVipUserInfo" comment="设置会员的基本信息" >
+    <Success>json</Success>
+  </Action>
+  
+
+  <!-- 后台 -->
+  <Action path="VipUserFigurePage" ref="sys_vipUsr" method="List" comment="列出会员用户信息">
+    <Success>会员/figure.html</Success>
+  </Action>
+  <Action path="VipUserListPage" ref="sys_vipUsr" method="List" comment="列出会员用户信息">
+    <Success>会员/list.html</Success>
+  </Action>
+  <Action path="AutoComplateVipUserList" ref="vipUser" method="AutoComplateList" comment="根据姓名查询">
+    <Success>json</Success>
+  </Action>
+  <Action path="AutoComplateProfessionalVipUserList" ref="vipUser" method="AutoComplateProfessionalVipUserList" comment="根据姓名查询">
+    <Success>json</Success>
+  </Action>
+  
+</SimpleMvc>

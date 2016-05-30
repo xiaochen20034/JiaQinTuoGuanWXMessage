@@ -1,0 +1,53 @@
+﻿ 
+<table>
+       
+         <tr>
+            <td colspan="7"><label onclick="ShowWindow2(this)" action="AddUserPage"   reFreshBtn="depUserTableRefresh" param="id=${dep.Id}" style=" float:left;" class="btn btn-mini">增加</label>
+             <span action="DepartmentUserList" target="css:.depUserTable" style="float:right;">
+                 <input type="text" name="name" value="${iif(isEmpty(request['name']),'',request['name'])}"/>
+                 <input type="hidden" name="id" value="${dep.Id}"/>
+                 <input type="button" class="btn btn-small" onclick="SubmitForm2('css:span')" value="查询"/>
+              </span>
+             </td>            
+        </tr>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>联系电话</th>
+            <th>职务角色</th>
+            <th>操作</th>
+        </tr>
+        <eye:foreach collection="${list}" var="u" index="index"> 
+            <tr>
+            <td>${index}</td>
+            <td>${u.UserName}</td>
+            <td>${u.Name}</td>
+            <td>${u.Gender}</td>
+            <td>${u.Phone}</td>
+            <td>
+                <eye:foreach collection="${u.SysRoleList}" var="r">
+                    ${r.Name}
+                </eye:foreach>
+
+            </td>
+                
+            <td>
+                <input type="button" class=" btn-mini" value="编辑" action="UpdateUserPage" param="id=${u.Id}"  reFreshBtn="depUserTableRefresh" onclick="ShowWindow2(this)"/>
+               <input type="button" class=" btn-mini" value="删除" action="DeleteUserEvent"  param="id=${u.Id}"  reFreshBtn="depUserTableRefresh" onclick="SubmitForm2(this,null,this)"/>
+                
+
+            </td>
+        </tr>
+        </eye:foreach>
+     <tr>
+         <td colspan="7">
+
+              <eye:pageBar perfix="" update="css:.depUserTable" url="DepartmentUserList.aspx" form="" param="id=${dep.Id}&name=${iif(isEmpty(request['name']),'',request['name'])}" templatepath="../webpageBar.html"/>
+
+
+            <label onclick="SubmitForm2(this,null,this)" id="depUserTableRefresh" action="DepartmentUserList" param="id=${dep.Id}" target="css:.depUserTable" style="display:none">刷新</label>
+         </td>
+     </tr>
+    </table>

@@ -1,0 +1,198 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>米兰阳光</title>
+<link type="text/css" rel="stylesheet" href="/theme/MiLan/main/common.css"/>
+ <link type="text/css" rel="stylesheet" href="/theme/MiLan/main/question.css"/>
+<link type="text/css" rel="stylesheet" href="/theme/MiLan/main/fontawesome-4.2.0_ie7/css/font-awesome.min.css"/>
+<link type="text/css" rel="stylesheet" href="/theme/MiLan/main/fontawesome-4.2.0_ie7/css/weimobfont.css"/>
+    
+<!--[if IE 7]>
+   <link type="text/css" rel="stylesheet" href="/theme/MiLan/main/fontawesome-4.2.0_ie7/css/font-awesome-ie7.min.css"/>
+<![endif]-->
+<!--[if lte  IE 8]>
+	<script type="text/javascript" language="javascript" src="/plugins/lib/html5.min.js"></script>
+<![endif]-->
+    
+<script type="text/javascript" language="javascript" src="/plugins/lib/MooTools-Core-1.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/lib/MooTools-More-1.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/lib/extends.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/prettifyPage/prettify.js"></script>
+<script type="text/javascript" language="javascript" src="/plugins/dropBtn/dropbutton.js"></script>
+<link type="text/css" rel="stylesheet" href="/plugins/dropBtn/dropbutton.css"/>
+
+
+    <script type="text/javascript" language="javascript" src="/plugins/lib/common.js"></script>
+        <script type="text/javascript" language="javascript" src="/plugins/plupload/plupload.full.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/plugins/plupload/pluploadUtil.js"></script>
+
+     <script type="text/javascript" language="javascript" src="/plugins/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script>
+
+        <script type="text/javascript" language="javascript" src="/plugins/kindeditor-4.1.3/kindeditor.js"></script>
+    <script type="text/javascript" language="javascript" src="/plugins/kindeditor-4.1.3/HxkrKindEditor.js"></script>
+
+
+    <script type="text/javascript" language="javascript" src="/plugins/CNLTree-Moo/CNLTree-Moo.js"></script>
+     <link type="text/css" rel="stylesheet" href="/plugins/CNLTree-Moo/CNLTree-Moo.css"/>
+
+    <script type="text/javascript" language="javascript" src="/plugins/zwindow/ZWindow.js"></script>
+     <link type="text/css" rel="stylesheet" href="/plugins/zwindow/z_window.css"/>
+
+
+    <script type="text/javascript" language="javascript" src="/plugins/tabDemo/SimpleTab.js"></script>
+     <link type="text/css" rel="stylesheet" href="/plugins/tabDemo/simpleTab.css"/>
+
+
+
+    <script type="text/javascript" language="javascript" src="/plugins/DragElement.js"></script>
+
+    <script type="text/javascript" language="javascript" src="/plugins/VMFormValidator.js"></script>
+       <script type="text/javascript" language="javascript" src="/theme/MiLan/scripts/CommPhotoSelector.js"></script>
+    <script type="text/javascript" language="javascript" src="/theme/MiLan/scripts/CommVideoSelector.js"></script>
+    
+<link type="text/css" rel="stylesheet" href="/theme/MiLan/main/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/theme/MiLan/main/prety.css"/>
+
+
+
+<script type="text/javascript" language="javascript">
+var menu;
+window.addEvent("domready",function(){
+	var menuActive="active";
+	menu=$$(".mainWrap .menu")[0];
+ 	var list= menu.getElements("li");
+	
+ 	list.each(function (item) {
+ 	    if (item.getElement("ul")) {
+ 	        var i = new Element("i");
+ 	        var label = item.getElement(">label");
+ 	        i.inject(label, 'bottom');
+ 	        label.addEvent('click', function () {
+ 	            var li = this.getParent("li");
+ 	            if (li.hasClass("active")) {
+ 	                li.removeClass("active");
+ 	            } else if (li.getParent(".active")) {
+ 	                li.addClass("active");
+ 	            } else {
+ 	                menu.getElements("li.active").each(function (al) {
+ 	                    al.removeClass('active');
+ 	                });
+ 	                li.addClass("active");
+ 	            }
+ 	        });
+ 	    }
+
+ 	});
+
+});
+function LogOut(json,form,btn) {
+    window.location = "/sys/logon.aspx";
+}
+</script>
+</head>
+
+<body>
+
+<header>
+	<hgroup>
+    	米兰阳光
+    </hgroup>
+    <nav>
+        <ul>
+            <li><a href="main.aspx">平台管理</a></li>
+            <li  class="active"> 微网站管理</li>            
+        </ul>
+    </nav>
+</header>
+
+<section class="mainWrap" expressionHeight="documentHeight-70">
+	<nav>
+    	<div class="ad" style="font-size:25px;">
+          
+            <hr style="width:100%; height:1px; margin:7px 0; background-color:#fff;"/>
+              <div  style="position:relative;">
+                <label style=" margin-left:10px;">${user.Name}</label>
+                <span style=" position:absolute; right:10px;">
+                        <label onclick="ShowWindow2(this)" action="UpdatePasswordPage">修改密码</label>
+                        <label onclick="SubmitForm2(this,LogOut,this)" action="UserLogOutEvent">注销</label>
+                 </span>
+
+            </div>  
+            
+            
+        </div>
+        <ul class="menu">
+            <!-- 第一级-->
+            <eye:foreach collection="${list}" var="column">
+                
+                <eye:set name="liattr"  value=""/>
+                <eye:if test="${length(column.ChildrenColumnList) gt 0}">                    
+                <eye:else/>
+                    <eye:set name="liattr" value="  action=''ColumnDataPage'' target=''css:.mainWrap .main'' onclick=''SubmitForm2(this,null,this)'' param=''columnId=${column.Id}''  "/>
+                </eye:if>
+                   <li ${liattr}>
+
+                    <label><em class="wmfontset wmfont wm-basis"></em>${column.Name}</label>
+                <eye:set name="list2" value="${column.ChildrenColumnList}"/>
+                <!-- 第二级-->
+                <eye:if test="${length(list2) gt 0}">
+                    <ul>
+                        <eye:foreach collection="${list2}" var="column2">
+                            <eye:set name="liattr"  value=""/>
+                            <eye:if test="${length(column2.ChildrenColumnList) gt 0}">                    
+                            <eye:else/>
+                                <eye:set name="liattr" value="  action=''ColumnDataPage'' target=''css:.mainWrap .main'' onclick=''SubmitForm2(this,null,this)'' param=''columnId=${column2.Id}''  "/>
+                            </eye:if>
+
+                               <li ${liattr}>
+                                     <label>${column2.Name}</label>
+
+                                <eye:set name="list3" value="${column2.ChildrenColumnList}"/>
+                                <!-- 第三级-->
+                                <eye:if test="${length(list3) gt 0}">
+                                    <ul>
+                                        <eye:foreach collection="${list3}" var="column3">
+                                        
+                                         <eye:set name="liattr"  value=""/>
+                                        <eye:if test="${length(column3.ChildrenColumnList) gt 0}">                    
+                                        <eye:else/>
+                                            <eye:set name="liattr" value="  action=''ColumnDataPage'' target=''css:.mainWrap .main'' onclick=''SubmitForm2(this,null,this)'' param=''columnId=${column3.Id}''  "/>
+                                        </eye:if>
+                                           <li ${liattr}>
+                                            <label>${column3.Name}</label>
+                                        </li>
+                                        </eye:foreach>
+                                    </ul>
+                                </eye:if>                
+
+
+
+                        </li>
+                        </eye:foreach>
+                    </ul>
+                </eye:if>                
+                </li>
+
+            </eye:foreach>
+         
+        </ul>
+        <dl class="service" style="display:none">
+            <dd><a><i class="ask"></i>产品问答</a></dd>
+            <dd><i class="talk"></i>在线客服</dd>
+            <dd><i class="phone"></i>18635577232</dd>
+            <dt>
+            	<img src=""/>
+                <p>扫码查看更多功能</p>
+            </dt>    
+        </dl>
+    </nav>
+   <div class="main">
+    </div>
+</section>
+
+<footer>
+</footer>
+    <iframe id="downloadFile" name="downloadFile" style="display:none"></iframe>
+</body>
+</html>

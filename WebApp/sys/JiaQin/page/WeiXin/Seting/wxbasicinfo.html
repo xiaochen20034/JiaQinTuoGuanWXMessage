@@ -1,0 +1,40 @@
+﻿<figure  class="wxsettingImg">
+    <figcaption><i class="fa-table"></i>公众号基础信息设置</figcaption>        
+
+    <form action="WxSetBasicInfoEvent" method="post" enctype="multipart/form-data">
+        <div class="hold">
+            <label class="label-text">微信名称：</label>
+            <input type="text" name="Name" value="${iif(isnull(data.Name),'',data.Name)}"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label class="label-text">微信帐号：</label>
+            <input type="text" name="wxUserName" value="${iif(isnull(data.WxUserName),'',data.WxUserName)}"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label class="label-text">微信AppId：</label>
+            <input type="text" name="WeiXinAppID" value="${iif(isnull(data.WeiXinAppId),'',data.WeiXinAppId)}"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label class="label-text">微信AppToken：</label>
+            <input type="text" name="WeiXinAppToken" value="${iif(isnull(data.WeiXinAppToken),'',data.WeiXinAppToken)}"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label class="label-text">微信AppSecret：</label>
+            <input type="text" name="WeiXinAppSecret" value="${iif(isnull(data.WeiXinAppSecret),'',data.WeiXinAppSecret)}"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label class="label-text">微信EncodingAESKey：</label>
+            <input type="text" name="WeiXinEncodingAESKey" value="${iif(isnull(data.WeiXinEncodingAESKey),'',data.WeiXinEncodingAESKey)}"/>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <input type="button" class="btn btn-primary" value="确定" onclick="SubmitForm2('css:form',null,this)"/>
+        </div>
+
+    </form>
+</figure>

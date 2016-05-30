@@ -1,0 +1,29 @@
+﻿
+  <script type="text/javascript">
+        window.addEvent('zdomready', function () {
+            var dropBtn = new DropButton({ trigger: 'hover' });
+        });
+    </script>
+<dl class="listCatalog w300 fl">
+            <dt>                
+                ${columnInfo.Name}
+                <label onclick="SubmitForm2(this,null,this)"   action="SiteColumnList" param="ColumnId=${columnInfo.Id}" target="css:dl" replaceTarget="replaceTarget" class="reFresh"></label>
+             </dt>
+            <dd onclick="ShowWindow2(this)" action="AddSiteColumn" param="ColumnId=${columnInfo.Id}" reFreshBtn="css:dl dt .reFresh">增加</dd>
+        <eye:foreach collection="${columnList}" var="m">
+            <dd class="dropButton"> 
+
+                    <label class="dropButton-toggle"  onclick="SubmitForm2(this,null,this)" action="SiteColumnList" param="ColumnId=${m.Id}" target="css:dl" replaceTarget="replaceAfter">
+                        ${m.Name}<br/>
+                        ${m.Code}
+                
+                </label>
+
+                <span class="dropButton-Menu">
+                        <input type="button" class=" btn-mini" value="编辑" action="UpdateSiteColumnPage" param="ColumnId=${m.Id}"   reFreshBtn="css:dl dt .reFresh" onclick="ShowWindow2(this)"/>
+                    <input type="button" class=" btn-mini" value="删除" action="DeleteSiteColumnEvent"  param="ColumnId=${m.Id}"   reFreshBtn="css:dl dt .reFresh" onclick="SubmitForm2(this,null,this)"/>
+                    </span>
+                     
+            </dd>
+        </eye:foreach>
+            </dl>

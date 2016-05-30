@@ -1,0 +1,33 @@
+﻿<div style="width:500px;" windowTitle="编辑用户">
+    <form action="UpdateUserEvent.aspx" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id" value="${data.Id}"/>
+                <div class="hold">
+                    <label>用户名：<input type="text" name="UserName" readonly value="${data.UserName}"/></label>
+                </div>
+                <div class="hold">
+                    <label>姓名：<input type="text" name="Name" value="${data.Name}"/></label>
+                </div>
+                 <div class="hold">
+                     <label>性别：</label>
+                     <label><input type="radio" name="Gender" value="男" ${iif(data.Gender is '男','checked','-')}/>男</label>
+                     <label><input type="radio" name="Gender" value="女" ${iif(data.Gender is '女','checked','-')}/>女</label>
+                </div>
+                <div class="hold">
+                    <label>联系方式：<input type="text" name="Phone" value="${data.Phone}"/></label>
+                </div>
+             <div class="hold">
+                    <label>职务角色：
+                       <select name="jobRole">
+                            <eye:foreach collection="${roleList()}" var="role">
+                                <option value="${role.Id}">${role.Name}</option>
+                            </eye:foreach>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="hold">
+                    <input type="button" class="btn" onclick="SubmitForm2('css:form', null,this)"  value="提交"/>
+                </div>
+                
+            </form>
+</div>

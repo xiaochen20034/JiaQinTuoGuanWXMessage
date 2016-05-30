@@ -1,0 +1,15 @@
+﻿<div style="width:500px;" windowTitle="编辑角色">
+    <form action="RoleUpdateEvent.aspx" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="Id" value="${data.Id}"/>
+                <div class="hold">
+                    <label>编码：<input type="text" name="Code" readonly value="${data.Code}"/></label>
+                </div>
+                <div class="hold">
+                    <label>名称：<input type="text" name="Name" value="${data.Name}"/></label>
+                </div>
+                <div class="hold">
+                    <input type="button" class="btn" onclick="SubmitForm2('css:form', null,this)"  value="提交"/>
+                </div>
+                
+            </form>
+</div>

@@ -1,0 +1,20 @@
+﻿         <script type="text/javascript">
+             window.addEvent('zdomready', function () {
+                 var dropBtn = new DropButton({ trigger: 'hover' });
+             });
+         </script>
+                
+                <li  class="depTitle titleBgColor"> ${dep.Name}
+                    <label class="reFreshDep" onclick="SubmitForm2(this,null,this)" action="DepartmentChildrenLi" param="id=${dep.Id}" target="css:ul">刷新</label>
+                </li>
+                 <li  class="depData" onclick="ShowWindow2(this)" action="AddDepartment"  param="id=${dep.Id}" reFreshBtn="css:ul .reFreshDep">增加
+                </li>
+                
+                <eye:foreach collection="${data}" var="dep">
+                    <li  class="depData dropButton"><label   param="id=${dep.Id}" class="dropButton-Text dropButton-toggle"  onclick="LoadChildrenDepartment(this)" >${dep.Name}</label>
+                     <span class="dropButton-Menu">
+                        <input type="button" class=" btn-mini" value="编辑" action="UpdateDepartmentPage" param="id=${dep.Id}"  reFreshBtn="css:ul .reFreshDep" onclick="ShowWindow2(this)"/>
+                        <input type="button" class=" btn-mini" value="删除" action="DeleteDepartmentEvent"  param="id=${dep.Id}"  reFreshBtn="css:ul .reFreshDep" onclick="SubmitForm2(this,null,this)"/>
+                     </span>
+                     
+                </eye:foreach>

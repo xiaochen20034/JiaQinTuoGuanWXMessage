@@ -1,0 +1,26 @@
+﻿<script type="text/javascript">
+    window.addEvent('zdomready', function () {
+        var dropBtn = new DropButton({ trigger: 'hover' });
+    });
+</script>
+
+<div class="depLi">
+    <ul>    
+        <li class="depTitle titleBgColor">职务角色
+        <label class="reFreshRole" onclick="SubmitForm2(this,null,this)" action="RoleFigureList" target="css:section" ></label>
+        </li>
+        <li  class="depData" ><label onclick="ShowWindow2(this)" action="AddRole" reFreshBtn="css:ul .reFreshRole"> 增加</label> 
+        
+        </li>
+                
+    <eye:foreach collection="${data}" var="r">
+        <li  class="depData dropButton">
+            <label   param="id=${r.Id}" class="dropButton-Text dropButton-toggle"  onclick="SubmitForm2(this,null,this)" target="css:section .rolePermissionTable" action="RolePermissionListPage">${r.Name}</label>
+            <span class="dropButton-Menu">
+            <input type="button" class=" btn-mini" value="编辑" action="RoleUpdatePage" param="id=${r.Id}"  reFreshBtn="css:ul .reFreshRole" onclick="ShowWindow2(this)"/>
+            <input type="button" class=" btn-mini" value="删除" action="RoleDeleteEvent"  param="id=${r.Id}"  reFreshBtn="css:ul .reFreshRole" onclick="SubmitForm2(this,null,this)"/>
+            </span>
+                     
+    </eye:foreach>
+</ul>
+</div>

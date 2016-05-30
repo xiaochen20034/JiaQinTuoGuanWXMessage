@@ -1,0 +1,59 @@
+﻿<#c>PageBar.html<#/c>
+    
+<eye:set name="pageBar_startPage" value="${varData(combine(PageBarPerfix,"StartPage"))}"/>
+<eye:set name="pageBar_endPage" value="${varData(combine(PageBarPerfix,"EndPage"))}"/>
+<eye:set name="pageBar_PerpageCount" value="${varData(combine(PageBarPerfix,"PerpageCount"))}"/>
+<eye:set name="pageBar_PageCount" value="${varData(combine(PageBarPerfix,"PageCount"))}"/>
+<eye:set name="pageBar_RowCount" value="${varData(combine(PageBarPerfix,"RowCount"))}"/>
+<eye:set name="pageBar_CurrentPage" value="${varData(combine(PageBarPerfix,"CurrentPage"))}"/>
+<eye:set name="pageBar_Update" value="${PageBarUpdate}"/>
+<eye:set name="pageBar_Url" value="${PageBarUrl}"/>
+<eye:set name="pageBar_Form" value="${PageBarForm}"/>
+<eye:set name="pageBar_Param" value="${PageBarParam}"/>
+    <eye:if test="${isDefined("request_pagesize")}">
+        <eye:set name="pageBar_PageSize" value="${request_pagesize}" />
+    <eye:else>
+        <eye:set name="pageBar_PageSize" value="" />
+    </eye:if>
+
+
+   
+    <div class="pager" >
+
+        <eye:if test="${pageBar_startPage gt 1}">
+            <a href="javascript:;" class="begin pageBarStart" action="${pageBar_Url}" form="${pageBar_Form}" param="pagenum=1&pagesize=${pageBar_PageSize}&${pageBar_Param}" onclick="SubmitForm2(this,null,this)" target="${pageBar_Update}">首页</a>
+        </eye:if> 
+        <eye:c>
+            <eye:if test="${pageBar_startPage gt 1}">
+                <label  href="javascript:void(0)" class="pageBarStart back" noValidate="noValidate" action="${pageBar_Url}" form="${pageBar_Form}" param="pagenum=${subtract(pageBar_CurrentPage,1)}&pagesize=${pageBar_PageSize}&${pageBar_Param}" onclick="SubmitForm2(this, null, null, this)" target="${pageBar_Update}">上一页</label>
+            </eye:if>
+         </eye:c>
+        <eye:for from="${pageBar_startPage}" to="${pageBar_endPage}" index="num"> 
+
+        <eye:if test="${pageBar_CurrentPage  is num}">
+             <span   class="current pageBarCurrent">${num}</span> 
+        <eye:else/>
+                <a href="javascript:;" class="pageBarPageNum" action="${pageBar_Url}" form="${pageBar_Form}" param="pagenum=${num}&pagesize=${pageBar_PageSize}&${pageBar_Param}" onclick="SubmitForm2(this, null, this)" target="${pageBar_Update}">
+            ${num}</a>
+        </eye:if> 
+        </eye:for>
+        <eye:c>
+            <eye:if test="${pageBar_endPage lt pageBar_PageCount}">
+                <label  href="javascript:;" class="pageBarStart next" noValidate="noValidate" action="${pageBar_Url}" form="${pageBar_Form}" param="pagenum=${plus(pageBar_CurrentPage,1)}&pagesize=${pageBar_PageSize}&${pageBar_Param}" onclick="SubmitForm2(this, null, null, this)" target="${pageBar_Update}">下一页</label>
+             </eye:if>
+        </eye:c>
+         <eye:if test="${pageBar_endPage lt pageBar_PageCount}">
+        <a   href="javascript:;"   class="end pageBarEnd" action="${pageBar_Url}" form="${pageBar_Form}" param="pagenum=${pageBar_PageCount}&pagesize=${pageBar_PageSize}&${pageBar_Param}" onclick="SubmitForm2(this, null, this)" target="${pageBar_Update}">
+            尾页</a>
+
+             
+
+        </eye:if>
+        <eye:if test="${pageBar_RowCount gt 0}">
+            每页${pageBar_PerpageCount}条数据 共${pageBar_PageCount}页  ${pageBar_RowCount}条数据 
+        </eye:if>
+             
+                  &nbsp;
+        <label id="${pageBar_Update}_refreshlbl" class="pageBarRefresh" style=" display:none;" noValidate="noValidate" action="${pageBar_Url}" form="${pageBar_Form}" param="pagenum=${pageBar_CurrentPage}&pagesize=${pageBar_PageSize}&${pageBar_Param}" onclick="SubmitForm2(this, null, this)" target="${pageBar_Update}">刷新</label>
+        
+    </div>

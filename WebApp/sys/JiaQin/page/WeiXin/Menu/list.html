@@ -1,0 +1,25 @@
+﻿
+  <script type="text/javascript">
+        window.addEvent('zdomready', function () {
+            var dropBtn = new DropButton({ trigger: 'hover' });
+        });
+    </script>
+<dl class="listCatalog w300 fl">
+            <dt>                
+                ${menu.Name}
+                <label onclick="SubmitForm2(this,null,this)"   action="wxMenuList" param="id=${menu.Id}" target="css:dl" replaceTarget="replaceTarget" class="reFresh"></label>
+             </dt>
+            <dd onclick="ShowWindow2(this)" action="wxMenuAddPage" param="id=${menu.Id}" reFreshBtn="css:dl dt .reFresh">增加</dd>
+        <eye:foreach collection="${menuList}" var="m">
+            <dd class="dropButton"> 
+
+                    <label class="dropButton-toggle"  onclick="SubmitForm2(this,null,this)" action="wxMenuList" param="id=${m.Id}" target="css:dl" replaceTarget="replaceAfter">${m.Name}</label>
+
+                <span class="dropButton-Menu">
+                        <input type="button" class=" btn-mini" value="编辑" action="wxMenuUpdatePage" param="id=${m.Id}"   reFreshBtn="css:dl dt .reFresh" onclick="ShowWindow2(this)"/>
+                    <input type="button" class=" btn-mini" value="删除" action="wxMenuDeleteEvent"  param="id=${m.Id}"   reFreshBtn="css:dl dt .reFresh" onclick="SubmitForm2(this,null,this)"/>
+                    </span>
+                     
+            </dd>
+        </eye:foreach>
+            </dl>

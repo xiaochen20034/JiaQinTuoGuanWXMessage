@@ -1,0 +1,74 @@
+﻿<figure>
+    <figcaption><i class="fa-table"></i>用户维护</figcaption>    
+
+    <script type="text/javascript">
+            function LoadChildrenDepartment(dep) {
+                var depParent = dep.getParent(".nextDep");
+                depParent.getAllNext().each(function (it) {
+                    it.dispose();
+                });
+
+                var depLbl = $("DepartmentChildrenUserLi");
+                depLbl.set("param",dep.get('param'));
+                
+                new Element("div", { 'class': 'nextDep' }).inject(depParent, 'after');
+                SubmitForm2(depLbl, null, depLbl);
+            }
+            window.addEvent('zdomready', function () {
+                var dropBtn = new DropButton({trigger:'hover'});
+            });
+        </script>
+    <section>  
+        <style>
+            .depLi {
+                overflow:hidden
+            }
+                .depLi .nextDep {
+                    width:150px;
+                border:1px solid #ccc ;
+                min-height:400px;
+                    float:left;
+                }
+            .depTitle {
+                line-height:25px;
+                height:25px;
+                color:#fff;
+                text-align:center;
+                display:block;
+            }
+            .depData {
+                padding:5px;
+                border-bottom:1px solid #808080;
+                display:block;
+            }
+            .depData:hover {
+                background-color:#b6ff00;
+            }
+        </style>
+        
+        <div class="depLi">
+            <label action="DepartmentChildrenUserLi" id="DepartmentChildrenUserLi" target="css:.depLi .nextDep:last-child"></label>
+            <div class="nextDep">
+        <ul>
+            <eye:if test="${length(list) is 1}">
+                <eye:set name="dep" value="${list[0]}"/>
+                <li class="depTitle titleBgColor"> <label  param="id=${dep.Id}">${dep.Name}</label>
+                </li>
+              
+                 <eye:foreach collection="${dep.ChildrenDepartmentList}" var="dep">
+                    <li class="depData"><label   param="id=${dep.Id}" class=""  onclick="LoadChildrenDepartment(this)" >${dep.Name}</label>
+                        </li>
+                 </eye:foreach>
+            <eye:else/>
+                <eye:foreach collection="${list}" var="dep">
+                     <li class="depData"><label   param="id=${dep.Id}" class=""  onclick="LoadChildrenDepartment(this)" >${dep.Name}</label>
+                  
+                        </li>
+                 </eye:foreach>
+            </eye:if>            
+        </ul>
+                </div>
+        </div>
+        
+     </section>
+</figure>

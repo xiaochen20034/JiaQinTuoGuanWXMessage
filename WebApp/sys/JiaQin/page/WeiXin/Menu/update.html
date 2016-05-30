@@ -1,0 +1,59 @@
+﻿
+<script>
+   
+    function menuValidate(form,btn) {
+        var vForm = new VMFormValidator(form, {
+            'errorDisplay': 'element',
+            validateElementMultiple: true
+        });
+        vForm.required("Code", "请填写章节唯一编码");
+        vForm.required("Name", "请填写章节名称");
+        var flag = vForm.executeAllValidators();
+        return flag;
+    }
+</script>
+<form action="wxMenuUpdateEvent" enctype="multipart/form-data" method="post" windowTitle="编辑微信菜单">
+    <input type="hidden" name="Id" value="${menuInfo.Id}"/>
+        <div class="hold">
+            <label>父级菜单：</label>
+            <eye:if test="${menuInfo.ParentId is 0}">
+                ${menuInfo.Name}
+                <input type="hidden" name="ParentId" value="0" class="ele"/>
+            <eye:else/>
+                ${menuInfo.Name}
+                <input type="hidden" name="ParentId" value="${menuInfo.ParentId}" class="ele"/>
+            </eye:if>
+            
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>编　　码：<input type="text" name="Code" value="${menuInfo.Code}" class="ele"/></label><span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>名　　称：<input type="text" name="Name" value="${menuInfo.Name}"  class="ele"/></label><span class="msg"></span>
+        </div>
+
+    <div class="hold">
+            <label>类　　型：
+         <select name="Type">
+             <option value="view" ${iif(menuInfo.Type is 'view','selected','')}>链接地址</option>
+             <option value="click" ${iif(menuInfo.Type is 'click','selected','')}>关键字回复</option>
+         </select>
+         </label><span class="msg"></span>
+        </div>
+        
+    <div class="hold">
+            <label>Url：<input type="text" name="Url" value="${menuInfo.Url}"  class="ele"/></label><span class="msg"></span>
+        </div>
+    <div class="hold">
+            <label>Key：<input type="text" name="Key" value="${menuInfo.Key}"  class="ele"/></label><span class="msg"></span>
+        </div>
+    <div class="hold">
+            <label>Sort：<input type="text" name="Sort" value="${menuInfo.Sort}"  class="ele"/></label><span class="msg"></span>
+        </div>
+
+      <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', menuValidate, null, this)"  value="提交"/>
+        </div>
+
+</form>

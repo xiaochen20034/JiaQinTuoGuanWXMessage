@@ -1,0 +1,15 @@
+﻿.SimpleTab,#container,#uploadContainer{  border-bottom:1px solid #A0A0A0; height:30px;  }
+.SimpleTab .tabItem{padding-left:10px;padding-right:10px;display:block; float:left; height:27px; line-height:27px; border:1px solid #A0A0A0; border-left-style:none; border-bottom:none; height:30px; }
+.SimpleTab .tabItem:first-child{
+    border-left-style:solid;
+}
+.SimpleTab .activeTab{border-bottom:2px solid white; position:relative; z-index:2; background:white; height:28px;}
+.SimpletabTarget{ border:1px solid #A0A0A0; position:relative; top:-2px; z-index:1; }
+.SimpletabTarget{  clear:both; padding-top:5px;}
+.SimpletabTarget .oddTab{ background-color:Green;}
+.SimpletabTarget .evenTab{ background-color:White;}
+
+
+
+.SimpleTab .tabItem.vertical{padding-top:10px;padding-bottom:0px;display:block; float:initial; border-style:none;  border-bottom:1px solid #A0A0A0;}
+.SimpleTab .activeTab.vertical{border-right:2px solid white; position:relative; z-index:2; font-weight:bold;}
