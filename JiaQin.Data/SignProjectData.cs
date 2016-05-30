@@ -15,11 +15,11 @@ namespace JiaQin.Data
     /// </summary>
     public class SignProjectData:IDataExecutorImp
     {
-        public SignProject[] List(string where,int pagesize, int pagenum, out int rowcount){
+        public SignProject[] List(string name,int pagesize, int pagenum, out int rowcount){
 
             string key = GetCacheKey(new Type[]{
                             typeof(SignProject)
-                     }, new object[]{pagesize,pagenum,where});
+                     }, new object[]{pagesize,pagenum,name});
 
             string keyRowcount = key + " rowcount";
 
@@ -30,7 +30,12 @@ namespace JiaQin.Data
                 rowcount = DataCached.GetItem<int>(keyRowcount);
                 return list;
             }
-
+            string where = null;
+            if (!string.IsNullOrEmpty(name))
+            {
+                where = "[name] like @name";
+                Executor.addParameter("@name", "%" + name + "%");
+            }
             list = Executor.executePage<SignProjectLazy>("*", "SignProject", "id desc", where, pagesize, pagenum, out rowcount).ToArray();
 
             for (int i = 0; i < list.Length; i++)
@@ -93,6 +98,17 @@ namespace JiaQin.Data
             return obj;
 
         }
+    public bool ExistName(string name)
+    {
+        Executor.addParameter("@name", name);
+        return Convert.ToInt32(Executor.executeSclar("select count(1) from SignProject where [name]=@name")) > 0;
+    }
+    public bool ExistName(string name, int notId)
+    {
+        Executor.addParameter("@name", name);
+        Executor.addParameter("@id", notId);
+        return Convert.ToInt32(Executor.executeSclar("select count(1) from SignProject where [name]=@name and id<>@id")) > 0;
+    }
         public void Add(SignProject obj){
     int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [SignProject]
            (

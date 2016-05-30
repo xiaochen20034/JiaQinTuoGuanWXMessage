@@ -91,6 +91,7 @@
     <Content Include="plugins\zwindow\close.png" />
     <Content Include="plugins\zwindow\ZWindow.js" />
     <Content Include="plugins\zwindow\z_window.css" />
+    <Content Include="sys\JiaQin\config\SignProject.xml" />
     <Content Include="sys\JiaQin\config\sys\basic.xml" />
     <Content Include="sys\JiaQin\config\JiaQin.xml" />
     <Content Include="sys\JiaQin\config\sys\VipUser.xml" />
@@ -100,6 +101,10 @@
     <Content Include="sys\JiaQin\config\School.xml" />
     <Content Include="sys\JiaQin\config\会员VipUser\VipUser.xml" />
     <Content Include="sys\JiaQin\page\404.html" />
+    <Content Include="sys\JiaQin\page\admin\SignProject\add.html" />
+    <Content Include="sys\JiaQin\page\admin\SignProject\figure.html" />
+    <Content Include="sys\JiaQin\page\admin\SignProject\list.html" />
+    <Content Include="sys\JiaQin\page\admin\SignProject\update.html" />
     <Content Include="sys\JiaQin\page\admin\School\add.html" />
     <Content Include="sys\JiaQin\page\admin\School\figure.html" />
     <Content Include="sys\JiaQin\page\admin\School\list.html" />

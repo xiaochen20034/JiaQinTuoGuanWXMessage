@@ -12,6 +12,7 @@
   </Assembly>
   <Assembly  name="JiaQin.Services">
     <Bean name="JiaQin.Services.SchoolServ" id="school"></Bean>
+    <Bean name="JiaQin.Services.SignProjectServ" id="signProject"></Bean>
   </Assembly>
 
   
@@ -24,4 +25,5 @@
   <include file="会员VipUser/VipUser.xml"/>
 
   <include file="School.xml"/>
+  <include file="SignProject.xml"/>
 </SimpleMvc>

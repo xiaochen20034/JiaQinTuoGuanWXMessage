@@ -163,6 +163,7 @@ namespace JiaQin.Data
             return obj;
 
         }
+
         public void Add(SignRecord obj){
     int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [signRecord]
            (

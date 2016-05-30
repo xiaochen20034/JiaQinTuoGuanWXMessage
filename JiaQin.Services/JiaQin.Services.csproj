@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SignProjectServ.cs" />
     <Compile Include="SchoolServ.cs" />
     <Compile Include="Site\SiteColumnServ.cs" />
     <Compile Include="Site\SiteServ.cs" />

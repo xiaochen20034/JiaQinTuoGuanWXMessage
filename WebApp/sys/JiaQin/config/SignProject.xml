@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>  
+  <Action path="SignProjectFigure" ref="signProject" method="Figure"  comment="托管项目数据" >
+    <Success>admin/SignProject/figure.html</Success>
+  </Action>
+  <Action path="SignProjectList" ref="signProject" method="List"  comment="托管项目数据" >
+    <Success>admin/SignProject/list.html</Success>
+  </Action>
+  <Action path="AddSignProjectPage" ref="signProject" method="Add"  comment="托管项目数据" >
+    <Success>admin/SignProject/add.html</Success>
+  </Action>
+
+  <Action path="AddSignProjectEvent" ref="signProject" method="AddEvent"  comment="托管项目数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateSignProjectPage" ref="signProject" method="Update"  comment="托管项目数据编辑" >
+    <Success>admin/SignProject/update.html</Success>
+  </Action>
+
+  <Action path="UpdateSignProjectEvent" ref="signProject" method="UpdateEvent"  comment="托管项目数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="DeleteSignProjectEvent" ref="signProject" method="DeleteEvent"  comment="托管项目数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+</SimpleMvc>

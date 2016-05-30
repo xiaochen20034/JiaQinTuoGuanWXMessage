@@ -1,0 +1,27 @@
+﻿<div style="width:500px;" windowTitle="添加托管项目">
+    <script>
+        function Validate(form, btn) {
+            var vForm = new VMFormValidator(form, {
+                'errorDisplay': 'element',
+                validateElementMultiple: true
+            });
+
+            vForm.required("Name", "请输入校区名称");
+
+            var flag = vForm.executeAllValidators();
+            return flag;
+        }
+
+    </script>
+    <form action="AddSignProjectEvent.aspx" method="post" enctype="multipart/form-data">        
+        <div class="hold">
+            <label>项目名称：<input type="text" name="Name" value=""/></label>
+            <span class="msg"></span>
+        </div>
+
+        <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate,null, this)"  value="提交"/>
+        </div>
+                
+    </form>
+</div>
