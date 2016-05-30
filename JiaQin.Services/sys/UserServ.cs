@@ -8,7 +8,7 @@ using JiaQin.Entity;
 using JiaQin.Data;
 using System.IO;
 using System.Web;
-namespace JiaQin.Service
+namespace JiaQin.Services
 {
     class UserServ : AppBase
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using JiaQin.Entity;
 using JiaQin.Data;
 using Zhyj.Common;
-namespace JiaQin.Service
+namespace JiaQin.Services
 {
     public class SiteColumnServ:AppBase
     {

@@ -5,7 +5,7 @@ using System.Text;
 using JiaQin.Data;
 using JiaQin.Entity;
 
-namespace JiaQin.Service
+namespace JiaQin.Services
 {
     public partial class AppBase
     {

@@ -15,11 +15,11 @@ namespace JiaQin.Data
     /// </summary>
     public class SchoolData:IDataExecutorImp
     {
-        public School[] List(string where,int pagesize, int pagenum, out int rowcount){
+        public School[] List(string name,int pagesize, int pagenum, out int rowcount){
 
             string key = GetCacheKey(new Type[]{
                             typeof(School)
-                     }, new object[]{pagesize,pagenum,where});
+                     }, new object[] { pagesize, pagenum, name });
 
             string keyRowcount = key + " rowcount";
 
@@ -30,7 +30,12 @@ namespace JiaQin.Data
                 rowcount = DataCached.GetItem<int>(keyRowcount);
                 return list;
             }
-
+            string where = null;
+            if (!string.IsNullOrEmpty(name))
+            {
+                where = "[name] like @name";
+                Executor.addParameter("@name","%"+name+"%");
+            }
             list = Executor.executePage<SchoolLazy>("*", "school", "id desc", where, pagesize, pagenum, out rowcount).ToArray();
 
             for (int i = 0; i < list.Length; i++)
@@ -97,6 +102,21 @@ namespace JiaQin.Data
             return obj;
 
         }
+    public bool HasStudentOrTeacher(int id) {
+        Executor.addParameter("@id", id);
+        return Convert.ToInt32(Executor.executeSclar("select count(1) from student s,teacher t where s.schoolId=@id or t.schoolId=@id")) > 0;
+    }
+    public bool ExistName(string name) {
+        Executor.addParameter("@name",name);
+        return Convert.ToInt32( Executor.executeSclar("select count(1) from school where [name]=@name"))>0;
+    }
+    public bool ExistName(string name,int notId)
+    {
+        Executor.addParameter("@name", name);
+        Executor.addParameter("@id", notId);
+        return Convert.ToInt32(Executor.executeSclar("select count(1) from school where [name]=@name and id<>@id")) > 0;
+    }
+
         public void Add(School obj){
     int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [school]
            (

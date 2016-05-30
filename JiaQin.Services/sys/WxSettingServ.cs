@@ -9,7 +9,7 @@ using JiaQin.Data;
 using Zhyj.Common;
 using Zhyj.Tencent.WeiXin;
 using Zhyj.Tencent.WeiXin.entity;
-namespace JiaQin.Service
+namespace JiaQin.Services
 {
     public class WxSettingServ : AppBase
     {

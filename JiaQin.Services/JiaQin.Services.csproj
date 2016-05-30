@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SchoolServ.cs" />
     <Compile Include="Site\SiteColumnServ.cs" />
     <Compile Include="Site\SiteServ.cs" />
     <Compile Include="sys\AppBase.cs" />

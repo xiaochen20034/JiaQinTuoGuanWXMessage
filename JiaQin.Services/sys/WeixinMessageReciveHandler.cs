@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JiaQin.Service
+namespace JiaQin.Services
 {
     public class WeixinMessageReciveHandler : Zhyj.Tencent.WeiXin.ReciveMessageHandler
     {

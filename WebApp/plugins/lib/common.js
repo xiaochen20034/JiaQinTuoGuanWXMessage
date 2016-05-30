@@ -571,7 +571,7 @@ function defaultBackMethod_2(json, form, btn) {
         //var field = form.getElementById(json.field);
         
         if (field) {
-            var msg = field.getParent().getElement(".msg");
+            var msg = field.getParent(".hold").getElement(".msg");
             if (msg) {
                 var tip = json.tip ? json.tip : field.getParent().getFirst().get("text").replace(":", "").replace("：", "") + " 已存在";
                 msg.set("html", tip);

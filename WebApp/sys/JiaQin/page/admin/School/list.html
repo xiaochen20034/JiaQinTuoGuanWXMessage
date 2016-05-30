@@ -1,0 +1,37 @@
+﻿
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:30px;">序号</th>
+                <th>名称</th>
+                <th style="width:100px;">联系人</th>
+                <th style="width:150px;">联系方式</th>
+                <th style="width:230px;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <eye:foreach collection="${schoolList}" var="school" index="index">
+                <tr>
+                <td>${index}</td>
+                <td>${school.Name}</td>
+                <td>${school.ContactName}</td>
+                <td>${school.ContactPhone}</td>                
+                <td>
+                    <input type="button" class="btn btn-small" value="编辑" onclick="ShowWindow2(this)"  action="UpdateSchoolPage" reFreshBtn="css:table .pageBarRefresh" param="id=${school.Id}"/>
+                    <input type="button" class="btn btn-small" value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteSchoolEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${school.Id}"/>
+                </td>
+            </tr>
+            </eye:foreach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">
+                     <eye:pageBar perfix="" update="css:section" url="SchoolList.aspx" form="" param="" templatepath="../../webpageBar.html"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+</div>

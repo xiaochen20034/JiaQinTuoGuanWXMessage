@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using JiaQin.Data;
 using JiaQin.Entity;
 using Zhyj.Common;
-namespace JiaQin.Service
+namespace JiaQin.Services
 {
     public class PermissionServ:AppBase
     {

@@ -1,0 +1,47 @@
+﻿<div style="width:500px;" windowTitle="编辑校区">
+    <eye:if test="${isnull(schoolInfo)}">
+        校区已删除，无法编辑
+        <eye:endpage/>
+    </eye:if>
+    <script>
+        function Validate(form, btn) {
+            var vForm = new VMFormValidator(form, {
+                'errorDisplay': 'element',
+                validateElementMultiple: true
+            });
+
+            vForm.required("Name", "请输入校区名称");
+            vForm.required("ContactName", "请输入校区负责人姓名");
+            vForm.required("ContactPhone", "请校区负责人联系电话");
+            vForm.required("Des", "请输入校区的简要描述");
+
+            var flag = vForm.executeAllValidators();
+            return flag;
+        }
+
+    </script>
+    <form action="UpdateSchoolEvent.aspx" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="ID" value="${schoolInfo.Id}"/>
+        <div class="hold">
+            <label>校区名称：<input type="text" name="Name" value="${schoolInfo.Name}"/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>校长姓名：<input type="text" name="ContactName" value="${schoolInfo.ContactName}"/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>联系电话：<input type="text" name="ContactPhone" value="${schoolInfo.ContactPhone}"/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>简要描述：</label>
+            <span class="msg"></span><br/>
+            <textarea name="Des" style="width:98%; height:100px">${schoolInfo.Des}</textarea>
+        </div>
+        <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate,null, this)"  value="提交"/>
+        </div>
+                
+    </form>
+</div>

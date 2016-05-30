@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>  
+  <Action path="SchoolFigure" ref="school" method="Figure"  comment="部门数据" >
+    <Success>admin/School/figure.html</Success>
+  </Action>
+  <Action path="SchoolList" ref="school" method="List"  comment="部门数据" >
+    <Success>admin/School/list.html</Success>
+  </Action>
+  <Action path="AddSchoolPage" ref="school" method="Add"  comment="部门数据" >
+    <Success>admin/School/add.html</Success>
+  </Action>
+
+  <Action path="AddSchoolEvent" ref="school" method="AddEvent"  comment="部门数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateSchoolPage" ref="school" method="Update"  comment="部门数据编辑" >
+    <Success>admin/School/update.html</Success>
+  </Action>
+
+  <Action path="UpdateSchoolEvent" ref="school" method="UpdateEvent"  comment="部门数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="DeleteSchoolEvent" ref="school" method="DeleteEvent"  comment="部门数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+</SimpleMvc>

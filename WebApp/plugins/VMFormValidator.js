@@ -14,6 +14,8 @@ provides: [VMFormValidator]
 
 ...
 */
+//历史遗留问题，所以有下面几个变量
+var ValidationFailClass, ValidationOkClass, ValidationFieldFailClass;
 var VMFormValidator = new Class({
 	
 	Implements: [Events, Options],
@@ -40,6 +42,9 @@ var VMFormValidator = new Class({
 	    if (this.options.errorDisplay=='alert') {
 	        this.options.validateElementMultiple = false;
 	    }
+	    ValidationFailClass = this.options.errorLabelClass;
+	    ValidationOkClass = this.options.successLabelClass;
+	    ValidationFieldFailClass = this.options.errorElement;
 		this.form = formId;
 		this.formElements = {};
 		this.errorListIds = {};
