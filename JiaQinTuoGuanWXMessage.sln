@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiaQin.Data", "JiaQin.Data\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JiaQin.Services", "JiaQin.Services\JiaQin.Services.csproj", "{6BD13B9F-15F4-4BBF-AC7F-A235B7D7542F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhyj.AppHandler", "..\..\XiaoXin3.0\XiaoXin3.0\Zhyj.AppHandler\Zhyj.AppHandler.csproj", "{014CBF15-A5E1-4646-ACA8-0C45F8EA5AA6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{6BD13B9F-15F4-4BBF-AC7F-A235B7D7542F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD13B9F-15F4-4BBF-AC7F-A235B7D7542F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD13B9F-15F4-4BBF-AC7F-A235B7D7542F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{014CBF15-A5E1-4646-ACA8-0C45F8EA5AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{014CBF15-A5E1-4646-ACA8-0C45F8EA5AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{014CBF15-A5E1-4646-ACA8-0C45F8EA5AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{014CBF15-A5E1-4646-ACA8-0C45F8EA5AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
