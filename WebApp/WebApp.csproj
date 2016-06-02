@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dll\LitJSON.dll" />
     <Content Include="dll\System.Data.SQLite.dll" />
     <Content Include="dll\System.Data.SQLite.pdb" />
     <Content Include="dll\Zhyj.AderTemplates.dll" />
@@ -99,6 +100,7 @@
     <Content Include="plugins\zwindow\close.png" />
     <Content Include="plugins\zwindow\ZWindow.js" />
     <Content Include="plugins\zwindow\z_window.css" />
+    <Content Include="site\JiaQin\images\headImgBg.jpg" />
     <Content Include="site\JiaQin\styles\base.css" />
     <Content Include="site\JiaQin\styles\btn.css" />
     <Content Include="site\JiaQin\styles\common.css" />
