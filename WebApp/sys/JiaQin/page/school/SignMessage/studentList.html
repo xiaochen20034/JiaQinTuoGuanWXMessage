@@ -1,4 +1,11 @@
 ﻿<script>
+
+    function ChangeCk(ck) {
+        var b = ck.checked;
+        $$(".tagStudent table tbody")[0].getElements("tr input[name=studentId]").each(function (stu) {
+            stu.checked = b;
+        });
+    }
     var signProjectId;
     function Sign() {
         debugger;
@@ -66,7 +73,7 @@
                 </td>
             </tr>
             <tr>
-                <th style="width:30px;">序号</th>
+                <th style="width:50px;"><input type="checkbox" onchange="ChangeCk(this)"/>序号</th>
                 <th style="width:100px;">姓名</th>
                 <th style="width:50px;">性别</th>
                 

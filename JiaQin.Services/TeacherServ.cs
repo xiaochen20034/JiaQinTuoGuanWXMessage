@@ -274,8 +274,10 @@ namespace JiaQin.Services
                         if (wxTemplate == null)
                         {
                             Zhyj.Tencent.WeiXin.entity.TemplateMessageResult TempalteResult = templateMessage.GetTemplateId(shortCode);
-                            if (TempalteResult == null)
+                            if (TempalteResult == null || string.IsNullOrEmpty(TempalteResult.template_id))
                             {
+                                TemplateData[JsonKeyValue.res] = JsonKeyValue.fail;
+                                TemplateData[JsonKeyValue.tip] = "系统设置错误，微信模版设置失败";
                                 return;
                             }
                             wxTemplate = new WxTemplate()
@@ -304,7 +306,12 @@ namespace JiaQin.Services
                         Zhyj.Tencent.WeiXin.entity.TemplateMessageResult result = templateMessage.SendTemplateMessage(wxTemplate.TemplateId, stuInfo.ParentInfo.VipUserInfo.OpenId, base.WxUrl("index.aspx"), new Zhyj.Tencent.WeiXin.entity.TemplateFieldInfo[]{
                             firstField,keyword1Field,keyword2Field,remarkField
                         });
-
+                        if (result.errcode!=0)
+                        {
+                            TemplateData[JsonKeyValue.res] = JsonKeyValue.fail;
+                            TemplateData[JsonKeyValue.tip] = "消息发送失败。"+result.errcode+"：   "+result.errmsg;
+                            return;
+                        }
                         SignRecord rec = new SignRecord()
                         {
                             SignDate = DateTime.Now,

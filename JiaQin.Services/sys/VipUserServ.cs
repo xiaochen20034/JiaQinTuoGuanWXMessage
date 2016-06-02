@@ -56,8 +56,6 @@ namespace JiaQin.Services
             TemplateData[JsonKeyValue.res] = JsonKeyValue.ok;
             TemplateData[JsonKeyValue.tip] = "登录成功";
 
-
-            
         }
 
 

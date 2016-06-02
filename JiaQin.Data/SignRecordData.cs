@@ -253,8 +253,6 @@ namespace JiaQin.Data
                 obj.Id = identityValue;
                 Executor.executeNonQuery("update student set times=isnull(times,0)-1 where id=@sutdentId", CommandType.Text, new object[,] { { "@sutdentId", obj.StuId } }, false);
 
-                StudentData studentData=GetInstance<StudentData>();
-                studentData.getStudentInfoById(obj.StuId).Times -= 1;
                 Executor.transOver(true);
             }
             catch (Exception ea) {
@@ -264,6 +262,7 @@ namespace JiaQin.Data
 
 				
             removeCache(typeof(SignRecord));
+            removeCache(typeof(Student));
         }
 
 
