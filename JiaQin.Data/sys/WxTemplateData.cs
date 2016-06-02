@@ -23,6 +23,7 @@ namespace JiaQin.Data
         }
         public void Insert(WxTemplate template)
         {
+            Executor.addParameter("@templateCode", template.TemplateCode);
             if (Convert.ToInt32(Executor.executeSclar("select count(1) from wx_template where templateCode=@templateCode"))>0)
             {
                 return;

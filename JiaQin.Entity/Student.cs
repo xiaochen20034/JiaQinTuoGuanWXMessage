@@ -21,13 +21,15 @@ namespace JiaQin.Entity
 		/// </summary>
 		public int Times{set;get;}
 		/// <summary>
-		/// 学生的标签（代替班级）
-		/// </summary>
-		public string Taglist{set;get;}
-		/// <summary>
 		/// 学校ID
 		/// </summary>
-		public int SchoolId{set;get;}
+		public int SchoolId{set;get;}
+
+        public int Age { set; get; }
+        /// <summary>
+        /// 删除时间
+        /// </summary>
+        public DateTime? DeleteDate { set; get; }
             public virtual School SchoolInfo{set;get;}
         public virtual Parent[] ParentList{set;get;}
         /// <summary>
@@ -35,6 +37,10 @@ namespace JiaQin.Entity
         /// </summary>
         public virtual Parent ParentInfo { set; get; }
         public virtual VipUser VipUserInfo{set;get;}
-        public virtual SignRecord[] SignRecordList{set;get;}
+        public virtual SignRecord[] SignRecordList{set;get;}
+        /// <summary>
+        /// 学生的标签
+        /// </summary>
+        public virtual Tag[] TagList { set; get; }
     }
 }

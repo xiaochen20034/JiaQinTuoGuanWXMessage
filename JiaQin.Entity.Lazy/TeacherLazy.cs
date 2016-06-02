@@ -8,19 +8,21 @@ namespace JiaQin.Entity.Lazy
     /// 
     /// </summary>
     public class TeacherLazy:Teacher
-    {
-       public Func<int, VipUser> VipUserInfoLazy = null;
-		public override VipUser VipUserInfo{
+    {
+
+        public Func<int, SysUser> SysUserInfoLazy = null;
+        public override SysUser SysUserInfo
+        {
               get{
-                     if (base.VipUserInfo == null && this.VipUserInfoLazy!= null)
+                  if (base.SysUserInfo == null && this.SysUserInfoLazy != null)
                     {
-                        return this.VipUserInfoLazy(base.VipUserId);
+                        return this.SysUserInfoLazy(base.UserId);
                     }
-                    return base.VipUserInfo;
+                  return base.SysUserInfo;
               }
               set
               {
-                   base.VipUserInfo= value;
+                  base.SysUserInfo = value;
               }
         }
        public Func<int, School> SchoolInfoLazy = null;
@@ -36,6 +38,23 @@ namespace JiaQin.Entity.Lazy
               {
                    base.SchoolInfo= value;
               }
+        }
+        public Func<int, Tag[]> TagListLazy;
+        public override Tag[] TagList
+        {
+            get
+            {
+                if (base.TagList==null && TagListLazy!=null)
+                {
+                    return TagListLazy(base.Id);
+                }
+                return base.TagList;
+            }
+            set
+            {
+                base.TagList = value;
+            }
         }
+
     }
 }

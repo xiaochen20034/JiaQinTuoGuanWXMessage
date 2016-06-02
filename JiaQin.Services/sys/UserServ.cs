@@ -89,6 +89,7 @@ namespace JiaQin.Services
 
         
         }
+
         public void DeleteEvent() {
             SysUserData userData = dataExecutorImp.GetInstance<SysUserData>();
 

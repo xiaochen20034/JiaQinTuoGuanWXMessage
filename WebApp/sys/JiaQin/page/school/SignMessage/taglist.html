@@ -1,0 +1,14 @@
+﻿
+<dl class="listCatalog fl" style="min-width:200px;">
+    <dt>学生标签</dt>
+<eye:roweach table="${tagTable}" var="tag">
+    <dd class=""> 
+       <label class=""  
+              onclick="SubmitForm2(this,null,this)" 
+              action="signMessageTagStudentList" 
+              param="tagId=${tag_id}" 
+              target="css:section .tagStudent" 
+              >• ${tag_Name}（${tag_StudentCount}）</label>
+    </dd>
+</eye:roweach>
+    </dl>

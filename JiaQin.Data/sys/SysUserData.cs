@@ -138,6 +138,7 @@ namespace JiaQin.Data
             }
             obj.SysRoleListLazy = new Func<int, SysRole[]>(GetInstance<SysRoleData>().List);
             obj.SysPermissionListLazy = new Func<int, SysPermission[]>(GetInstance<SysPermissionData>().ListByUserId);
+            obj.SchoolInfoLazy = new Func<int, School>(GetInstance<SchoolData>().getSchoolInfoByContactUserId);
         }
         /// <summary>
         /// 指定的用户名是否存在
@@ -223,6 +224,22 @@ namespace JiaQin.Data
             }
             
         }
+
+        public void UpdateBasicInfo(SysUser user)
+        {
+                Executor.executeNonQuery("update sysUser set UserName=@UserName, [name]=@name,gender=@gender,phone=@phone where id=@id", System.Data.CommandType.Text, new object[,]{               
+                    {"@UserName",user.UserName},
+                    {"@name",user.Name},
+                    {"@gender",user.Gender},
+                    {"@phone",user.Phone},
+                    {"@id",user.Id}
+            });
+               
+                removeCache(typeof(SysUser));
+
+        }
+
+
         public void Delete(int id) {
             Executor.addParameter("@id",id);
             Executor.executeNonQuery("delete from sysUser where id=@id");

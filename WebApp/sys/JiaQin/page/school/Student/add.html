@@ -1,0 +1,66 @@
+﻿<div style="width:500px;" windowTitle="添加学生用户">
+    <script>
+        function Validate(form, btn) {
+            var vForm = new VMFormValidator(form, {
+                'errorDisplay': 'element',
+                validateElementMultiple: true
+            });
+
+            vForm.required("StudentName", "请输入学生姓名");
+            vForm.required("Gender", "请选择学生性别");
+            vForm.required("Age", "请输入学生年龄");
+            vForm.required("Times", "请输入剩余托管次数");
+            vForm.required("ParentName", "请输入家长姓名");
+            vForm.required("Phone", "请输入手机号码");
+
+            var flag = vForm.executeAllValidators();
+            return flag;
+        }
+
+    </script>
+    <form action="AddSchoolStudentEvent.aspx" method="post" enctype="multipart/form-data">        
+        <div class="hold">
+            <label>姓　　名：<input type="text" name="StudentName" value=""/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>性　　别：
+                    <select name="Gender">
+                        <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>    
+            </label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>年　　龄：<input type="number" name="Age" value="0"/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>次　　数：<input type="number" name="Times" value="0"/></label>
+            <span class="msg">剩余托管次数</span>
+        </div>
+        <div class="hold">
+            <label>家长姓名：<input type="text" name="ParentName" value=""/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>手机号码：<input type="text" name="Phone" value=""/></label>
+            <span class="msg">将作为登陆用户名</span>
+        </div>
+         <div class="hold">
+            <label>标签：</label>
+            <span class="msg">学生相关的标签</span>
+             <br/><br/>
+             <eye:foreach collection="${tagList}" var="tag" index="index">
+                 <label style="display:inline-block; width:100px"><input type="checkbox" name="tag" value="${tag.Id}"/>　${tag.Name}</label>       
+                 
+             </eye:foreach>
+        </div>
+
+        <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate,null, this)"  value="提交"/>
+        </div>
+                
+    </form>
+</div>

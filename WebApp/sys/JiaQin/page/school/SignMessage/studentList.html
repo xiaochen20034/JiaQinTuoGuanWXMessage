@@ -1,0 +1,121 @@
+﻿<script>
+    var signProjectId;
+    function Sign() {
+        debugger;
+        signProjectId = null;
+        $$(".tagStudent table thead input[name=signProjectId]").each(function (item) {
+            if (item.checked) {
+                signProjectId = item.value;
+            }
+        });
+        if (!signProjectId) {
+            alert('未选择托管项目');
+            return;
+        }
+        document.body.spin();
+        var tr = $$(".tagStudent table tbody")[0].getElement("tr");
+        
+            next(tr);
+       
+    }
+    function next(tr0) {
+        var tr = tr0.getNext('tr');
+        if (!tr) {
+            debugger;
+            document.body.unspin();
+            return;
+        }
+        var ck = tr.getElement("input[name=studentId]");
+        if (!ck) {
+            next(tr);
+            return;
+        }
+        if (ck.checked) {
+            tr.set('action', 'SingleSignProjectEvent');
+            tr.set('param', "signProjectId=" + signProjectId);
+            SubmitForm2(tr, SignSignOver, tr);
+        } else {
+            next(tr);
+        }
+
+    }
+    function SignSignOver(json, tr) {
+        var tip = "";
+        if (json.res=='ok') {
+            tip = "<b style='color:green'>"+json.tip+"</b>";
+        } else {
+            tip = "<b style='color:red'>" + json.tip + "</b>";
+        }
+        tr.getElement(".signremark").set('html',tip);
+        next(tr);
+    }
+</script>
+<div>
+    <table>
+        <caption>
+            ${tagInfo.Name}标签组学生
+        </caption>
+        <thead>
+            <tr>
+                <td colspan="8" style="text-align:right; padding-top:5px; padding-bottom:5px; padding-right:15px;">
+                    
+                    <eye:foreach collection="${projectList}" var="pro">
+                        <label style="margin-left:10px;"><input type="radio" value="${pro.Id}" name="signProjectId"/>${pro.Name}</label>
+                    </eye:foreach>
+                    <input type="button" class="btn btn-mini btn-primary" onclick="Sign()"  value="托管签到"/>
+                </td>
+            </tr>
+            <tr>
+                <th style="width:30px;">序号</th>
+                <th style="width:100px;">姓名</th>
+                <th style="width:50px;">性别</th>
+                
+                <th style="width:100px;">家长姓名</th>
+
+                <th style="width:100px;">微信昵称</th>
+                <th style="width:100px;">绑定时间</th>
+
+                <th style="width:100px;">剩余托管次数</th>
+                <th>今日已托管项目</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+             <tr style="display:none">
+                <td colspan="8">定位的隐藏元素</td></tr>
+            <eye:foreach collection="${studentList}" var="student" index="index">
+                <eye:set name="user" value="${student.VipUserInfo}"/>
+                <eye:set name="parent" value="${student.ParentInfo.VipUserInfo}"/>
+
+                <tr>
+                <td>
+                    <input type="checkbox" name="studentId" value="${student.Id}"/>
+                    ${index}</td>
+                <td>${user.Name}</td>
+                <td>${user.Gender}</td>
+                    
+                <td>${parent.Name}</td>
+
+                <td>${iif(isempty(parent.Nickname),'未绑定',parent.Nickname) }</td>
+                <td>${iif(isnull(parent.BindDate),'',cdatestring(parent.BindDate,'yyyy-MM-dd HH:mm'))}</td>
+
+                <td>${student.Times}</td>
+
+                <td>
+                    <eye:foreach collection="${this.TodaySignRecordList(student.Id)}" var="rec">
+                        ${rec.TeacherUserInfo.Name}-
+                        ${rec.SignProjectInfo.Name}-
+                        ${cdatestring(rec.SignDate,'HH:mm')}、<br/>
+                    </eye:foreach><br/>
+                    <span class="signremark"></span>
+                </td>
+                    
+            </tr>
+            </eye:foreach>
+        </tbody>
+       
+    </table>
+    
+
+</div>

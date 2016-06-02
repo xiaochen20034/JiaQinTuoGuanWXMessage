@@ -65,6 +65,7 @@ namespace JiaQin.Services
         public const string currentUserCode = "currentUserCode";
 
         public const string aspx_username = "aspx_username";
+        public const string aspx_vipUsername = "aspx_vipusername";
 
         public SysInfo _systemInfo;
         /// <summary>
@@ -75,18 +76,6 @@ namespace JiaQin.Services
                 return _systemInfo;
             }
         }
-
-        //public Zhyj.Tencent.WeiXin.Config _config = null;
-        /// <summary>
-        /// 系统信息
-        /// </summary>
-        //public Zhyj.Tencent.WeiXin.Config WxConfig
-        //{
-        //    get
-        //    {
-        //        return _config;
-        //    }
-        //}
 
         public string WxUrl(string url) {
             
@@ -155,6 +144,7 @@ namespace JiaQin.Services
 
         }
 
+      
         Zhyj.DBUtils.IDBExecutor _executor = null;
         /// <summary>
         /// 主数据操作类
@@ -240,7 +230,17 @@ namespace JiaQin.Services
         }
         private Zhyj.AppHandler.ActionFactory.Entity.Action _action;
         protected Zhyj.AppHandler.ActionFactory.Entity.Action Action { get { return _action; } }
-        
+        public Zhyj.Tencent.WeiXin.Config _config = null;
+        /// <summary>
+        /// 系统信息
+        /// </summary>
+        public Zhyj.Tencent.WeiXin.Config WxConfig
+        {
+            get
+            {
+                return _config;
+            }
+        }
         /// <summary>
         /// 在验证与初始化都调用的属性初始化
         /// </summary>
@@ -274,6 +274,7 @@ namespace JiaQin.Services
                 _currentUser = ICached[new Base64Encoding().Decode(cook.Value,true,true)] as SysUser;	 
 	        }
 
+
             this.Id = Request["id"];
             int.TryParse(this.Id, out ID);
             pager = new Pager();
@@ -284,12 +285,30 @@ namespace JiaQin.Services
 
             if (_systemInfo==null)
 	        {
-                        SysInfoData sysInfoData=dataExecutorImp.GetInstance<SysInfoData>();
-                        _systemInfo=sysInfoData.getSysInfo();
+                _config = new Zhyj.Tencent.WeiXin.Config();
+                        //SysInfoData sysInfoData=dataExecutorImp.GetInstance<SysInfoData>();
+                _systemInfo = new SysInfo() { 
+                  Name="佳亲托管",
+                  WeiXinAppID = _config.AppID,
+                  WeiXinAppSecret = _config.AppSecret,
+                  WeiXinAppToken = _config.AppToken,
+                  WeiXinEncodingAESKey = _config.EncodingAESKey
+                };//sysInfoData.getSysInfo();
                        // _config = new Zhyj.Tencent.WeiXin.Config(_systemInfo.WeiXinAppID,_systemInfo.WeiXinAppSecret,_systemInfo.WeiXinAppToken,_systemInfo.WeiXinEncodingAESKey,_systemInfo.WeiXinMchID,_systemInfo.WeiXinMchKey);
                        // System.Web.HttpContext.Current.Cache["wx_config_default_from_database"] = _config;
 
 	        }
+
+            if (IsMicromessenger)
+            {
+                _currentVipUser = null;
+                 cook = Request.Cookies[aspx_vipUsername];
+                
+                if (!string.IsNullOrEmpty(WXOpenId))
+                {
+                    _currentVipUser = dataExecutorImp.GetInstance<VipUserData>().getVipUserInfoByOpenId(WXOpenId);
+                }
+            }
            
         }
 
@@ -337,9 +356,45 @@ namespace JiaQin.Services
             }else{
             return Zhyj.AppHandler.UtilConfig.sys;
             }
+        } private VipUser _currentVipUser = null;
+
+        public VipUser CurrentVipUser
+        {
+            get
+            {
+                return _currentVipUser;
+            }
+            set { _currentVipUser = value; }
         }
-
-
+        public string WXOpenId
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Request["wxopenid"]))
+                {
+                    return Request["wxopenid"];
+                }
+                if (Request.Cookies.AllKeys.Contains("wxopenid"))
+                {
+                    return Request.Cookies["wxopenid"].Value;
+                }
+                return null;
+            }
+        }
+        public bool AllowBroswer
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(Request["allowBroswer"]);
+            }
+        }
+        public bool IsMicromessenger
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(Request.UserAgent) && Request.UserAgent.ToLower().IndexOf("micromessenger") != -1;
+            }
+        }
 
         public virtual bool verfication(Zhyj.AppHandler.ActionFactory.Entity.Action action, ref string logonPath)
         {

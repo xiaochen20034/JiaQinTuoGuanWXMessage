@@ -81,6 +81,24 @@ namespace JiaQin.Entity.Lazy
               {
                    base.SignRecordList = value;
               }
-    }
+
+    }
+
+        public Func<int, Tag[]> TagListLazy;
+        public override Tag[] TagList
+        {
+            get
+            {
+                if (base.TagList == null && TagListLazy != null)
+                {
+                    return TagListLazy(base.ID);
+                }
+                return base.TagList;
+            }
+            set
+            {
+                base.TagList = value;
+            }
+        }
     }
 }

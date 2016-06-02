@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>  
+  <Action path="schoolStudentFigure" ref="student" method="Figure"  comment="学生数据" >
+    <Success>school/Student/figure.html</Success>
+  </Action>
+  <Action path="schoolStudentList" ref="student" method="List"  comment="学生数据" >
+    <Success>school/Student/list.html</Success>
+  </Action>
+
+  <Action path="AddSchoolStudentPage" ref="student" method="Add"  comment="学生数据" >
+    <Success>school/Student/add.html</Success>
+  </Action>
+
+  <Action path="AddSchoolStudentEvent" ref="student" method="AddEvent"  comment="学生数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateSchoolStudentPage" ref="student" method="Update"  comment="学生数据编辑" >
+    <Success>school/Student/update.html</Success>
+  </Action>
+
+  <Action path="UpdateSchoolStudentEvent" ref="student" method="UpdateEvent"  comment="学生数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="DeleteSchoolStudentEvent" ref="student" method="DeleteEvent"  comment="学生数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="RestoreSchoolStudentEvent" ref="student" method="RestoreSchoolStudentEvent"  comment="学生恢复" >
+    <Success>json</Success>
+  </Action>
+  
+  
+</SimpleMvc>

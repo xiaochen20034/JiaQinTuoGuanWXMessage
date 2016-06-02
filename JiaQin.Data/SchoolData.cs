@@ -77,6 +77,7 @@ namespace JiaQin.Data
        obj.TeacherListLazy=new Func<int, Teacher[]>(GetInstance<TeacherData>().getTeacherListBySchoolId);
 
        obj.TagListLazy=new Func<int, Tag[]>(GetInstance<TagData>().getTagListBySchoolId);
+       obj.SysUserInfoLazy = new Func<int, SysUser>(GetInstance<SysUserData>().Info);
 
         }
 
@@ -102,6 +103,37 @@ namespace JiaQin.Data
             return obj;
 
         }
+
+    public School getSchoolInfoByContactUserId(int userId)
+    {
+
+        string key = GetCacheKey(typeof(School), userId);
+
+        SchoolLazy obj = DataCached.GetItem<SchoolLazy>(key);
+
+        if (obj != null)
+        {
+            return obj;
+        }
+
+        Executor.addParameter("@id", userId);
+        obj = Executor.executeForSingleObject<SchoolLazy>("select * from School where userId=@id");
+        if (obj == null)
+        {//非管理员用户，也就是教师用户
+            Executor.addParameter("@id", userId);
+            obj = Executor.executeForSingleObject<SchoolLazy>("select s.* from school s inner join teacher t on s.id=t.schoolId where t.userId=@id");
+            
+        }
+        if (obj==null)
+        {
+            return null;
+        }
+        this.Lazy(obj);
+        DataCached[key] = obj;
+        return obj;
+
+    }
+
     public bool HasStudentOrTeacher(int id) {
         Executor.addParameter("@id", id);
         return Convert.ToInt32(Executor.executeSclar("select count(1) from student s,teacher t where s.schoolId=@id or t.schoolId=@id")) > 0;
@@ -118,16 +150,31 @@ namespace JiaQin.Data
     }
 
         public void Add(School obj){
+
+            SysUserData userData=GetInstance<SysUserData>();
+            if (!userData.Exist(obj.ContactPhone))
+            {
+                SysRole role = GetInstance<SysRoleData>().Info("school");
+                Department department = GetInstance<DepartmentData>().Info("school");
+                if (role==null || department==null)
+                {
+                    throw new Exception("系统数据不正确，没有校区角色，或者校区部门");
+                }
+                userData.Insert(new SysUser() { 
+                    Code=obj.ContactPhone,
+                    Name=obj.ContactName,
+                    Phone=obj.ContactPhone,
+                    UserName=obj.ContactPhone,
+                    Password=new Zhyj.Common.Base64Encoding().Encode("999999")
+                },department.Id,role.Id);
+            }
+            SysUser user= userData.Info(obj.ContactPhone);
     int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [school]
            (
-
                 name,
-
                 des,
-
                 contactPhone,
-
-                contactName
+                contactName,userId
 
             )
      VALUES
@@ -139,7 +186,7 @@ namespace JiaQin.Data
 
 	            @contactPhone,
 
-	            @contactName
+	            @contactName,@userId
 
     );select SCOPE_IDENTITY()", System.Data.CommandType.Text, new object[,]{
 
@@ -149,7 +196,8 @@ namespace JiaQin.Data
 
 	        {"@contactPhone",obj.ContactPhone},
 
-	        {"@contactName",obj.ContactName}
+	        {"@contactName",obj.ContactName},
+            {"@userId",user.Id}
 
             }));
 

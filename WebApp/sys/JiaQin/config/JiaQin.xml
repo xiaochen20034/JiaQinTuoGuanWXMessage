@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SimpleMvc>
   <Assembly  name="JiaQin.Services">
-    <Bean name="JiaQin.Services.WebPage" id="syspage"></Bean>    
+    <Bean name="JiaQin.Services.WebPage" id="syspage"></Bean>
+    <Bean name="JiaQin.Services.SiteWebPage" id="web"></Bean>
     <Bean name="JiaQin.Services.UserServ" id="usr"></Bean>
     <Bean name="JiaQin.Services.DepartmentServ" id="dept"></Bean>
     <Bean name="JiaQin.Services.RoleServ" id="role"></Bean>
     <Bean name="JiaQin.Services.PermissionServ" id="pemission"></Bean>
-
+    <Bean name="JiaQin.Services.VipUserServ" id="vipUser"></Bean>
     <Bean name="JiaQin.Services.VipUserServ" id="sys_vipUsr"></Bean>
     <Bean name="JiaQin.Services.WxSettingServ" id="wxsetting"></Bean>    
   </Assembly>
   <Assembly  name="JiaQin.Services">
     <Bean name="JiaQin.Services.SchoolServ" id="school"></Bean>
     <Bean name="JiaQin.Services.SignProjectServ" id="signProject"></Bean>
+    <Bean name="JiaQin.Services.TagServ" id="tag"></Bean>
+    <Bean name="JiaQin.Services.TeacherServ" id="teacher"></Bean>
+    <Bean name="JiaQin.Services.StudentServ" id="student"></Bean>
+  </Assembly>
+
+  <Assembly  name="JiaQin.Services">
+    <Bean name="JiaQin.Services.TagServ" id="tag"></Bean>
   </Assembly>
 
   
@@ -26,4 +34,10 @@
 
   <include file="School.xml"/>
   <include file="SignProject.xml"/>
+  <include file="Tag.xml"/>
+  <include file="Teacher.xml"/>
+
+  <include file="school/Tag.xml"/>
+  <include file="school/Teacher.xml"/>
+  <include file="school/Student.xml"/>
 </SimpleMvc>

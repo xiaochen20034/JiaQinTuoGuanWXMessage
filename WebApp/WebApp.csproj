@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LitJSON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\LitJSON.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -56,6 +60,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Zhyj.Tencent.WeiXin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Zhyj.Tencent.WeiXin.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="dll\System.Data.SQLite.dll" />
@@ -91,6 +99,16 @@
     <Content Include="plugins\zwindow\close.png" />
     <Content Include="plugins\zwindow\ZWindow.js" />
     <Content Include="plugins\zwindow\z_window.css" />
+    <Content Include="site\JiaQin\styles\base.css" />
+    <Content Include="site\JiaQin\styles\btn.css" />
+    <Content Include="site\JiaQin\styles\common.css" />
+    <Content Include="site\JiaQin\styles\login.css" />
+    <Content Include="site\JiaQin\styles\user.css" />
+    <Content Include="sys\JiaQin\config\school\Tag.xml" />
+    <Content Include="sys\JiaQin\config\school\Student.xml" />
+    <Content Include="sys\JiaQin\config\school\Teacher.xml" />
+    <Content Include="sys\JiaQin\config\Teacher.xml" />
+    <Content Include="sys\JiaQin\config\Tag.xml" />
     <Content Include="sys\JiaQin\config\SignProject.xml" />
     <Content Include="sys\JiaQin\config\sys\basic.xml" />
     <Content Include="sys\JiaQin\config\JiaQin.xml" />
@@ -101,6 +119,12 @@
     <Content Include="sys\JiaQin\config\School.xml" />
     <Content Include="sys\JiaQin\config\会员VipUser\VipUser.xml" />
     <Content Include="sys\JiaQin\page\404.html" />
+    <Content Include="sys\JiaQin\page\admin\Teacher\figure.html" />
+    <Content Include="sys\JiaQin\page\admin\Teacher\list.html" />
+    <Content Include="sys\JiaQin\page\admin\Tag\add.html" />
+    <Content Include="sys\JiaQin\page\admin\Tag\figure.html" />
+    <Content Include="sys\JiaQin\page\admin\Tag\list.html" />
+    <Content Include="sys\JiaQin\page\admin\Tag\update.html" />
     <Content Include="sys\JiaQin\page\admin\SignProject\add.html" />
     <Content Include="sys\JiaQin\page\admin\SignProject\figure.html" />
     <Content Include="sys\JiaQin\page\admin\SignProject\list.html" />
@@ -126,6 +150,21 @@
     <Content Include="sys\JiaQin\page\Role\list.html" />
     <Content Include="sys\JiaQin\page\Role\rolePermissionList.html" />
     <Content Include="sys\JiaQin\page\Role\update.html" />
+    <Content Include="sys\JiaQin\page\school\SignMessage\figure.html" />
+    <Content Include="sys\JiaQin\page\school\SignMessage\studentList.html" />
+    <Content Include="sys\JiaQin\page\school\SignMessage\taglist.html" />
+    <Content Include="sys\JiaQin\page\school\Tag\add.html" />
+    <Content Include="sys\JiaQin\page\school\Tag\figure.html" />
+    <Content Include="sys\JiaQin\page\school\Tag\list.html" />
+    <Content Include="sys\JiaQin\page\school\Tag\update.html" />
+    <Content Include="sys\JiaQin\page\school\Student\add.html" />
+    <Content Include="sys\JiaQin\page\school\Student\figure.html" />
+    <Content Include="sys\JiaQin\page\school\Student\list.html" />
+    <Content Include="sys\JiaQin\page\school\Student\update.html" />
+    <Content Include="sys\JiaQin\page\school\Teacher\add.html" />
+    <Content Include="sys\JiaQin\page\school\Teacher\figure.html" />
+    <Content Include="sys\JiaQin\page\school\Teacher\list.html" />
+    <Content Include="sys\JiaQin\page\school\Teacher\update.html" />
     <Content Include="sys\JiaQin\page\User\add.html" />
     <Content Include="sys\JiaQin\page\User\departmentList2.html" />
     <Content Include="sys\JiaQin\page\User\figure.html" />
@@ -197,6 +236,10 @@
     <Content Include="theme\MiLan\main\fontawesome-4.2.0_ie7\fonts\weimobfont.woff" />
     <Content Include="data\dns.db.ashx" />
     <Content Include="sys\JiaQin\page\Department\Department.rar" />
+    <Content Include="site\JiaQin\page\404.cshtml" />
+    <Content Include="site\JiaQin\page\index.cshtml" />
+    <Content Include="site\JiaQin\page\login.cshtml" />
+    <Content Include="site\JiaQin\page\master.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -223,7 +266,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="site\JiaQin\page\" />
     <Folder Include="sys\JiaQin\data\" />
     <Folder Include="sys\JiaQin\page\VipUser\" />
   </ItemGroup>

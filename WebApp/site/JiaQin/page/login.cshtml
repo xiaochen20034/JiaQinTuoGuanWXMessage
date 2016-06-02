@@ -1,0 +1,56 @@
+﻿<eye:masterpagefile masterpagefile="master.cshtml">
+    <eye:content contentplaceholderid="head">
+        
+
+        ${urlCss('login.css')}
+        <script type="text/javascript">
+            window.addEvent('domready', function () {
+                
+            });
+            function vipUserLoginValidate(form,btn) {
+                var form1 = new VMFormValidator(form, {
+                    errorDisplay:'alert'
+                });
+                form1.required('UserName', '请填写手机号码');
+                form1.required('PassWord', '请填写密码');
+                return form1.executeAllValidators();
+
+            }
+
+            function vipUserLoginOver(json,form,btn) {
+                if (json.res == 'ok') {
+                    window.location = "index.aspx";
+                } else {
+                    alert(json.tip);
+                }
+            }
+
+            
+        </script>
+    </eye:content>
+    <eye:content contentplaceholderid="topTitle">用户绑定</eye:content>
+
+
+    <eye:content contentplaceholderid="mainWrap">
+        
+        <form class="inputWrap" action="VipUserLogonEvent" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="OpenId" value="${wxopenid}"/>
+	        <ul>
+    	        <li>
+        	        <p class="inputTitle">账号</p>
+                    <p class="inputSpace"><input type="text" name="UserName" placeholder="手机号码"></p>
+                </li>
+    	        <li>
+        	        <p class="inputTitle">密码</p>
+                    <p class="inputSpace"><input type="password" name="PassWord" placeholder="密码"></p>
+                </li>
+            </ul>
+            <div class="btn color01 loginBtn">
+    	        <a href="javascript:;" onclick="SubmitForm3('css:form', vipUserLoginValidate, vipUserLoginOver,this)">登录</a>
+            </div>
+
+        </form>
+
+
+    </eye:content>
+</eye:masterpagefile>

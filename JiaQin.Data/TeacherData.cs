@@ -15,11 +15,19 @@ namespace JiaQin.Data
     /// </summary>
     public class TeacherData:IDataExecutorImp
     {
-        public Teacher[] List(string where,int pagesize, int pagenum, out int rowcount){
+        /// <summary>
+        /// 教师列表，根据姓名进行查询（所有的教师，不只是当前学校）
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="pagesize"></param>
+        /// <param name="pagenum"></param>
+        /// <param name="rowcount"></param>
+        /// <returns></returns>
+        public Teacher[] List(int schoolId,string name,int pagesize, int pagenum, out int rowcount){
 
             string key = GetCacheKey(new Type[]{
                             typeof(Teacher)
-                     }, new object[]{pagesize,pagenum,where});
+                     }, new object[] { schoolId,pagesize, pagenum, name });
 
             string keyRowcount = key + " rowcount";
 
@@ -30,8 +38,13 @@ namespace JiaQin.Data
                 rowcount = DataCached.GetItem<int>(keyRowcount);
                 return list;
             }
-
-            list = Executor.executePage<TeacherLazy>("*", "teacher", "id desc", where, pagesize, pagenum, out rowcount).ToArray();
+            string where = null;
+            if (!string.IsNullOrEmpty(name))
+            {
+                where = "[name] like @name";
+                Executor.addParameter("@name", "%" + name + "%");
+            }
+            list = Executor.executePage<TeacherLazy>("* ", " select t.*,u.userName,u.Name from sysUser u inner join teacher t on u.id=t.userId   and t.schoolId=" + schoolId, "schoolId,userName,id desc", where, pagesize, pagenum, out rowcount).ToArray();
 
             for (int i = 0; i < list.Length; i++)
             {
@@ -64,19 +77,10 @@ namespace JiaQin.Data
             return list;
 
         }
+        public Teacher[] ListByTagId(int tagId)
+        {
 
-        void Lazy(TeacherLazy obj){
-
-        obj.VipUserInfoLazy=new Func<int, VipUser>(GetInstance<VipUserData>().getVipUserInfoById);
-
-        obj.SchoolInfoLazy=new Func<int, School>(GetInstance<SchoolData>().getSchoolInfoById);
-
-        }
-
-        public Teacher[] getTeacherListByVipUserId(int vipUserId){  
-
-          int id=vipUserId;
-          string key = GetCacheKey( typeof(Teacher), id);
+            string key = GetCacheKey(typeof(Teacher), tagId);
 
             TeacherLazy[] list = DataCached.GetItem<TeacherLazy[]>(key);
 
@@ -84,7 +88,8 @@ namespace JiaQin.Data
             {
                 return list;
             }
-            list = Executor.executeForListObject<TeacherLazy>( "select * from teacher where vipUserId="+id).ToArray();
+            Executor.addParameter("@tagId", tagId);
+            list = Executor.executeForListObject<TeacherLazy>("select stu.* from student stu inner join studentTag t on stu.id=t.studentId where t.tagId=@tagId").ToArray();
 
             for (int i = 0; i < list.Length; i++)
             {
@@ -94,6 +99,15 @@ namespace JiaQin.Data
             return list;
 
         }
+        void Lazy(TeacherLazy obj){
+
+        obj.SysUserInfoLazy=new Func<int, SysUser>(GetInstance<SysUserData>().Info);
+
+        obj.SchoolInfoLazy=new Func<int, School>(GetInstance<SchoolData>().getSchoolInfoById);
+        obj.TagListLazy = new Func<int, Tag[]>(GetInstance<TagData>().ListByTeacherId);
+        }
+
+    
 
         public Teacher[] getTeacherListBySchoolId(int schoolId){  
 
@@ -139,11 +153,49 @@ namespace JiaQin.Data
             return obj;
 
         }
-        public void Add(Teacher obj){
-    int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [teacher]
+
+    public Teacher getTeacherInfoByUserId(int userId)
+    {
+
+        string key = GetCacheKey(typeof(Teacher), userId);
+
+        TeacherLazy obj = DataCached.GetItem<TeacherLazy>(key);
+
+        if (obj != null)
+        {
+            return obj;
+        }
+
+        Executor.addParameter("@userId", userId);
+        obj = Executor.executeForSingleObject<TeacherLazy>("select * from Teacher where userId=@userId");
+        if (obj == null)
+        {
+            return null;
+        }
+        this.Lazy(obj);
+        DataCached[key] = obj;
+        return obj;
+
+    }
+
+        public void Add(SysUser obj,int schoolId,string[]tag){
+           
+                SysUserData userData = GetInstance<SysUserData>();
+                if (!userData.Exist(obj.Phone))
+                {
+                    SysRole role = GetInstance<SysRoleData>().Info("teacher");
+                    Department department = GetInstance<DepartmentData>().Info("teacher");
+                    if (role == null || department == null)
+                    {
+                        throw new Exception("系统数据不正确，没有教师角色，或者教师部门");
+                    }
+                    userData.Insert(obj, department.Id, role.Id);
+                }
+                SysUser user = userData.Info(obj.Phone);
+                int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [teacher]
            (
 
-                vipUserId,
+                userId,
 
                 schoolId,
 
@@ -153,7 +205,7 @@ namespace JiaQin.Data
      VALUES
    (
 
-	            @vipUserId,
+	            @userId,
 
 	            @schoolId,
 
@@ -161,16 +213,91 @@ namespace JiaQin.Data
 
     );select SCOPE_IDENTITY()", System.Data.CommandType.Text, new object[,]{
 
-	        {"@vipUserId",obj.VipUserId},
+	        {"@userId",user.Id},
 
-	        {"@schoolId",obj.SchoolId},
+	        {"@schoolId",schoolId},
 
-	        {"@addDate",obj.AddDate}
+	        {"@addDate",DateTime.Now}
 
             }));
-
-            removeCache(typeof(Teacher));
+                StringBuilder sb = new StringBuilder();
+                foreach (string item in tag)
+                {
+                    if (Convert.ToInt32(Executor.executeSclar("select count(1) from teacherTag where teacherId=@teacherId and tagId=@tagId", CommandType.Text,new object[,]{
+                            {"@teacherId",identityValue},
+                            {"@tagId",Convert.ToInt32(item)},
+                        }))==0)
+                    {
+                        Executor.executeNonQuery("insert into teacherTag(teacherId,tagId)values(@teacherId,@tagId)", CommandType.Text,new object[,]{
+                            {"@teacherId",identityValue},
+                            {"@tagId",Convert.ToInt32(item)},
+                        });
+                    }
+                    sb.Append("," + item);
+                }
+                if (sb.Length>0)
+                {
+                    sb.Remove(0,1);
+                    Executor.executeNonQuery("delete teacherTag where  teacherId =@teacherId and  tagId not in("+sb.ToString()+")", CommandType.Text, new object[,]{
+                            {"@teacherId",identityValue}
+                        });
+                }
+            
+                removeCache(typeof(Teacher));
+                removeCache(typeof(Tag));
+          
+    
         }
 
+        public void Update(SysUser obj, string[] tag)
+        {
+
+            SysUserData userData = GetInstance<SysUserData>();
+
+            Teacher teacherInfo = getTeacherInfoByUserId(obj.Id);
+            userData.UpdateBasicInfo(obj);
+            StringBuilder sb = new StringBuilder();
+            foreach (string item in tag)
+            {
+                if (Convert.ToInt32(Executor.executeSclar("select count(1) from teacherTag where teacherId=@teacherId and tagId=@tagId", CommandType.Text, new object[,]{
+                            {"@teacherId",teacherInfo.Id},
+                            {"@tagId",Convert.ToInt32(item)},
+                        })) == 0)
+                {
+                    Executor.executeNonQuery("insert into teacherTag(teacherId,tagId)values(@teacherId,@tagId)", CommandType.Text, new object[,]{
+                            {"@teacherId",teacherInfo.Id},
+                            {"@tagId",Convert.ToInt32(item)},
+                        });
+                }
+                sb.Append("," + item);
+            }
+            if (sb.Length > 0)
+            {
+                sb.Remove(0, 1);
+                Executor.executeNonQuery("delete teacherTag where  teacherId =@teacherId and  tagId not in(" + sb.ToString() + ")", CommandType.Text, new object[,]{
+                            {"@teacherId",teacherInfo.Id}
+                        });
+            }
+
+            removeCache(typeof(Teacher));
+            removeCache(typeof(Tag));
+
+
+        }
+
+
+
+        public void Restore(int id)
+        {
+            Executor.addParameter("@userId", id);
+            Executor.executeNonQuery("update teacher set deleteDate=null where  userId=@userId");
+            removeCache(typeof(Teacher));
+        }
+        public void Delete(int id) {
+            Executor.addParameter("@date", DateTime.Now);
+            Executor.addParameter("@userId", id);
+            Executor.executeNonQuery("update teacher set deleteDate=@date where  userId=@userId");
+            removeCache(typeof(Teacher));
+        }
     }
 }

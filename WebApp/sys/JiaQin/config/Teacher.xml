@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>  
+  <Action path="TeacherFigure" ref="teacher" method="Figure"  comment="标签数据" >
+    <Success>admin/Teacher/figure.html</Success>
+  </Action>
+  <Action path="TeacherList" ref="teacher" method="List"  comment="标签数据" >
+    <Success>admin/Teacher/list.html</Success>
+  </Action>
+  
+</SimpleMvc>

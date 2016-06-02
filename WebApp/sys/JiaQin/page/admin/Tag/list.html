@@ -1,0 +1,43 @@
+﻿
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:30px;">序号</th>
+                <th style="width:200px">校区</th>
+                <th>名称</th>
+                <th style="width:100px">教师使用人数</th>
+                <th style="width:100px">学生使用人数</th>
+                <th style="width:230px;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <eye:foreach collection="${tagList}" var="tag" index="index">
+                <tr>
+                <td>${index}</td>
+                <td>
+                    <eye:if test="${isnotnull(tag.SchoolInfo)}">
+                        ${tag.SchoolInfo.Name}
+                    </eye:if>
+                    </td>
+                <td>${tag.Name}</td>  
+                <td>${tag.StudentCount}</td>
+                <td>${tag.TeacherCount}</td>
+                <td>
+                    <input type="button" class="btn btn-small" value="编辑" onclick="ShowWindow2(this)"  action="UpdateTagPage" reFreshBtn="css:table .pageBarRefresh" param="id=${tag.Id}"/>
+                    <input type="button" class="btn btn-small" value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteTagEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${tag.Id}" actionTip="确定删除？删除后，相关的学生，教师将不属于改标签"/>
+                </td>
+            </tr>
+            </eye:foreach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">
+                     <eye:pageBar perfix="" update="css:section" url="TagList.aspx" form="" param="" templatepath="../../webpageBar.html"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+</div>

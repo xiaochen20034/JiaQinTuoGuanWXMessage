@@ -71,7 +71,7 @@ namespace JiaQin.Data
 
         obj.StudentInfoLazy=new Func<int, Student>(GetInstance<StudentData>().getStudentInfoById);
 
-        obj.VipUserInfoLazy=new Func<int, VipUser>(GetInstance<VipUserData>().getVipUserInfoById);
+        obj.TeacherUserInfoLazy = new Func<int, SysUser>(GetInstance<SysUserData>().Info);
 
         }
 
@@ -119,6 +119,42 @@ namespace JiaQin.Data
 
         }
 
+
+        public SignRecord[] getTodaySignRecordListByStuId(int stuId)
+        {
+
+            int id = stuId;
+            string key = GetCacheKey(typeof(SignRecord), id);
+
+            SignRecordLazy[] list = DataCached.GetItem<SignRecordLazy[]>(key);
+
+            if (list != null)
+            {
+                return list;
+            }
+            list = Executor.executeForListObject<SignRecordLazy>("select * from signRecord where DateDiff(dd,signDate,getdate())=0 and stuId=" + id).ToArray();
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                this.Lazy(list[i]);
+            }
+            DataCached[key] = list;
+            return list;
+
+        }
+        public bool HasTodaySignRecord(int stuId,int signProjectId)
+        {
+
+            bool flag =Convert.ToInt32( Executor.executeSclar("select count(1) from signRecord where DateDiff(dd,signDate,getdate())=0 and stuId=@stuId and signProjectId=@signProjectId",CommandType.Text,new object[,]{
+                {"@stuId",stuId},
+                {"@signProjectId",signProjectId}
+            } ))>0;
+
+            return flag;
+
+        }
+
+
         public SignRecord[] getSignRecordListByTeaVipUserId(int teaVipUserId){  
 
           int id=teaVipUserId;
@@ -165,7 +201,9 @@ namespace JiaQin.Data
         }
 
         public void Add(SignRecord obj){
-    int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [signRecord]
+            try
+            {
+                int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [signRecord]
            (
 
                 signProjectId,
@@ -176,11 +214,9 @@ namespace JiaQin.Data
 
                 signDate,
 
-                readDate,
+                teaUserId,
 
-                teaVipUserId,
-
-                teaId
+                teaId,remark
 
             )
      VALUES
@@ -194,11 +230,9 @@ namespace JiaQin.Data
 
 	            @signDate,
 
-	            @readDate,
+	            @teaUserId,
 
-	            @teaVipUserId,
-
-	            @teaId
+	            @teaId,@remark
 
     );select SCOPE_IDENTITY()", System.Data.CommandType.Text, new object[,]{
 
@@ -210,57 +244,32 @@ namespace JiaQin.Data
 
 	        {"@signDate",obj.SignDate},
 
-	        {"@readDate",obj.ReadDate},
+	        {"@teaUserId",obj.TeaUserId},
 
-	        {"@teaVipUserId",obj.TeaVipUserId},
+	        {"@teaId",obj.TeaId},
+            {"@remark",obj.Remark}
 
-	        {"@teaId",obj.TeaId}
+            },true));
+                obj.Id = identityValue;
+                Executor.executeNonQuery("update student set times=isnull(times,0)-1 where id=@sutdentId", CommandType.Text, new object[,] { { "@sutdentId", obj.StuId } }, false);
 
-            }));
+                StudentData studentData=GetInstance<StudentData>();
+                studentData.getStudentInfoById(obj.StuId).Times -= 1;
+                Executor.transOver(true);
+            }
+            catch (Exception ea) {
+                Executor.transOver(false);
+                throw ea;
+            }
 
-				obj.Id=identityValue;
-
+				
             removeCache(typeof(SignRecord));
         }
 
-        public void Update(SignRecord obj){
-            Executor.executeNonQuery(@"update [signRecord] set 
 
-                signProjectId=@signProjectId,
 
-                stuVipUserId=@stuVipUserId,
 
-                stuId=@stuId,
-
-                signDate=@signDate,
-
-                readDate=@readDate,
-
-                teaVipUserId=@teaVipUserId,
-
-                teaId=@teaId
-
-         where id=@id", System.Data.CommandType.Text, new object[,]{
-            {"@id",obj.Id},
-
-	        {"@signProjectId",obj.SignProjectId},
-
-	        {"@stuVipUserId",obj.StuVipUserId},
-
-	        {"@stuId",obj.StuId},
-
-	        {"@signDate",obj.SignDate},
-
-	        {"@readDate",obj.ReadDate},
-
-	        {"@teaVipUserId",obj.TeaVipUserId},
-
-	        {"@teaId",obj.TeaId}
-
-            });
-            removeCache(typeof(SignRecord));
-        }
-        public void Delete(int id){
+      public void Delete(int id){
             Executor.executeNonQuery("delete signRecord where id=@id", System.Data.CommandType.Text, new object[,]{                 
                 {"@id",id }
             });

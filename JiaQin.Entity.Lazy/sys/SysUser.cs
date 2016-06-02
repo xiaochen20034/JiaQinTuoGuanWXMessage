@@ -43,6 +43,22 @@ namespace JiaQin.Entity.Lazy
                 base.SysRoleList = value;
             }
         }
-       
+        public Func<int, School> SchoolInfoLazy;
+        public override School SchoolInfo
+        {
+            get
+            {
+                if (base.SchoolInfo==null && SchoolInfoLazy!=null)
+                {
+                    return SchoolInfoLazy(base.Id);
+                }
+                return base.SchoolInfo;
+            }
+            set
+            {
+                base.SchoolInfo = value;
+            }
+        }
+  
     }
 }

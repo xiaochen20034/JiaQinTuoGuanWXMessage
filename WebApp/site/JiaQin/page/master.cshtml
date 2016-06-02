@@ -1,0 +1,81 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,target-densitydpi=medium" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="佳亲托管" />
+<meta name="description" content="佳亲托管" />
+<meta name="author" content="王银兰，郑延杰" />
+
+<title>佳亲托管</title>
+
+<eye:if test="${not(IsMicromessenger)}">  
+    <script type="text/javascript">
+        window.document.writeln("<h1>请在微信内打开</h1>");
+    </script>
+    <eye:endpage/>
+
+</eye:if>
+
+<eye:if test="${IsMicromessenger and isempty(WXOpenId)}">
+    <script>window.location = '/wxurl/${request_path_url}';</script>
+</eye:if>
+        
+    ${urlCss('common.css')}
+    ${urlCss('base.css')}
+
+    ${urlCss('btn.css')}
+
+    <script type="text/javascript" src="/plugins/lib/MooTools-Core-1.5.1.js"></script>
+    <script type="text/javascript" src="/plugins/lib/MooTools-More-1.5.1.js"></script>
+    <script type="text/javascript" src="/plugins/lib/extends.js"></script>
+    <script type="text/javascript" src="/plugins/lib/common.js"></script>
+    
+    <script type="text/javascript" src="/plugins/VMFormValidator.js"></script>
+    
+    <script type="text/javascript" src="/plugins/tabDemo/SimpleTab.js"></script>
+
+    <style>
+        .overWindow {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: -100%;
+            background-color:#fff;
+        }
+    </style>
+    <eye:contentplaceholder id="headvalidate" />
+    <eye:contentplaceholder id="head" />
+    
+
+</head>
+
+<body>
+
+<!--top标题开始-->
+<div class="topWrap">
+	<div class="topTitle">
+        <eye:contentplaceholder id="topTitle" />
+    </div>
+    <div class="topLeft">
+        <eye:contentplaceholder id="topLeft" />
+    </div>
+    <div class="topRight">
+        <eye:contentplaceholder id="topRight" />
+    </div>
+    <div class="topRightImg" id="topRightImg" style="display:none">
+        <eye:contentplaceholder id="topRightImg" />
+    </div>
+</div>
+
+<eye:contentplaceholder id="mainWrap" />
+
+
+  
+</body>
+</html>

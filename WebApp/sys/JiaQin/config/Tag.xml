@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>  
+  <Action path="TagFigure" ref="tag" method="Figure"  comment="标签数据" >
+    <Success>admin/Tag/figure.html</Success>
+  </Action>
+  <Action path="TagList" ref="tag" method="List"  comment="标签数据" >
+    <Success>admin/Tag/list.html</Success>
+  </Action>
+  <Action path="AddTagPage" ref="tag" method="Add"  comment="标签数据" >
+    <Success>admin/Tag/add.html</Success>
+  </Action>
+
+  <Action path="AddTagEvent" ref="tag" method="AddEvent"  comment="标签数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateTagPage" ref="tag" method="Update"  comment="标签数据编辑" >
+    <Success>admin/Tag/update.html</Success>
+  </Action>
+
+  <Action path="UpdateTagEvent" ref="tag" method="UpdateEvent"  comment="标签数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="DeleteTagEvent" ref="tag" method="DeleteEvent"  comment="标签数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+</SimpleMvc>

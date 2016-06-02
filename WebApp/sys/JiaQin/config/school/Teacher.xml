@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SimpleMvc>  
+  <Action path="schoolTeacherFigure" ref="teacher" method="Figure"  comment="标签数据" >
+    <Success>school/Teacher/figure.html</Success>
+  </Action>
+  <Action path="schoolTeacherList" ref="teacher" method="List"  comment="标签数据" >
+    <Success>school/Teacher/list.html</Success>
+  </Action>
+
+  <Action path="AddSchoolTeacherPage" ref="teacher" method="Add"  comment="教师数据" >
+    <Success>school/Teacher/add.html</Success>
+  </Action>
+
+  <Action path="AddSchoolTeacherEvent" ref="teacher" method="AddEvent"  comment="教师数据添加" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="UpdateSchoolTeacherPage" ref="teacher" method="Update"  comment="教师数据编辑" >
+    <Success>school/Teacher/update.html</Success>
+  </Action>
+
+  <Action path="UpdateSchoolTeacherEvent" ref="teacher" method="UpdateEvent"  comment="教师数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="DeleteSchoolTeacherEvent" ref="teacher" method="DeleteEvent"  comment="教师数据编辑" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="RestoreSchoolTeacherEvent" ref="teacher" method="RestoreSchoolTeacherEvent"  comment="教师恢复" >
+    <Success>json</Success>
+  </Action>
+
+  <Action path="SignMessageFigure" ref="teacher" method="SignMessageFigure"  comment="教师数据编辑" >
+    <Success>school/SignMessage/figure.html</Success>
+  </Action>
+  <Action path="signMessageTagStudentList" ref="teacher" method="TagStudentList"  comment="教师数据编辑" >
+    <Success>school/SignMessage/studentList.html</Success>
+  </Action>
+  <Action path="SingleSignProjectEvent" ref="teacher" method="SingleSignProjectEvent"  comment="托管考勤" >
+    <Success>json</Success>
+  </Action>
+</SimpleMvc>

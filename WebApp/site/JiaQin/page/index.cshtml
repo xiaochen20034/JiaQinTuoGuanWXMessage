@@ -1,0 +1,70 @@
+﻿<eye:masterpagefile masterpagefile="master.cshtml">
+    <eye:content contentplaceholderid="head">
+        <eye:if test="${isnull(vipuser)}">
+            <script type="text/javascript">
+                window.location.href = "/wxurl/login.aspx";
+             </script>
+            <eye:endpage/>
+        </eye:if>
+        ${urlCss('login.css')}
+        ${urlCss('user.css')}
+        <style>
+            .userInfoWrap p {
+                text-align:right;
+            }
+        </style>
+          <script type="text/javascript">
+            function VipUserLogOutOver(json) {
+                Cookie.dispose('aspx_vipusername');
+                Cookie.dispose('wxopenid');
+                Cookie.dispose('wxopenId');
+                Cookie.dispose('ccpcode');
+                window.location = 'login.aspx';
+            }
+            
+        </script>
+    </eye:content>
+    <eye:content contentplaceholderid="topTitle">首页</eye:content>
+    <eye:content contentplaceholderid="topLeft"></eye:content>
+    <eye:content contentplaceholderid="topRight"></eye:content>
+    <eye:content contentplaceholderid="mainWrap">
+      
+             
+<!--头像及背景开始-->
+<div class="headImgWrap">
+	<div class="headImg">
+    	<img src="${vipuser.Photo}">
+    </div>
+    <div class="userName"><a>${vipuser.Name}</a></div>
+</div>
+
+<!--头像及背景结束-->
+
+        <eye:set name="parent" value="${ParentInfoOfCurrentVipUser()}"/>
+        <eye:set name="student" value="${parent.StudentInfo}"/>
+        <eye:set name="studentVipUser" value="${parent.StudentInfo.VipUserInfo}"/>
+<div class="userInfoWrap">
+	    
+    <div class="userWrap01">
+    	<ul>
+            <li><font>宝贝姓名</font><p>${studentVipUser.Name}</p></li>
+            <li><font>性别</font><p>${studentVipUser.Gender}</p></li>
+            <li><font>年龄</font><p>${student.Age}</p></li>
+            <li><font>剩余托管次数</font><p>${student.Times}</p></li>
+        </ul>
+    </div>
+    
+
+</div>
+        <div class="userInfoWrap">
+            <div class="userWrap02">
+    	<ul>
+            <li><font>家长姓名</font><p>${vipuser.Name}</p></li>            
+            <li><font>联系方式</font><p>${vipuser.Phone}</p></li>
+        </ul>
+    </div>
+            </div>
+          <div class="outLogin"><a href="javascript:void(0)" onclick="SubmitForm2(this, VipUserLogOutOver,this)" action="VipUserLogOutEvent.aspx">退出登录</a></div>
+
+    </eye:content>
+</eye:masterpagefile>

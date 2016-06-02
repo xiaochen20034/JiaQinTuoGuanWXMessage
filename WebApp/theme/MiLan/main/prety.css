@@ -6,7 +6,7 @@
 	font-size: 12px;
     display: inline-block;
 	}	
-.hold input[type="text"],.hold select{
+.hold input[type="text"],.hold input[type="number"],.hold select{
 	width:200px;
 	padding:2px 5px;
 	font-size:12px;

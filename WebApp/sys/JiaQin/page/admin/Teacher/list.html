@@ -1,0 +1,41 @@
+﻿
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:30px;">序号</th>
+                <th>校区</th>
+                <th style="width:100px;">姓名</th>
+                <th style="width:100px;">性别</th>
+                <th style="width:150px;">联系方式</th>
+                <th style="width:150px;">管理标签</th>
+            </tr>
+        </thead>
+        <tbody>
+            <eye:foreach collection="${teacherList}" var="teacher" index="index">
+                <eye:set name="user" value="${teacher.SysUserInfo}"/>
+                <tr>
+                <td>${index}</td>
+                <td>${teacher.SchoolInfo.Name}</td>
+                <td>${user.Name}</td>
+                <td>${user.Gender}</td>
+                <td>${user.Phone}</td>
+                <td>
+                    <eye:foreach collection="${teacher.TagList}" var="tag">
+                        ${tag.Name}、
+                    </eye:foreach>
+                </td>
+            </tr>
+            </eye:foreach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8">
+                     <eye:pageBar perfix="" update="css:section" url="SchoolList.aspx" form="" param="" templatepath="../../webpageBar.html"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+</div>

@@ -36,19 +36,21 @@ namespace JiaQin.Entity.Lazy
               {
                    base.StudentInfo= value;
               }
-        }
-       public Func<int, VipUser> VipUserInfoLazy = null;
-		public override VipUser VipUserInfo{
+        }
+
+        public Func<int, SysUser> TeacherUserInfoLazy = null;
+        public override SysUser TeacherUserInfo
+       {
               get{
-                     if (base.VipUserInfo == null && this.VipUserInfoLazy!= null)
+                  if (base.TeacherUserInfo == null && this.TeacherUserInfoLazy != null)
                     {
-                        return this.VipUserInfoLazy(base.TeaVipUserId);
+                        return this.TeacherUserInfoLazy(base.TeaUserId);
                     }
-                    return base.VipUserInfo;
+                  return base.TeacherUserInfo;
               }
               set
               {
-                   base.VipUserInfo= value;
+                  base.TeacherUserInfo = value;
               }
         }
     }

@@ -35,13 +35,16 @@ namespace JiaQin.Entity
 		/// <summary>
 		/// 教师用户ID
 		/// </summary>
-		public int TeaVipUserId{set;get;}
+		public int TeaUserId{set;get;}
 		/// <summary>
 		/// 教师ID
 		/// </summary>
-		public int TeaId{set;get;}
+		public int TeaId{set;get;}
+
+        public string Remark { set; get; }
             public virtual SignProject SignProjectInfo{set;get;}
-            public virtual Student StudentInfo{set;get;}
-            public virtual VipUser VipUserInfo{set;get;}
+            public virtual Student StudentInfo{set;get;}
+
+            public virtual SysUser TeacherUserInfo { set; get; }
     }
 }

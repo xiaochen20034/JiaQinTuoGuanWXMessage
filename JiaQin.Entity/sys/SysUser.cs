@@ -28,6 +28,7 @@ namespace JiaQin.Entity
         /// </summary>
         public int TempInt2 { set; get; }
 
+        public virtual School SchoolInfo { set; get; }
         public virtual SysRole[] SysRoleList { set; get; }
         public virtual SysPermission[] SysPermissionList { set; get; }
     }

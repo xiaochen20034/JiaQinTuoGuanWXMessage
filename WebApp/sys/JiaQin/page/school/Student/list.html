@@ -1,0 +1,64 @@
+﻿
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width:30px;">序号</th>
+                <th style="width:100px;">姓名</th>
+                <th style="width:100px;">性别</th>
+                <th style="width:150px;">年龄</th>
+                
+                <th style="width:100px;">家长姓名</th>
+                <th style="width:100px;">联系方式</th>
+                <th style="width:150px;">剩余托管次数</th>
+
+                <th >标签</th>
+                <th style="width:150px;">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <eye:foreach collection="${studentList}" var="student" index="index">
+                <eye:set name="user" value="${student.VipUserInfo}"/>
+                <eye:set name="parent" value="${student.ParentInfo.VipUserInfo}"/>
+
+                <tr>
+                <td>${index}</td>
+                <td>${user.Name}</td>
+                <td>${user.Gender}</td>
+                <td>${student.Age}</td>
+                    
+                <td>${parent.Name}</td>
+                <td>${parent.Phone}</td>
+                <td>${student.Times}</td>
+
+                <td>
+                    <eye:foreach collection="${student.TagList}" var="tag">
+                        ${tag.Name}、
+                    </eye:foreach>
+                </td>
+                    <td>
+                         <input type="button" class="btn btn-small" value="编辑" onclick="ShowWindow2(this)"  action="UpdateSchoolStudentPage" reFreshBtn="css:table .pageBarRefresh" param="id=${student.Id}"/>
+
+
+                        <eye:if test="${isnull(teacher.DeleteDate)}">
+                            <input type="button" class="btn btn-small" value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteSchoolTeacherEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${student.Id}" actionTip="确定删除？删除后，将不能发送托管消息"/>
+                        <eye:else/>
+                            <input type="button" class="btn btn-small btn-warning" value="恢复" onclick="SubmitForm2(this,null,this)" action="RestoreSchoolTeacherEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${student.Id}"/>
+
+                        </eye:if>
+                        
+                    </td>
+            </tr>
+            </eye:foreach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="9">
+                     <eye:pageBar perfix="" update="css:section" url="schoolStudentList.aspx" form="" param="" templatepath="../../webpageBar.html"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+
+</div>

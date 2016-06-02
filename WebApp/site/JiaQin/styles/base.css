@@ -1,0 +1,501 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+.body{
+	max-width:500px;
+	margin:auto;
+	}
+.bgBlue{
+	background:#0a96fa;
+	}
+.bgHui{
+	background:#efefef;
+	}
+.bgRed{
+	background:#f00;
+	}
+.bgf73443{
+	background:#f73443;
+	}
+.bgWhite{
+	background:#fff;
+	}
+.bgZi{
+	background:#b841ae;
+	}
+.bgLv{
+	background:#57d99e;
+}
+.bgHuang{
+	background:#b2bc0f;
+	}
+.colorZi{
+	color:#b841ae;
+	}
+.colorBlue{
+	color:#0a96fa;
+	}
+.colorHui{
+	color:#efefef;
+	}
+.colorWhite{
+	color:#fff;
+	}
+.colorLv{
+	color:#57d99e;
+}
+.colorHuang{
+	color:#b2bc0f;
+	}
+.colorRed{
+	color:#f00;
+	}
+.color999{
+	color:#999;
+	}
+.color666{
+	color:#666;
+	}
+.paddingAll{
+	padding:1px 5px;
+	margin-right:5px;
+	}
+/*top标题栏开始*/
+.topWrap{
+	position:relative;
+	height:50px;
+	background:#b841ae;
+	}
+.topWrap .topTitle{
+	text-align:center;
+	font-size:20px;
+	color:#fff;
+	line-height:50px;
+	}
+.topWrap .topLeft{
+	font-size:0px;
+	width:18px;
+	height:25px;
+	position:absolute;
+	background:url(../images/icon/icon.png);
+	background-position:370px 0;
+	left:10px;
+	top:14px;
+	}
+.topWrap .topRight{
+	position:absolute;
+	right:10px;
+	top:15px;
+	font-size:16px;
+	color:#fff;	
+	}
+
+
+.topRightImg{
+	font-size:0px;
+	width:18px;
+	height:25px;
+	position:absolute;
+	background:url(../images/icon.png);
+	background-position:197px 0;
+	right:10px;
+	top:14px;
+	}
+.topRightImg a{
+	display:block;
+	}
+
+
+.topWrap .topLeft a,.topWrap .topLeft label{
+	width:18px;
+	height:25px;
+	display:block;
+	}
+.topWrap .topRight a{
+	color:#fff;
+	display:block;
+	}
+/*top标题栏结束*/
+
+
+/*轮播开始*/
+.bannerWrap{
+	height:200px;
+	background:#d1d1d1;
+	}
+/*轮播结束*/
+
+/*课程、活动等分类开始*/
+
+.classWrap{
+	}
+
+.subMenu{
+	height:50px;
+	background:#fff;
+	overflow:hidden;
+	font-size:18px;
+	line-height:50px;
+	}
+
+.subMenu{
+	color:#666666;
+	overflow: hidden;
+    overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+}
+.subMenu::-webkit-scrollbar{display:none}
+.subMenu span{
+	padding:12px 5px;
+	margin-left:15px;
+}
+.subMenu span.onClick{
+	padding:12px 8px;
+	color:#b841ae;
+	border-bottom:#b841ae 3px solid;
+	}
+
+.classList li{
+	background:#fff;
+	border:#d4d4d4 1px solid;
+	margin:15px 10px;
+	margin-bottom:0;
+	border-radius:3px;
+	}
+.classList li:last-child{
+	margin-bottom:20px;
+	}
+.classList .classImg{
+	height:150px;
+	width:100%;
+	background:#d1d1d1;
+	overflow:hidden;
+	}
+.classList .classBigTitle{
+	font-size:16px;
+	line-height:30px;
+	padding:2px 8px;
+	overflow:hidden;
+	text-overflow:ellipsis;/*文字溢出的部分隐藏并用省略号代替*/
+	white-space:nowrap;/*文本不自动换行*/
+	}
+.classList a .classBigTitle{
+	color:#000;
+	}
+.classList .classSmallTitle{
+	overflow:hidden;
+	height:40px;
+	font-size:12px;
+	line-height:20px;
+	padding:2px 8px;
+	color:#666666;
+	}
+.classList .teacherInfo{
+	position:relative;
+	padding:10px 8px;
+	height:70px;
+	}
+.teacherInfo .className{
+	color:#b841ae;
+	font-size:16px;
+	position:absolute;
+	top:35px;
+	left:80px;	
+	}
+.teacherInfo .className a{
+	color:#b841ae;
+	}
+.teacherInfo .classMoney{
+	width:80px;
+	height:35px;
+	color:#fff;
+	text-align:center;
+	line-height:35px;
+	position:absolute;
+	top:28px;
+	right:10px;
+	background:#b841ae;
+	border-radius:5px;
+	font-size:16px;
+	}
+.teacherInfo .classMoney a{
+	color:#fff;
+	}
+.classList .classHeadImg{
+	position:absolute;
+	top:15px;
+	left:10px;	
+	height:60px;
+	width:60px;
+	}
+.classList .classHeadImg img{
+	height:60px;
+	width:60px;
+	border:#d4d4d4 1px solid;
+	border-radius:60px;
+	}
+
+/*课程、活动等分类结束*/
+
+
+/*提示开始*/
+
+.Prompt{
+	position:fixed;
+	top:40%;
+	left:30%;
+	background:#000;
+	border-radius:8px;
+	padding:15px;
+	line-height:30px;
+	font-size:16px;
+	color:#fff;
+	text-align:center;
+	max-width:50%;
+	filter:alpha(opacity=60);
+	-moz-opacity:0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
+	}
+.Prompt .img{
+	width:70px;
+	margin:auto;
+	margin:0px 10px;
+}
+
+/*提示结束*/
+.marginB80{
+	margin-bottom:60px;
+	}
+.marginB20{
+	margin-bottom:20px;
+	}	
+	
+/*加载更多开始*/
+.JiaZaiMoreWrap{
+	margin:0 10px;
+	border-radius:5px;
+	border:#d1d1d1 1px solid;
+	font-size:16px;
+	line-height:50px;
+	height:50px;
+	text-align:center;
+	background:#fff;
+	color:#666;
+	}
+.JiaZaiMoreWrap.loading{
+
+    font-size:0px;
+    width: 80%;
+    height: 50px;
+    display: block;
+    margin:0 auto;
+}
+
+/*更多主菜单开始*/
+.menuMore{
+	position:fixed;
+	right:10px;
+	bottom:20px;
+	width:50px;
+	height:50px;
+	font-size:0;
+	}
+.menuMore a{
+    display:block;
+	width:50px;
+    height:50px;
+    background-image:url(../images/logo.png);
+    background-size:100% 100%;
+}
+
+.menuMoreWrap{
+	width:99%;
+	margin:auto;
+	}
+.menuMoreWrap li{
+	float:left;
+	width:33%;
+	margin-top:20px;
+	}
+.menuMoreWrap li.click a{
+	color:#b841ae;
+}
+.menuMoreWrap li.click a:before{
+    content:"√"
+}
+
+.menuMoreWrap li a{
+	color:#666;
+	margin:auto;
+	text-align:center;
+	width:80%;
+	display:block;
+	height:40px;
+	font-size:16px;
+	line-height:40px;
+	border-radius:5px;
+	border:#807e7e 1px solid;
+	}
+/*更多主菜单结束*/
+
+/** Begin： 列表的正在加载效果 **/
+.JiaZaiMoreWrap.loading{ 
+  background: transparent;
+  border: none;
+}
+.JiaZaiMoreWrap.loading .dot {
+  width: 24px;
+  height: 24px;
+  background: #3ac;
+  border-radius: 100%;
+  display: inline-block;
+  animation: slide 1s infinite;
+}
+.JiaZaiMoreWrap.loading .dot:nth-child(1) {
+  animation-delay: 0.1s;
+  background: #32aacc;
+}
+.JiaZaiMoreWrap.loading .dot:nth-child(2) {
+  animation-delay: 0.2s;
+  background: #64aacc;
+}
+.JiaZaiMoreWrap.loading.dot:nth-child(3) {
+  animation-delay: 0.3s;
+  background: #96aacc;
+}
+.JiaZaiMoreWrap.loading .dot:nth-child(4) {
+  animation-delay: 0.4s;
+  background: #c8aacc;
+}
+.JiaZaiMoreWrap.loading .dot:nth-child(5) {
+  animation-delay: 0.5s;
+  background: #faaacc;
+}
+@-moz-keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-o-keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/** End： 列表的正在加载效果 **/
+
+
+.JiaZaiMoreWrap label{
+	display:block;
+	color:#666;
+}
+.JiaZaiMoreWrap.disabled label{
+	display:block;
+	color:#d4d4d4;
+}
+/*加载更多结束*/
+
+
+
+/*左图右文字列表开始*/
+.commonList01{
+	
+	}
+.commonList01 li{
+	position:relative;
+	margin:10px;
+	border-bottom:#d1d1d1 1px solid;
+	}
+.commonList01 li:last-child{
+	border-bottom:none;
+	}
+
+.list01{
+	}
+.list01 img{
+	width:120px;
+	height:90px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	}
+.list01 .list01Title{
+	margin-left:130px;
+	}
+.list01 .list01Title .bigTitle{
+	font-size:16px;
+	line-height:30px;
+	height:70px;
+	color:#666;
+	}
+.list01 .list01Title .smallTitle{
+	font-size:12px;
+	margin-bottom:10px;
+	color:#666;
+	overflow:hidden;
+	text-overflow:ellipsis;/*文字溢出的部分隐藏并用省略号代替*/
+	white-space:nowrap;/*文本不自动换行*/
+	}
+.list01 .list01Title .smallTitle a,.list01 .list01Title .bigTitle a{
+	color:#666;
+	}
+
+/*左图右文字列表结束*/
+
+
+
+.join{
+	width:100%;
+	position:fixed;
+	bottom:0px;
+	font-size:18px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	background:#b841ae;
+	color:#fff;
+	}
+.join a{
+	width:100%;
+	color:#fff;
+	}

@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*登录页面按钮开始*/
+.btn{
+	border-radius:5px;
+	text-align:center;
+	color:#fff;
+	font-size:18px;
+	line-height:50px;
+	margin:20px auto;
+	}
+.btn a{
+	color:#fff;
+	}
+.btn.color01{
+	background:#c87ac1;
+	}
+.btn.color02{
+	background:#b841ae;
+	}
+.btn.color03{
+	background:#c87ac1;
+	}
+.loginBtn{
+	height:50px;
+	}
+.loginBtn a{
+	display:block;
+	color:#fff;
+	}
+/*登录页面按钮开始*/
+
+/*活动详情页面按钮开始*/
+
+.btn50{
+	width:50%;
+	}
+
+/*活动详情页面按钮结束*/
+
+.askBtn{
+	border-top:1px solid #efefef;
+	position:fixed; 
+	bottom:0; 
+	width:100%;
+	text-align:center;
+	color:#fff;
+	font-size:18px;
+	line-height:50px;
+}
+.askBtn li{
+	float:left;
+	}
+.askBtn li a{
+	}
+.FbMore{
+	position:absolute;
+	top:0px;
+	right:10px;
+	}
+
+.margin10{
+	margin:10px;
+	}

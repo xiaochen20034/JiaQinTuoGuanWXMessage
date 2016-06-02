@@ -50,6 +50,22 @@ namespace JiaQin.Entity.Lazy
               {
                    base.TagList = value;
               }
-    }
+    }
+        public Func<int, SysUser> SysUserInfoLazy = null;
+        public override SysUser SysUserInfo
+        {
+            get
+            {
+                if (base.SysUserInfo == null && this.SysUserInfoLazy != null)
+                {
+                    return this.SysUserInfoLazy(base.UserId);
+                }
+                return base.SysUserInfo;
+            }
+            set
+            {
+                base.SysUserInfo = value;
+            }
+        }
     }
 }

@@ -41,9 +41,6 @@
     <Reference Include="Zhyj.AderTemplates">
       <HintPath>..\WebApp\dll\Zhyj.AderTemplates.dll</HintPath>
     </Reference>
-    <Reference Include="Zhyj.AppHandler">
-      <HintPath>..\WebApp\dll\Zhyj.AppHandler.dll</HintPath>
-    </Reference>
     <Reference Include="Zhyj.Common">
       <HintPath>..\WebApp\dll\Zhyj.Common.dll</HintPath>
     </Reference>
@@ -53,6 +50,10 @@
     <Reference Include="Zhyj.ICached">
       <HintPath>..\WebApp\dll\Zhyj.ICached.dll</HintPath>
     </Reference>
+    <Reference Include="Zhyj.LitJson, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebApp\dll\Zhyj.LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="Zhyj.Tencent.WeiXin">
       <HintPath>..\WebApp\dll\Zhyj.Tencent.WeiXin.dll</HintPath>
     </Reference>
@@ -61,6 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StudentServ.cs" />
+    <Compile Include="sys\SiteWebPage.cs" />
+    <Compile Include="TeacherServ.cs" />
+    <Compile Include="TagServ.cs" />
     <Compile Include="SignProjectServ.cs" />
     <Compile Include="SchoolServ.cs" />
     <Compile Include="Site\SiteColumnServ.cs" />
@@ -78,6 +83,10 @@
     <Compile Include="sys\WxSettingServ.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\XiaoXin3.0\XiaoXin3.0\Zhyj.AppHandler\Zhyj.AppHandler.csproj">
+      <Project>{014cbf15-a5e1-4646-aca8-0c45f8ea5aa6}</Project>
+      <Name>Zhyj.AppHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JiaQin.Data\JiaQin.Data.csproj">
       <Project>{ee6d62a9-a166-45d2-bad2-2a9d0b832454}</Project>
       <Name>JiaQin.Data</Name>

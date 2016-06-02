@@ -119,6 +119,55 @@ namespace JiaQin.Data
 			DataCached[key] = obj;
             return obj;
         }
+
+    public Parent getParentInfoByVipUserId(int vipUserId)
+    {
+
+        string key = GetCacheKey(typeof(Parent), vipUserId);
+
+        ParentLazy obj = DataCached.GetItem<ParentLazy>(key);
+
+        if (obj != null)
+        {
+            return obj;
+        }
+
+        Executor.addParameter("@vipUserId", vipUserId);
+        obj = Executor.executeForSingleObject<ParentLazy>("select * from Parent where vipUserId=@vipUserId");
+        if (obj == null)
+        {
+            return null;
+        }
+        this.Lazy(obj);
+        DataCached[key] = obj;
+        return obj;
+
+    }
+
+
+    public Parent getParentInfoByStudentId(int studentId)
+    {
+
+        string key = GetCacheKey(typeof(Parent), studentId);
+
+        ParentLazy obj = DataCached.GetItem<ParentLazy>(key);
+
+        if (obj != null)
+        {
+            return obj;
+        }
+
+        Executor.addParameter("@studentId", studentId);
+        obj = Executor.executeForSingleObject<ParentLazy>("select * from Parent where studentID=@studentId");
+        if (obj == null)
+        {
+            return null;
+        }
+        this.Lazy(obj);
+        DataCached[key] = obj;
+        return obj;
+
+    }
         public void Add(Parent obj){
     int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [parent]
            (

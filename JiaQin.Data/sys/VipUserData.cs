@@ -187,6 +187,16 @@ namespace JiaQin.Data
             })) > 0;
     }
 
+    public bool Exist(string phone,int id)
+    {
+        return Convert.ToInt32(Executor.executeSclar("select count(1) from [vipUser] where (phone=@phone or username=@phone) and id<>@id", System.Data.CommandType.Text, new object[,]{
+                    {"@phone",phone},
+                    {"@id",id}
+            })) > 0;
+    }
+
+
+
     public VipUser Info(int id) { return Info((Int64)id); }
     public VipUser Info(Int64 id)
     {

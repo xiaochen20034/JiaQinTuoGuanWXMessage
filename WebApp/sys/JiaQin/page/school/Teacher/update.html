@@ -1,0 +1,62 @@
+﻿<div style="width:500px;" windowTitle="编辑教师信息">
+      <eye:if test="${isnull(userInfo)}">
+        教师已删除，无法编辑
+        <eye:endpage/>
+    </eye:if>
+    <script>
+        function Validate(form, btn) {
+            var vForm = new VMFormValidator(form, {
+                'errorDisplay': 'element',
+                validateElementMultiple: true
+            });
+
+            vForm.required("Name", "请输入教师姓名");
+            vForm.required("Gender", "请选择性别");
+            vForm.required("Phone", "请输入手机号码");
+            
+            
+            var flag = vForm.executeAllValidators();
+            return flag;
+        }
+
+    </script>
+    <form action="UpdateSchoolTeacherEvent.aspx" method="post" enctype="multipart/form-data">        
+        <input type="hidden" name="Id" value="${userInfo.Id}"/>
+        <div class="hold">
+            <label>姓　　名：<input type="text" name="Name" value="${userInfo.Name}"/></label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>性　　别：
+                    <select name="Gender">
+                        <option value="男" ${iif(userInfo.Gender is '男','selected','')}>男</option>
+                        <option value="女"  ${iif(userInfo.Gender is '女','selected','')}>女</option>
+                    </select>    
+            </label>
+            <span class="msg"></span>
+        </div>
+        <div class="hold">
+            <label>手机号码：<input type="text" name="Phone" value="${userInfo.Phone}"/></label>
+            <span class="msg">将作为登陆用户名</span>
+        </div>
+         <div class="hold">
+            <label>标签：</label>
+            <span class="msg">将可以对标签下的学生进行托管签到</span>
+             <br/><br/>
+             <eye:foreach collection="${tagList}" var="tag" index="index">
+                 <eye:set name="ck" value=""/>
+                 
+                 <eye:if test="${this.ContainsTag(tag,userTagList)}">
+                    <eye:set name="ck" value="checked"/>
+                 </eye:if>
+                 <label style="display:inline-block; width:100px"><input ${ck} type="checkbox" name="tag" value="${tag.Id}"/>　${tag.Name}</label>       
+                 
+             </eye:foreach>
+        </div>
+
+        <div class="hold">
+            <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate,null, this)"  value="提交"/>
+        </div>
+                
+    </form>
+</div>
