@@ -210,15 +210,15 @@ namespace JiaQin.Data
             try
             {
                 Executor.executeNonQuery(@"delete from  [teacherTag]
-           where tagId=@id", System.Data.CommandType.Text, new object[,]{
+           where tagId=@tagId", System.Data.CommandType.Text, new object[,]{
 	        {"@tagId",id}
             }, false);
                 Executor.executeNonQuery(@"delete from  [studentTag]
-           where tagId=@id", System.Data.CommandType.Text, new object[,]{
+           where tagId=@tagId", System.Data.CommandType.Text, new object[,]{
 	        {"@tagId",id}
             }, false);
                 Executor.executeNonQuery(@"delete from  [tag]
-           where id=@id", System.Data.CommandType.Text, new object[,]{
+           where id=@tagId", System.Data.CommandType.Text, new object[,]{
 	        {"@tagId",id}
             }, false);
 

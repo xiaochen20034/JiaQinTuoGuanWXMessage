@@ -270,6 +270,10 @@ namespace JiaQin.Data
             }, true));
 
                 StringBuilder sb = new StringBuilder();
+                if (tags==null)
+                {
+                    tags = new string[0];
+                }
                 foreach (string item in tags)
                 {
                     if (Convert.ToInt32(Executor.executeSclar("select count(1) from studentTag where studentId=@studentId and tagId=@tagId", CommandType.Text, new object[,]{
@@ -333,6 +337,10 @@ namespace JiaQin.Data
 
 
                 StringBuilder sb = new StringBuilder();
+                if (tags==null)
+                {
+                    tags = new string[0];
+                }
                 foreach (string item in tags)
                 {
                     if (Convert.ToInt32(Executor.executeSclar("select count(1) from studentTag where studentId=@studentId and tagId=@tagId", CommandType.Text, new object[,]{
@@ -354,6 +362,11 @@ namespace JiaQin.Data
                             {"@studentId",studentId}
                         },false);
                 }
+                else {
+                    Executor.executeNonQuery("delete studentTag where  studentId =@studentId ", CommandType.Text, new object[,]{
+                            {"@studentId",studentId}
+                        }, false);
+                }
                 Executor.transOver(true);
                 removeCache(typeof(Student));
                 removeCache(typeof(Parent));
@@ -373,14 +386,14 @@ namespace JiaQin.Data
         public void Restore(int id)
         {
             Executor.addParameter("@userId", id);
-            Executor.executeNonQuery("update student set deleteDate=null where  userId=@userId");
+            Executor.executeNonQuery("update student set deleteDate=null where  id=@userId");
             removeCache(typeof(Student));
         }
         public void Delete(int id)
         {
             Executor.addParameter("@date", DateTime.Now);
             Executor.addParameter("@userId", id);
-            Executor.executeNonQuery("update student set deleteDate=@date where  userId=@userId");
+            Executor.executeNonQuery("update student set deleteDate=@date where  id=@userId");
             removeCache(typeof(Student));
         }
 

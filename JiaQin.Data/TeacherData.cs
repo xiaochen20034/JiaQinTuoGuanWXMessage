@@ -221,6 +221,10 @@ namespace JiaQin.Data
 
             }));
                 StringBuilder sb = new StringBuilder();
+                if (tag==null)
+                {
+                    tag = new string[0];
+                }
                 foreach (string item in tag)
                 {
                     if (Convert.ToInt32(Executor.executeSclar("select count(1) from teacherTag where teacherId=@teacherId and tagId=@tagId", CommandType.Text,new object[,]{
@@ -257,6 +261,10 @@ namespace JiaQin.Data
             Teacher teacherInfo = getTeacherInfoByUserId(obj.Id);
             userData.UpdateBasicInfo(obj);
             StringBuilder sb = new StringBuilder();
+            if (tag==null)
+            {
+                tag = new string[0] ;
+            }
             foreach (string item in tag)
             {
                 if (Convert.ToInt32(Executor.executeSclar("select count(1) from teacherTag where teacherId=@teacherId and tagId=@tagId", CommandType.Text, new object[,]{
@@ -275,6 +283,12 @@ namespace JiaQin.Data
             {
                 sb.Remove(0, 1);
                 Executor.executeNonQuery("delete teacherTag where  teacherId =@teacherId and  tagId not in(" + sb.ToString() + ")", CommandType.Text, new object[,]{
+                            {"@teacherId",teacherInfo.Id}
+                        });
+            }
+            else
+            {
+                Executor.executeNonQuery("delete teacherTag where  teacherId =@teacherId", CommandType.Text, new object[,]{
                             {"@teacherId",teacherInfo.Id}
                         });
             }

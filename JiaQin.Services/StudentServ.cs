@@ -119,7 +119,8 @@ namespace JiaQin.Services
             TemplateData[JsonKeyValue.tip] = "学生信息保留，但不能发送托管消息。操作完成";
         }
 
-        public void RestoreSchoolTeacherEvent() {
+        public void RestoreSchoolStudentEvent()
+        {
             StudentData teacherData = dataExecutorImp.GetInstance<StudentData>();
             teacherData.Restore(this.ID);
 
