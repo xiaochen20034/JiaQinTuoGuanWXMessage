@@ -12,6 +12,7 @@
 
             vForm.required("Name", "请输入标签名称");
 
+            vForm.required("SignProjectId", "请选择托管项目");
 
             var flag = vForm.executeAllValidators();
             return flag;
@@ -24,7 +25,15 @@
             <label>名称：<input type="text" name="Name" value="${tagInfo.Name}"/></label>
             <span class="msg"></span>
         </div>
-
+        
+         <div class="hold">
+            <label>托管项目</label>
+            <span class="msg"></span>
+            <br/>
+             <eye:foreach collection="${projectList}" var="pro">
+                 <label><input type="radio" value="${pro.Id}" name="SignProjectId" ${iif(tagInfo.SignProjectId is pro.Id,'checked','')}/> ${pro.Name}</label>　　
+             </eye:foreach>
+        </div>
         <div class="hold">
             <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate,null, this)"  value="提交"/>
         </div>

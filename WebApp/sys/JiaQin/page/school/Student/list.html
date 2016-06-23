@@ -5,15 +5,15 @@
             <tr>
                 <th style="width:30px;">序号</th>
                 <th style="width:100px;">姓名</th>
-                <th style="width:100px;">性别</th>
-                <th style="width:150px;">年龄</th>
+                <th style="width:50px;">性别</th>
+                <th style="width:50px;">年龄</th>
                 
                 <th style="width:100px;">家长姓名</th>
                 <th style="width:100px;">联系方式</th>
-                <th style="width:150px;">剩余托管次数</th>
+                <th style="width:100px;">剩余托管次数</th>
 
                 <th >标签</th>
-                <th style="width:150px;">操作</th>
+                <th style="width:200px;">操作</th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +32,8 @@
                 <td>${student.Times}</td>
 
                 <td>
-                    <eye:foreach collection="${student.TagList}" var="tag">
-                        ${tag.Name}、
+                    <eye:foreach collection="${student.StudentTagList}" var="tag">
+                       ${tag.TagInfo.Name}：${tag.Times}<br/>
                     </eye:foreach>
                 </td>
                     <td>
@@ -41,6 +41,9 @@
 
                         <eye:if test="${isnull(student.DeleteDate)}">
                             <input type="button" class="btn btn-small" value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteSchoolStudentEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${student.Id}" actionTip="确定删除？删除后，将不能发送托管消息"/>
+                              <input type="button" class="btn btn-small" value="设置次数" onclick="ShowWindow2(this)"  action="SetStudentTagPage" reFreshBtn="css:table .pageBarRefresh" param="id=${student.Id}"/>
+
+                            
                         <eye:else/>
                             <input type="button" class="btn btn-small btn-warning" value="恢复" onclick="SubmitForm2(this,null,this)" action="RestoreSchoolStudentEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${student.Id}"/>
 

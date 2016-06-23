@@ -5,6 +5,7 @@
             <tr>
                 <th style="width:30px;">序号</th>
                 <th>名称</th>
+                <th>标签数量</th>
                 <th style="width:230px;">操作</th>
             </tr>
         </thead>
@@ -12,7 +13,10 @@
             <eye:foreach collection="${signProjectList}" var="sign" index="index">
                 <tr>
                 <td>${index}</td>
-                <td>${sign.Name}</td>             
+                <td>${sign.Name}</td> 
+                   <td>
+                       ${length(sign.TagList)}
+                   </td>            
                 <td>
                     <input type="button" class="btn btn-small" value="编辑" onclick="ShowWindow2(this)"  action="UpdateSignProjectPage" reFreshBtn="css:table .pageBarRefresh" param="id=${sign.Id}"/>
                     <input type="button" class="btn btn-small" value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteSignProjectEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${sign.Id}"/>

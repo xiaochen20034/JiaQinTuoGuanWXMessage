@@ -8,7 +8,23 @@ namespace JiaQin.Entity.Lazy
     /// 
     /// </summary>
     public class TagLazy:Tag
-    {
+    {
+        public Func<int, SignProject> SignProjectInfoLazy; 
+        public override SignProject SignProjectInfo
+        {
+            get
+            {
+                if (base.SignProjectInfo==null && SignProjectInfoLazy!=null)
+                {
+                    return SignProjectInfoLazy(base.SignProjectId);
+                }
+                return base.SignProjectInfo;
+            }
+            set
+            {
+                base.SignProjectInfo = value;
+            }
+        }
        public Func<int, School> SchoolInfoLazy = null;
 		public override School SchoolInfo{
               get{

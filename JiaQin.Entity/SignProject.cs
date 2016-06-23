@@ -15,7 +15,9 @@ namespace JiaQin.Entity
 		/// <summary>
 		/// 名称
 		/// </summary>
-		public string Name{set;get;}
-        public virtual SignRecord[] SignRecordList{set;get;}
+		public string Name{set;get;}
+        
+        public virtual SignRecord[] SignRecordList{set;get;}
+        public virtual Tag[] TagList { set; get; }
     }
 }

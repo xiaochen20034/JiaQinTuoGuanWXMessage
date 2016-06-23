@@ -30,6 +30,12 @@
   <Action path="RestoreSchoolStudentEvent" ref="student" method="RestoreSchoolStudentEvent"  comment="学生恢复" >
     <Success>json</Success>
   </Action>
-  
-  
+
+  <Action path="SetStudentTagPage" ref="student" method="SetTag"  comment="学生标签" >
+    <Success>school/Student/setTag.html</Success>
+  </Action>
+
+  <Action path="SetStudentTagEvent" ref="student" method="SetTagEvent"  comment="设置学生标签" >
+    <Success>json</Success>
+  </Action>
 </SimpleMvc>

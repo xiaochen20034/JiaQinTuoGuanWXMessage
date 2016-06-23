@@ -8,7 +8,24 @@ namespace JiaQin.Entity.Lazy
     /// 
     /// </summary>
     public class SignProjectLazy:SignProject
-    {
+    {
+        public Func<int, Tag[]> TagListLazy;
+
+        public override Tag[] TagList
+        {
+            get
+            {
+                if (base.TagList==null && TagListLazy!=null)
+                {
+                    return TagListLazy(base.Id);
+                }
+                return base.TagList;
+            }
+            set
+            {
+                base.TagList = value;
+            }
+        }
         public Func<int, SignRecord[]> SignRecordListLazy = null;   
 		public override SignRecord[] SignRecordList{
                get{

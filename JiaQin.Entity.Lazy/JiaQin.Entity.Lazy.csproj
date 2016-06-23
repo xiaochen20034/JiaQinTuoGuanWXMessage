@@ -48,6 +48,7 @@
     <Compile Include="Site\SiteColumnLazy.cs" />
     <Compile Include="Site\SiteNewLazy.cs" />
     <Compile Include="StudentLazy.cs" />
+    <Compile Include="StudentTagLazy.cs" />
     <Compile Include="sys\DepartmentLazy.cs" />
     <Compile Include="sys\SysPermission.cs" />
     <Compile Include="sys\SysRole.cs" />

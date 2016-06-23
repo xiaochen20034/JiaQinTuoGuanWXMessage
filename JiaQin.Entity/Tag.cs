@@ -19,7 +19,9 @@ namespace JiaQin.Entity
 		/// <summary>
 		/// 学校ID
 		/// </summary>
-		public int? SchoolId{set;get;}
+		public int? SchoolId{set;get;}
+        public int SignProjectId { set; get; }
+        public virtual SignProject SignProjectInfo { set; get; }
             public virtual School SchoolInfo{set;get;}
         /// <summary>
         /// 使用标签的学生列表

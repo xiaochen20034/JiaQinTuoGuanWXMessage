@@ -1,4 +1,8 @@
 ﻿<div style="width:500px;" windowTitle="添加标签">
+    <eye:if test="${length(projectList) is 0}">
+        系统暂无托管项目，无法添加标签
+        <eye:endpage/>
+    </eye:if>
     <script>
         function Validate(form, btn) {
             var vForm = new VMFormValidator(form, {
@@ -7,18 +11,26 @@
             });
 
             vForm.required("Name", "请输入标签名称");
+            vForm.required("SignProjectId", "请选择托管项目");
 
             var flag = vForm.executeAllValidators();
             return flag;
         }
 
     </script>
-    <form action="AddTagEvent.aspx" method="post" enctype="multipart/form-data">        
+    <form action="AddSchoolTagEvent.aspx" method="post" enctype="multipart/form-data">        
         <div class="hold">
             <label>名称：<input type="text" name="Name" value=""/></label>
             <span class="msg"></span>
         </div>
-
+         <div class="hold">
+            <label>托管项目</label>
+            <span class="msg"></span>
+            <br/>
+             <eye:foreach collection="${projectList}" var="pro">
+                 <label><input type="radio" value="${pro.Id}" name="SignProjectId"/> ${pro.Name}</label>　　
+             </eye:foreach>
+        </div>
         <div class="hold">
             <input type="button" class="btn" onclick="SubmitForm3('css:form', Validate,null, this)"  value="提交"/>
         </div>

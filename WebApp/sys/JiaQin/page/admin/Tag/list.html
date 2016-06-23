@@ -6,6 +6,7 @@
                 <th style="width:30px;">序号</th>
                 <th style="width:200px">校区</th>
                 <th>名称</th>
+                 <th>托管项目</th>
                 <th style="width:100px">教师使用人数</th>
                 <th style="width:100px">学生使用人数</th>
                 <th style="width:230px;">操作</th>
@@ -20,7 +21,8 @@
                         ${tag.SchoolInfo.Name}
                     </eye:if>
                     </td>
-                <td>${tag.Name}</td>  
+                <td>${tag.Name}</td> 
+                     <td> ${tag.SignProjectInfo.Name} </td>  
                 <td>${tag.StudentCount}</td>
                 <td>${tag.TeacherCount}</td>
                 <td>

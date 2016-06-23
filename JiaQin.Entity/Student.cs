@@ -38,9 +38,9 @@ namespace JiaQin.Entity
         public virtual Parent ParentInfo { set; get; }
         public virtual VipUser VipUserInfo{set;get;}
         public virtual SignRecord[] SignRecordList{set;get;}
-        /// <summary>
+       /// <summary>
         /// 学生的标签
         /// </summary>
-        public virtual Tag[] TagList { set; get; }
+        public virtual StudentTag[] StudentTagList { set; get; } 
     }
 }

@@ -73,7 +73,7 @@ namespace JiaQin.Data
         void Lazy(SignProjectLazy obj){
 
        obj.SignRecordListLazy=new Func<int, SignRecord[]>(GetInstance<SignRecordData>().getSignRecordListBySignProjectId);
-
+       obj.TagListLazy = new Func<int, Tag[]>(GetInstance<TagData>().getTagListBySignProjectlId);
         }
 
     public SignProject getSignProjectInfoById(int Id){

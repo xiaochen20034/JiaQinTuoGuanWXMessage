@@ -10,7 +10,7 @@ using Zhyj.Common;
 namespace JiaQin.Services
 {
     /// <summary>
-    /// 校区信息
+    /// 教师信息
     /// </summary>
     public class TeacherServ : JiaQin.Services.AppBase
     {
@@ -142,7 +142,7 @@ namespace JiaQin.Services
             TemplateData["projectList"]= signProjectData.List();
         }
         /// <summary>
-        /// 获取学生当他的签到情况
+        /// 获取学生当天的签到情况
         /// </summary>
         /// <param name="studentId"></param>
         /// <returns></returns>
@@ -155,6 +155,7 @@ namespace JiaQin.Services
         /// 托管签到事件
         /// </summary>
         public void SignProjectEvent() {
+            throw new Exception("未知废弃 SignProjectEvent");
             int signProjectId = Convert.ToInt32(Request["signProjectId"]);
             string[] studentId = Request.Params.GetValues("studentId");
             StringBuilder sb = new StringBuilder();
@@ -188,15 +189,15 @@ namespace JiaQin.Services
                     continue;
                 }
                 
-                signRecordData.Add(new SignRecord()
-                {
-                    SignDate = DateTime.Now,
-                    TeaUserId = CurrentUser.Id,
-                    TeaId = teacherInfo.Id,
-                    SignProjectId = signProjectId,
-                    StuId = stuId,
-                    StuVipUserId = stuInfo.VipUserID
-                });
+                //signRecordData.Add(new SignRecord()
+                //{
+                //    SignDate = DateTime.Now,
+                //    TeaUserId = CurrentUser.Id,
+                //    TeaId = teacherInfo.Id,
+                //    SignProjectId = signProjectId,
+                //    StuId = stuId,
+                //    StuVipUserId = stuInfo.VipUserID
+                //});
                 hashtable[item] = "托管消息已发送";
 
             }
@@ -206,6 +207,8 @@ namespace JiaQin.Services
         {
             int signProjectId = Convert.ToInt32(Request["signProjectId"]);
             string studentId = Request["studentId"];
+
+           
             StringBuilder sb = new StringBuilder();
             StudentData studentData = dataExecutorImp.GetInstance<StudentData>();
             System.Collections.Hashtable hashtable = new System.Collections.Hashtable();
@@ -221,6 +224,9 @@ namespace JiaQin.Services
                     TemplateData[JsonKeyValue.tip] = "托管项目信息不正确。";
                     return;
             }
+            StudentTagData studentTagData = dataExecutorImp.GetInstance<StudentTagData>();
+            StudentTag studentTagInfo = null;
+
             if (!int.TryParse(studentId, out stuId) || stuId <= 0)
                 {
                     TemplateData[JsonKeyValue.res] = JsonKeyValue.fail;
@@ -246,17 +252,18 @@ namespace JiaQin.Services
                     TemplateData[JsonKeyValue.tip] = "学生家长未绑定微信";
                     return;
                 }
-                if (stuInfo.Times<=0)
+                studentTagInfo= studentTagData.Info(stuInfo.ID,signProjectId);
+                if (stuInfo.Times <= 0 || studentTagInfo.Times<=0)
                 {
                     TemplateData[JsonKeyValue.res] = JsonKeyValue.fail;
-                    TemplateData[JsonKeyValue.tip] = "托管次数已用完，无法发送托管信息。";
+                    TemplateData[JsonKeyValue.tip] = studentTagInfo.TagInfo.Name+" 托管次数已用完，无法发送托管信息。";
                     return;
 
                 }
                 if (signRecordData.HasTodaySignRecord(stuId,signProjectId))
                 {
                     TemplateData[JsonKeyValue.res] = JsonKeyValue.fail;
-                    TemplateData[JsonKeyValue.tip] = "学生今天已经对项目托管签到";
+                    TemplateData[JsonKeyValue.tip] = "学生今天已经对项目 "+signProjectInfo.Name+" 托管签到";
                     return;
                 }
                 string remark = CurrentUser.Name + "已发送托管消息【" + signProjectInfo.Name+ "】给家长：" + stuInfo.ParentInfo.VipUserInfo.Nickname;
@@ -322,7 +329,7 @@ namespace JiaQin.Services
                             StuVipUserId = stuInfo.VipUserID,
                             Remark = remark
                         };
-                        signRecordData.Add(rec);
+                        signRecordData.Add(rec,studentTagInfo.Id);
 
 
                         weixin.SaveWeixinMsg(stuInfo.ID, rec.Id, DateTime.Now, result.msgid, "signRecord");

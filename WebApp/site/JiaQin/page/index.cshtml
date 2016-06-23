@@ -64,6 +64,20 @@
         </ul>
     </div>
             </div>
+
+
+         <div class="userInfoWrap">
+            <div class="userWrap02">
+    	        <ul>
+                      <eye:foreach collection="${student.StudentTagList}" var="tag">
+                        <li><font>${tag.TagInfo.Name}</font><p>${tag.Times}</p></li> 
+                    </eye:foreach>
+                    
+                </ul>
+            </div>
+        </div>
+
+
           <div class="outLogin"><a href="javascript:void(0)" onclick="SubmitForm2(this, VipUserLogOutOver,this)" action="VipUserLogOutEvent.aspx">退出登录</a></div>
 
     </eye:content>

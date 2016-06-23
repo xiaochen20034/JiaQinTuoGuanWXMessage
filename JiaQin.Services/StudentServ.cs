@@ -73,7 +73,7 @@ namespace JiaQin.Services
             TagData tagData = dataExecutorImp.GetInstance<TagData>();
             TemplateData["tagList"] = tagData.List();
             TemplateData["studentInfo"] = studentInfo;
-            TemplateData["userTagList"] = studentInfo.TagList;
+            TemplateData["userTagList"] = studentInfo.StudentTagList;
             
         }
         public bool ContainsTag(Tag tag,Tag[]taglist) {
@@ -127,7 +127,41 @@ namespace JiaQin.Services
             TemplateData[JsonKeyValue.res] = JsonKeyValue.alertRefresh;
             TemplateData[JsonKeyValue.tip] = "学生信息已恢复发送托管消息权限";
         }
-        
 
+
+        public void SetTag()
+        {
+
+            StudentData teacherData = dataExecutorImp.GetInstance<StudentData>();
+            Student studentInfo = teacherData.getStudentInfoById(this.ID);
+
+            TemplateData["studentInfo"] = studentInfo;
+
+            TemplateData["userTagList"] = studentInfo.StudentTagList;
+        }
+
+        public void SetTagEvent()
+        {
+            int studentId = Convert.ToInt32(Request["studentId"]);
+            StudentTagData studentTagData = dataExecutorImp.GetInstance<StudentTagData>();
+            StudentTag[] list = studentTagData.ListByStudentId(studentId);
+
+            foreach (StudentTag item in list)
+            {
+                int times = 0;
+                if (int.TryParse(Request["stuTag_" + item.Id], out times))
+                {
+                    item.Times = times>=0?times:0;
+                }
+                else
+                {
+                    times = -1;
+                }
+            }
+            studentTagData.Update(studentId,list);
+            TemplateData[JsonKeyValue.res] = JsonKeyValue.alertOKRefresh
+                ;
+            TemplateData[JsonKeyValue.tip] = "更新完成";
+        }
     }
 }

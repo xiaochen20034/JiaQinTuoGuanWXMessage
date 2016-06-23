@@ -48,6 +48,7 @@
     <Compile Include="Site\SiteColumn.cs" />
     <Compile Include="Site\SiteNew.cs" />
     <Compile Include="Student.cs" />
+    <Compile Include="StudentTag.cs" />
     <Compile Include="sys\Department.cs" />
     <Compile Include="sys\SysInfo.cs" />
     <Compile Include="sys\SysPermission.cs" />

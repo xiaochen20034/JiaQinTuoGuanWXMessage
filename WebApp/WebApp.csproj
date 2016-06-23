@@ -155,6 +155,7 @@
     <Content Include="sys\JiaQin\page\school\SignMessage\figure.html" />
     <Content Include="sys\JiaQin\page\school\SignMessage\studentList.html" />
     <Content Include="sys\JiaQin\page\school\SignMessage\taglist.html" />
+    <Content Include="sys\JiaQin\page\school\Student\setTag.html" />
     <Content Include="sys\JiaQin\page\school\Tag\add.html" />
     <Content Include="sys\JiaQin\page\school\Tag\figure.html" />
     <Content Include="sys\JiaQin\page\school\Tag\list.html" />

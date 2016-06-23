@@ -200,7 +200,7 @@ namespace JiaQin.Data
 
         }
 
-        public void Add(SignRecord obj){
+        public void Add(SignRecord obj,int studentTagId){
             try
             {
                 int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [signRecord]
@@ -253,6 +253,8 @@ namespace JiaQin.Data
                 obj.Id = identityValue;
                 Executor.executeNonQuery("update student set times=isnull(times,0)-1 where id=@sutdentId", CommandType.Text, new object[,] { { "@sutdentId", obj.StuId } }, false);
 
+                Executor.executeNonQuery("update studentTag set times=isnull(times,0)-1 where id=@id", CommandType.Text, new object[,] { { "@id", studentTagId} }, false);
+
                 Executor.transOver(true);
             }
             catch (Exception ea) {
@@ -263,6 +265,7 @@ namespace JiaQin.Data
 				
             removeCache(typeof(SignRecord));
             removeCache(typeof(Student));
+            removeCache(typeof(StudentTag));
         }
 
 

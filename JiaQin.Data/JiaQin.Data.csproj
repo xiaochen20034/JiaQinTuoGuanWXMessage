@@ -57,6 +57,7 @@
     <Compile Include="Site\SiteColumnData.cs" />
     <Compile Include="Site\SiteNewsData.cs" />
     <Compile Include="StudentData.cs" />
+    <Compile Include="StudentTagData.cs" />
     <Compile Include="sys\DepartmentData.cs" />
     <Compile Include="sys\IDataExecutorImp.cs" />
     <Compile Include="sys\SysInfoData.cs" />

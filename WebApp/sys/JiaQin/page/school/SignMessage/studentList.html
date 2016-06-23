@@ -65,10 +65,13 @@
         <thead>
             <tr>
                 <td colspan="8" style="text-align:right; padding-top:5px; padding-bottom:5px; padding-right:15px;">
-                    
+                    <eye:c>
                     <eye:foreach collection="${projectList}" var="pro">
                         <label style="margin-left:10px;"><input type="radio" value="${pro.Id}" name="signProjectId"/>${pro.Name}</label>
                     </eye:foreach>
+                    </eye:c>
+                    <label style="margin-left:10px; display:none"><input checked="checked" type="radio" value="${tagInfo.SignProjectId}" name="signProjectId"/>${tagInfo.SignProjectInfo.Name}</label>
+                    ${tagInfo.SignProjectInfo.Name}
                     <input type="button" class="btn btn-mini btn-primary" onclick="Sign()"  value="托管签到"/>
                 </td>
             </tr>

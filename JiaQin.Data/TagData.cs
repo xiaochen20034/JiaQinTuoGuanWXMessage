@@ -118,6 +118,7 @@ namespace JiaQin.Data
             obj.TeacherListLazy = new Func<int, Teacher[]>(GetInstance<TeacherData>().ListByTagId);
             obj.StudentCountLazy = new Func<int, int>(TagStudentCount);
             obj.TeacherCountLazy = new Func<int, int>(TagTeacherCount);
+            obj.SignProjectInfoLazy = new Func<int, SignProject>(GetInstance<SignProjectData>().getSignProjectInfoById);
         }
         int TagStudentCount(int tagId) {
             Executor.addParameter("@tagId",tagId);
@@ -141,7 +142,30 @@ namespace JiaQin.Data
             }
             DataCached[key] = list;
             return list;
-        }
+        }
+        public Tag[] getTagListBySignProjectlId(int signProjectId)
+        {
+
+            string key = GetCacheKey(typeof(Tag), signProjectId);
+
+            TagLazy[] list = DataCached.GetItem<TagLazy[]>(key);
+
+            if (list != null)
+            {
+                return list;
+            }
+            Executor.addParameter("@signProjectId", signProjectId);
+            list = Executor.executeForListObject<TagLazy>("select * from tag where signProjectId=@signProjectId").ToArray();
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                this.Lazy(list[i]);
+            }
+            DataCached[key] = list;
+            return list;
+
+        }
+        
     public Tag getTagInfoById(int Id){
             string key = GetCacheKey(typeof(Tag), Id);
             TagLazy obj = DataCached.GetItem<TagLazy>(key);
@@ -174,15 +198,15 @@ namespace JiaQin.Data
     int identityValue = Convert.ToInt32(Executor.executeSclar(@"INSERT INTO [tag]
            (
                 name,
-                schoolId
+                schoolId,signProjectId
             )
      VALUES
    (
 	            @name,
-	            @schoolId
+	            @schoolId,@signProjectId
     );select SCOPE_IDENTITY()", System.Data.CommandType.Text, new object[,]{
 	        {"@name",obj.Name},
-	        {"@schoolId",obj.SchoolId}
+	        {"@schoolId",obj.SchoolId},            {"@signProjectId",obj.SignProjectId}
             }));
 				obj.Id=identityValue;
             removeCache(typeof(Tag));
@@ -190,9 +214,9 @@ namespace JiaQin.Data
         public void Update(Tag obj)
         {
             Executor.executeNonQuery(@"update [tag]
-          set  name=@name where id=@id", System.Data.CommandType.Text, new object[,]{
+          set  name=@name,signProjectId=@signProjectId where id=@id", System.Data.CommandType.Text, new object[,]{
 	        {"@name",obj.Name},
-	        {"@id",obj.Id}
+	        {"@id",obj.Id},            {"@signProjectId",obj.SignProjectId}
             });
             removeCache(typeof(Tag));
         }

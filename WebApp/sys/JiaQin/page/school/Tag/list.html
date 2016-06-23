@@ -6,6 +6,7 @@
                 <th style="width:30px;">序号</th>
                 <th style="width:200px">校区</th>
                 <th>名称</th>
+                <th>托管项目</th>
                 <th style="width:100px">教师使用人数</th>
                 <th style="width:100px">学生使用人数</th>
                 <th style="width:230px;">操作</th>
@@ -20,12 +21,13 @@
                         ${tag.SchoolInfo.Name}
                     </eye:if>
                     </td>
-                <td>${tag.Name}</td>  
+                <td>${tag.Name}</td> 
+                <td> ${tag.SignProjectInfo.Name} </td> 
                 <td>${tag.StudentCount}</td>
                 <td>${tag.TeacherCount}</td>
                 <td>
                     <eye:if test="${isDefined('currentSchoolId') and currentSchoolId is tag.SchoolId}">
-                        <input type="button" class="btn btn-small" value="编辑" onclick="ShowWindow2(this)"  action="UpdateTagPage" reFreshBtn="css:table .pageBarRefresh" param="id=${tag.Id}"/>
+                        <input type="button" class="btn btn-small" value="编辑" onclick="ShowWindow2(this)"  action="UpdateSchoolTagPage" reFreshBtn="css:table .pageBarRefresh" param="id=${tag.Id}"/>
                         <input type="button" class="btn btn-small" value="删除" onclick="SubmitForm2(this,null,this)" action="DeleteTagEvent" reFreshBtn="css:table .pageBarRefresh" param="id=${tag.Id}" actionTip="确定删除？删除后，相关的学生，教师将不属于改标签"/>
                     </eye:if>
                     

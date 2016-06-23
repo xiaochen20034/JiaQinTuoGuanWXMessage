@@ -33,7 +33,8 @@ namespace JiaQin.Services
         }
         public void Add()
         {
-
+            SignProjectData projectData=dataExecutorImp.GetInstance<SignProjectData>();
+            TemplateData["projectList"]= projectData.List();
         }
         public void AddEvent()
         {
@@ -58,6 +59,9 @@ namespace JiaQin.Services
 
         public void Update()
         {
+            SignProjectData projectData = dataExecutorImp.GetInstance<SignProjectData>();
+            TemplateData["projectList"] = projectData.List();
+
             TagData tagData = dataExecutorImp.GetInstance<TagData>();
             Tag tagInfo= tagData.getTagInfoById(this.ID);
             TemplateData["tagInfo"] = tagInfo;

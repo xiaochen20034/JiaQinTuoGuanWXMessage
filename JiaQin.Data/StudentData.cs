@@ -139,8 +139,10 @@ namespace JiaQin.Data
        obj.VipUserInfoLazy=new Func<int, VipUser>(GetInstance<VipUserData>().getVipUserInfoById);
 
        obj.SignRecordListLazy=new Func<int, SignRecord[]>(GetInstance<SignRecordData>().getSignRecordListByStuId);
-       obj.TagListLazy = new Func<int, Tag[]>(GetInstance<TagData>().ListByStudentId);
+       //obj.TagListLazy = new Func<int, Tag[]>(GetInstance<TagData>().ListByStudentId);
        obj.ParentInfoLazy = new Func<int, Parent>(GetInstance<ParentData>().getParentInfoByStudentId);
+       obj.StudentTagListLazy = new Func<int,StudentTag[]>(GetInstance<StudentTagData>().ListByStudentId);
+
         }
 
         public Student[] getStudentListBySchoolId(int schoolId){  
@@ -291,7 +293,7 @@ namespace JiaQin.Data
                 if (sb.Length > 0)
                 {
                     sb.Remove(0, 1);
-                    Executor.executeNonQuery("delete studentTag where  studentId =@studentId and  tagId not in(" + sb.ToString() + ")", CommandType.Text, new object[,]{
+                    Executor.executeNonQuery("delete studentTag where  studentId =@studentId and  tagId not in(" + sb.ToString() + ") and isnull(times,0)<=0", CommandType.Text, new object[,]{
                             {"@studentId",stuId}
                         },false);
                 }

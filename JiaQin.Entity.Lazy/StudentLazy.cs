@@ -84,20 +84,21 @@ namespace JiaQin.Entity.Lazy
 
     }
 
-        public Func<int, Tag[]> TagListLazy;
-        public override Tag[] TagList
+
+        public Func<int, StudentTag[]> StudentTagListLazy;
+        public override StudentTag[] StudentTagList
         {
             get
             {
-                if (base.TagList == null && TagListLazy != null)
+                if (base.StudentTagList == null && StudentTagListLazy != null)
                 {
-                    return TagListLazy(base.ID);
+                    return StudentTagListLazy(base.ID);
                 }
-                return base.TagList;
+                return base.StudentTagList;
             }
             set
             {
-                base.TagList = value;
+                base.StudentTagList = value;
             }
         }
     }

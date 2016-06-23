@@ -72,8 +72,15 @@ namespace JiaQin.Services
         }
         public void DeleteEvent()
         {
-            SignProjectData signProjectData = dataExecutorImp.GetInstance<SignProjectData>();
             
+            SignProjectData signProjectData = dataExecutorImp.GetInstance<SignProjectData>();
+            SignProject info= signProjectData.getSignProjectInfoById(this.ID);
+            if (info.TagList!=null && info.TagList.Length>0)
+            {
+                TemplateData[JsonKeyValue.res] = JsonKeyValue.alertRefresh;
+                TemplateData[JsonKeyValue.tip] = "托管项目下扔有学生标签，无法删除";
+                return;
+            }
             signProjectData.Delete(this.ID);
 
             TemplateData[JsonKeyValue.res] = JsonKeyValue.alertRefresh;
